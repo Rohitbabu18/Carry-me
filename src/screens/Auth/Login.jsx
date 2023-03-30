@@ -1,14 +1,106 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-
+import React, { useState } from 'react';
+import {
+  Image,
+  SafeAreaView, StatusBar,
+  StyleSheet,
+  Text, View,
+  ScrollView,
+  Pressable
+} from 'react-native';
+import styles from '../../util/Styles';
+import LinearGradient from 'react-native-linear-gradient';
+import { FloatingLabelInput } from 'react-native-floating-label-input';
+import { Colors } from '../../util/Colors';
+import CustomImage from '../../util/Images';
+import { horizScale, Spacer } from '../../util/Layout';
+import Icon from 'react-native-vector-icons/Entypo';
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('')
+  const [show, setShow] = useState(false);
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor={Colors.white} barStyle='dark-content' />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <LinearGradient colors={[Colors.white, Colors.mainColor]} style={styles.containerLinearGradient}>
+
+          <Spacer height={30} />
+          <Text style={styles.titleText}>
+            Carry Me
+          </Text>
+          <Image source={CustomImage.logo} style={styles.logoImage} />
+
+          <View>
+            <Text style={styles.headingText}>Login to continue</Text>
+          </View>
+          <Spacer height={20} />
+          <View>
+
+            <FloatingLabelInput
+              label={'Username'}
+              value={username}
+              onChangeText={value => setUsername(value)}
+              customLabelStyles={styles.floatinglabelstyle}
+              labelStyles={styles.labelstyle}
+              inputStyles={styles.floatinginputstyle}
+              containerStyles={{
+                ...styles.floatingcontainerstyle,
+                borderBottomColor: username !== '' ? Colors.mainColor : Colors.darkgrey,
+              }}
+            />
+          </View>
+          <Spacer height={30} />
+          <View>
+            <FloatingLabelInput
+              label={'Password'}
+              isPassword
+              togglePassword={show}
+              value={password}
+              onChangeText={value => setPassword(value)}
+              customShowPasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye" />}
+              customHidePasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye-with-line" />}
+              customLabelStyles={styles.floatinglabelstyle}
+              labelStyles={styles.labelstyle}
+              inputStyles={styles.floatinginputstyle}
+              containerStyles={{
+                ...styles.floatingcontainerstyle,
+                borderBottomColor: password !== '' ? Colors.mainColor : Colors.darkgrey,
+              }}
+            />
+          </View>
+
+          <Spacer height={15} />
+          <Pressable
+            onPress={() => {
+              alert('Coming Soon')
+            }}
+          >
+            <Text style={styles.forgetPassword}>Forget Password?</Text>
+          </Pressable>
+          <Spacer height={70} />
+          <Pressable
+            onPress={() => {
+              alert('Coming Soon')
+            }}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Continue</Text>
+          </Pressable>
+          <Spacer height={35} />
+          <View style={styles.rowCenterItem}>
+            <Text>Not a member</Text>
+            <Pressable
+              onPress={() => {
+                alert('Coming Soon')
+              }}
+            >
+              <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Signup?</Text>
+            </Pressable>
+          </View>
+        </LinearGradient>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 export default Login;
-
-const styles = StyleSheet.create({});

@@ -1,24 +1,23 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Login from '../Auth/Login';
-import RiderList from '../Home/RiderList';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Login from '../screens/Auth/Login';
 
 const Stack = createNativeStackNavigator();
 
-const HomeStack = () => {
+const AuthStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="RiderList"
+      initialRouteName="Login"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="RiderList" component={RiderList} />
+      <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
 };
 
-const AuthStack = () => {
+const HomeStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Login"
@@ -34,7 +33,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="HomeStack"
+        initialRouteName="AuthStack"
         screenOptions={{
           headerShown: false,
         }}>

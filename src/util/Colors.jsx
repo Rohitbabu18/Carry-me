@@ -6,10 +6,13 @@ export const Colors = {
   blueLight: '#64beff',
   grey: '#a6a6a6',
   darkgrey: '#808080',
+  night: '#333333',
   red: '#ff0000',
   yellow: '#fbc10d',
   transparent: '#00000040',
   mainColor: '#14302e', //main
   background: '#e5e5e5',
   black: '#252525',
+  pink: '#7a3588',
+  green: '#3CB371',
 };
