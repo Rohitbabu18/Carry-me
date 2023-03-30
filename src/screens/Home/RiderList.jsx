@@ -123,7 +123,10 @@ const RiderList = ({navigation}) => {
             />
             <Text style={styles.numRating}>({item.numOfReviews})</Text>
           </View>
-          <Text style={styles.priceText}>Price : {item.price} /-</Text>
+          <Text style={styles.priceText}>
+            Price :<Text style={{fontSize: fontSize.medium}}>{item.price}</Text>{' '}
+            /-
+          </Text>
         </View>
         <Spacer height={10} />
         <View style={styles.subViewBtm}>
@@ -203,7 +206,7 @@ const styles = StyleSheet.create({
   priceText: {
     color: Colors.green,
     fontWeight: '500',
-    fontSize: fontSize.medium,
+    fontSize: fontSize.small,
     marginVertical: horizScale(5),
     flex: 0.3,
   },
@@ -214,6 +217,7 @@ const styles = StyleSheet.create({
   },
   fromToText: {
     color: Colors.grey,
+    fontSize: fontSize.small,
   },
   boldText: {
     color: Colors.black,
