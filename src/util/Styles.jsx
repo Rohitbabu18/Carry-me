@@ -3,6 +3,19 @@ import { Colors } from './Colors'
 import fontSize from './Fonts'
 import { horizScale, vertScale } from './Layout'
 const styles = StyleSheet.create({
+    smallText: {
+        color: Colors.darkgrey,
+        fontSize: fontSize.small,
+        fontWeight: '400',
+        paddingHorizontal: horizScale(20),
+        textAlign: 'left'
+    },
+    modalBox: {
+        backgroundColor: Colors.white,
+        width: horizScale(300),
+        borderRadius: horizScale(15),
+        alignSelf: 'center',
+    },
     selected: {
         backgroundColor: Colors.mainColor,
         borderRadius: horizScale(20),
@@ -69,6 +82,15 @@ const styles = StyleSheet.create({
         borderRadius: horizScale(40),
         alignSelf: 'center',
         justifyContent: 'center',
+    },
+    smallbutton: {
+        paddingVertical: vertScale(5),
+        width: '40%',
+        backgroundColor: Colors.mainColor,
+        borderRadius: horizScale(40),
+        alignSelf: 'center',
+        justifyContent: 'center',
+
     },
     buttonText: {
         textAlign: 'center',

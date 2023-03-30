@@ -11,6 +11,7 @@ export const Colors = {
   yellow: '#fbc10d',
   transparent: '#00000040',
   mainColor: '#14302e', //main
+  mainColorDim: '#cbd1d1',
   background: '#e5e5e5',
   black: '#252525',
   pink: '#7a3588',
