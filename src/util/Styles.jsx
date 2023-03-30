@@ -1,13 +1,77 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { Colors } from './Colors'
 import fontSize from './Fonts'
-import { horizScale } from './Layout'
+import { horizScale, vertScale } from './Layout'
 const styles = StyleSheet.create({
+    button: {
+        paddingVertical: vertScale(15),
+        width: '80%',
+        backgroundColor: Colors.mainColor,
+        borderRadius: horizScale(40),
+        alignSelf: 'center',
+        justifyContent: 'center',
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: Colors.white,
+        fontSize: fontSize.regular,
+        fontWeight: '700'
+    },
+    floatingcontainerstyle: {
+        marginTop: vertScale(15),
+        marginHorizontal: horizScale(20),
+        borderBottomWidth: vertScale(2),
+    },
+    floatinginputstyle: {
+        color: Colors.black,
+        fontSize: fontSize.medium,
+        marginTop: horizScale(5),
+        fontWeight: '700'
+    },
+    labelstyle: {
+        paddingVertical: horizScale(5),
+        color: Colors.black,
+    },
+    floatinglabelstyle: {
+        fontSizeFocused: fontSize.small,
+        fontSizeBlurred: fontSize.medium,
+        colorBlurred: Colors.black,
+        colorFocused: Colors.black,
+        fontWeight: 'bold'
+    },
+    floatingContainer: {
+        height: horizScale(60),
+        borderWidth: horizScale(1),
+        marginHorizontal: horizScale(40),
+        borderRadius: horizScale(10)
+    },
+    logoImage: {
+        marginVertical: horizScale(30),
+        height: horizScale(80),
+        width: horizScale(260),
+        alignSelf: 'center',
+        resizeMode: 'contain'
+    },
+    titleText: {
+        textAlign: 'center',
+        fontSize: fontSize.h3,
+        fontWeight: '700',
+        color: Colors.mainColor,
+        textShadowOffset: { width: -3, height: 2 },
+        textShadowColor: Colors.darkgrey,
+        textShadowOpacity: 0.2,
+        textShadowRadius: 6,
+    },
     rowCenter: {
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
         top: horizScale(10)
+    },
+    rowCenterItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
     },
     addressHeading: {
         marginHorizontal: horizScale(20),
@@ -19,15 +83,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.white
     },
+    containerLinearGradient: {
+        flex: 1,
+        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width
+    },
     headingText: {
-        backgroundColor: Colors.blue,
-        color: Colors.white,
-        width: '100%',
-        height: horizScale(60),
+        color: Colors.mainColor,
         textAlignVertical: 'center',
         paddingLeft: horizScale(20),
         fontSize: fontSize.input,
         fontWeight: 'bold'
+    },
+    forgetPassword: {
+        color: Colors.mainColor,
+        textAlignVertical: 'center',
+        paddingLeft: horizScale(20),
+        fontSize: fontSize.medium,
+        fontWeight: '600',
+        textDecorationLine: 'underline'
     },
     listContainer: {
         marginHorizontal: horizScale(2),
