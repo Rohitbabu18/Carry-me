@@ -59,8 +59,8 @@ const Login = ({ navigation }) => {
               togglePassword={show}
               value={password}
               onChangeText={value => setPassword(value)}
-              customShowPasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye" />}
-              customHidePasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye-with-line" />}
+              customShowPasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye-with-line" />}
+              customHidePasswordComponent={<Icon size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name="eye" />}
               customLabelStyles={styles.floatinglabelstyle}
               labelStyles={styles.labelstyle}
               inputStyles={styles.floatinginputstyle}
@@ -92,7 +92,7 @@ const Login = ({ navigation }) => {
           <Spacer height={25} />
           <Pressable
             onPress={() => {
-              alert('Coming Soon')
+              navigation.navigate('Forget')
             }}
             style={{ alignSelf: 'flex-end' }}
           >
@@ -101,7 +101,7 @@ const Login = ({ navigation }) => {
           <Spacer height={50} />
           <Pressable
             onPress={() => {
-              alert('Coming Soon')
+              navigation.navigate('HomeStack')
             }}
             style={styles.button}
           >

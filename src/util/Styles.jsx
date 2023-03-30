@@ -3,6 +3,65 @@ import { Colors } from './Colors'
 import fontSize from './Fonts'
 import { horizScale, vertScale } from './Layout'
 const styles = StyleSheet.create({
+    selected: {
+        backgroundColor: Colors.mainColor,
+        borderRadius: horizScale(20),
+        elevation: 3,
+        padding: horizScale(8),
+        width: horizScale(120),
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    unSelected: {
+        borderWidth: horizScale(1),
+        borderColor: Colors.mainColor,
+        borderRadius: horizScale(20),
+        padding: horizScale(8),
+        width: horizScale(120),
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
+    },
+    selectedText: {
+        color: Colors.white,
+        fontSize: fontSize.small,
+        fontWeight: '600',
+        paddingHorizontal: horizScale(10),
+        textAlign: 'center'
+    },
+    unSelectedText: {
+        fontSize: fontSize.small,
+        fontWeight: '600',
+        color: Colors.mainColor,
+        paddingHorizontal: horizScale(10),
+        textAlign: 'center'
+
+    },
+    TextH3: {
+        color: Colors.mainColor,
+        textAlignVertical: 'center',
+        paddingLeft: horizScale(20),
+        fontSize: fontSize.h3,
+        fontWeight: 'bold'
+    },
+    TextH5: {
+        color: Colors.mainColor,
+        textAlignVertical: 'center',
+        paddingLeft: horizScale(20),
+        fontSize: fontSize.h5,
+        fontWeight: '600'
+    },
+    TextMedium: {
+        color: Colors.black,
+        textAlignVertical: 'center',
+        fontSize: fontSize.medium,
+        fontWeight: '400'
+    },
+    headerView: {
+        marginHorizontal: horizScale(10),
+        marginVertical: horizScale(15),
+    },
     button: {
         paddingVertical: vertScale(15),
         width: '80%',
@@ -67,6 +126,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         flexDirection: 'row',
         top: horizScale(10)
+    },
+    rowSpaceEvenly: {
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
     },
     rowCenterItem: {
         alignItems: 'center',

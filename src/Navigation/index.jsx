@@ -3,6 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Auth/Login';
 import TermsAndCondition from '../screens/Auth/TermsAndCondition';
+import RiderList from '../screens/Home/RiderList';
+import Forget from '../screens/Auth/Forget';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +17,7 @@ const AuthStack = () => {
       }}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="TermsAndCondition" component={TermsAndCondition} />
+      <Stack.Screen name="Forget" component={Forget} />
     </Stack.Navigator>
   );
 };
@@ -22,11 +25,11 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="RiderList"
       screenOptions={{
         headerShown: false,
       }}>
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="RiderList" component={RiderList} />
     </Stack.Navigator>
   );
 };
