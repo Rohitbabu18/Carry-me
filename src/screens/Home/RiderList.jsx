@@ -203,12 +203,12 @@ const styles = StyleSheet.create({
   priceText: {
     color: Colors.green,
     fontWeight: '500',
-    fontSize: fontSize.regular,
+    fontSize: fontSize.medium,
     marginVertical: horizScale(5),
     flex: 0.3,
   },
   nameText: {
-    fontSize: fontSize.h6,
+    fontSize: fontSize.regular,
     color: Colors.black,
     fontWeight: '500',
   },
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
   },
   boldText: {
     color: Colors.black,
-    fontSize: fontSize.regular,
+    fontSize: fontSize.medium,
     fontWeight: '600',
   },
   nameView: {
