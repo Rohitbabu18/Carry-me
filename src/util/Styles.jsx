@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     forgetPassword: {
         color: Colors.mainColor,
         textAlignVertical: 'center',
-        paddingLeft: horizScale(20),
+        paddingRight: horizScale(20),
         fontSize: fontSize.medium,
         fontWeight: '600',
         textDecorationLine: 'underline'

@@ -14,10 +14,12 @@ import { Colors } from '../../util/Colors';
 import CustomImage from '../../util/Images';
 import { horizScale, Spacer } from '../../util/Layout';
 import Icon from 'react-native-vector-icons/Entypo';
-const Login = () => {
+import Ionicons from 'react-native-vector-icons/Ionicons';
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
   const [show, setShow] = useState(false);
+  const [accepts, setAccepts] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={Colors.white} barStyle='dark-content' />
@@ -49,7 +51,7 @@ const Login = () => {
               }}
             />
           </View>
-          <Spacer height={30} />
+          <Spacer height={15} />
           <View>
             <FloatingLabelInput
               label={'Password'}
@@ -70,14 +72,33 @@ const Login = () => {
           </View>
 
           <Spacer height={15} />
+          <View style={{ ...styles.rowCenterItem, justifyContent: 'flex-start', marginLeft: horizScale(20) }}>
+            <Pressable
+              onPress={() => {
+                setAccepts(!accepts)
+              }}
+            >
+              <Ionicons size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name={accepts ? "ios-checkbox" : "ios-square-outline"} />
+            </Pressable>
+            <Text>I accept the </Text>
+            <Pressable
+              onPress={() => {
+                navigation.navigate('TermsAndCondition')
+              }}
+            >
+              <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Terms & Condition.</Text>
+            </Pressable>
+          </View>
+          <Spacer height={25} />
           <Pressable
             onPress={() => {
               alert('Coming Soon')
             }}
+            style={{ alignSelf: 'flex-end' }}
           >
             <Text style={styles.forgetPassword}>Forget Password?</Text>
           </Pressable>
-          <Spacer height={70} />
+          <Spacer height={50} />
           <Pressable
             onPress={() => {
               alert('Coming Soon')
@@ -94,7 +115,7 @@ const Login = () => {
                 alert('Coming Soon')
               }}
             >
-              <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Signup?</Text>
+              <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Register?</Text>
             </Pressable>
           </View>
         </LinearGradient>
