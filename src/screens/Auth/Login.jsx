@@ -80,10 +80,10 @@ const Login = ({ navigation }) => {
             >
               <Ionicons size={20} color={Colors.mainColor} style={{ marginRight: horizScale(15) }} name={accepts ? "ios-checkbox" : "ios-square-outline"} />
             </Pressable>
-            <Text>I accept the </Text>
+            <Text style={styles.normalText}>I accept the </Text>
             <Pressable
               onPress={() => {
-                navigation.navigate('TermsAndCondition')
+                navigation.navigate('TermsAndCondition', { button: false })
               }}
             >
               <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Terms & Condition.</Text>
@@ -101,7 +101,7 @@ const Login = ({ navigation }) => {
           <Spacer height={50} />
           <Pressable
             onPress={() => {
-              navigation.navigate('HomeStack')
+              navigation.replace('HomeStack')
             }}
             style={styles.button}
           >
@@ -112,7 +112,7 @@ const Login = ({ navigation }) => {
             <Text>Not a member</Text>
             <Pressable
               onPress={() => {
-                alert('Coming Soon')
+                navigation.navigate('Language')
               }}
             >
               <Text style={{ ...styles.forgetPassword, paddingLeft: horizScale(5), }}>Register?</Text>

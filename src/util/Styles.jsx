@@ -3,6 +3,20 @@ import { Colors } from './Colors'
 import fontSize from './Fonts'
 import { horizScale, vertScale } from './Layout'
 const styles = StyleSheet.create({
+    normalText: {
+        color: Colors.black,
+        fontSize: fontSize.medium
+    },
+    finger: {
+        height: horizScale(50),
+        width: horizScale(50),
+        borderRadius: horizScale(25),
+        backgroundColor: Colors.transparent,
+        backfaceVisibility: 'visible',
+        borderWidth: horizScale(2),
+        borderColor: Colors.black,
+        position: 'absolute'
+    },
     smallText: {
         color: Colors.darkgrey,
         fontSize: fontSize.small,
@@ -13,6 +27,12 @@ const styles = StyleSheet.create({
     modalBox: {
         backgroundColor: Colors.white,
         width: horizScale(300),
+        borderRadius: horizScale(15),
+        alignSelf: 'center',
+    },
+    modalBox1: {
+        backgroundColor: Colors.white,
+        width: '80%',
         borderRadius: horizScale(15),
         alignSelf: 'center',
     },
@@ -133,6 +153,27 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         resizeMode: 'contain'
     },
+    codeGeneretorImage: {
+        height: horizScale(280),
+        width: horizScale(280),
+        alignSelf: 'center',
+        resizeMode: 'contain',
+        backgroundColor: 'black'
+    },
+    codeGeneretorContainer: {
+        height: horizScale(380),
+        width: horizScale(380),
+        borderWidth: horizScale(4),
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
+    },
+    codeGeneretorText: {
+        letterSpacing: horizScale(5),
+        fontSize: fontSize.medium,
+        fontWeight: '700',
+        color: Colors.mainColor,
+    },
     titleText: {
         textAlign: 'center',
         fontSize: fontSize.h3,
@@ -140,8 +181,7 @@ const styles = StyleSheet.create({
         color: Colors.mainColor,
         textShadowOffset: { width: -3, height: 2 },
         textShadowColor: Colors.darkgrey,
-        textShadowOpacity: 0.2,
-        textShadowRadius: 6,
+        textShadowRadius: 1,
     },
     rowCenter: {
         alignItems: 'center',
@@ -174,6 +214,14 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width
     },
+    smallLinearGradient: {
+        height: horizScale(100),
+        width: Dimensions.get('window').width,
+        backfaceVisibility: 'visible',
+        backgroundColor: 'rgba(52,52,52,0.1)',
+        position: 'absolute',
+        bottom: 0
+    },
     headingText: {
         color: Colors.mainColor,
         textAlignVertical: 'center',
@@ -197,6 +245,15 @@ const styles = StyleSheet.create({
         borderRadius: horizScale(15),
         padding: horizScale(20)
     },
+    list2ColumContainer: {
+        marginHorizontal: horizScale(2),
+        marginVertical: horizScale(15),
+        backgroundColor: Colors.white,
+        elevation: 3,
+        borderRadius: horizScale(15),
+        padding: horizScale(20),
+        marginHorizontal: horizScale(30)
+    },
     name: {
         color: Colors.blue,
         fontSize: fontSize.regular,
@@ -215,6 +272,12 @@ const styles = StyleSheet.create({
     smallIcon: {
         height: horizScale(20),
         width: horizScale(20),
+        resizeMode: "contain",
+    },
+    smallCircleImage: {
+        height: horizScale(80),
+        width: horizScale(80),
+        borderRadius: horizScale(40),
         resizeMode: "contain",
     },
     backView: {

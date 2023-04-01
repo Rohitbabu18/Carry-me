@@ -16,6 +16,7 @@ import fontSize from '../../util/Fonts'
 import DatePicker from 'react-native-date-picker';
 import { useDispatch } from 'react-redux'
 import { forgetOptionAction, userIdForgetPassword } from '../../redux/action'
+import { ToastMessage } from '../../util/ToastMessage'
 const VerifySecurityDate = ({ navigation }) => {
     const dispatch = useDispatch()
     const [date, setDate] = useState(new Date())
@@ -46,10 +47,10 @@ const VerifySecurityDate = ({ navigation }) => {
                     <Spacer height={35} />
                     <Text style={styles.smallText}>Your Reminder is -</Text>
                     <Spacer height={10} />
-                    <Text style={styles.headingText}>My sister's birth.</Text>
+                    <Text style={styles.headingText}>My Sister's birth.</Text>
                     <Spacer height={15} />
                     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={styles.TextMedium}>Choose Date</Text>
+                        {/* <Text style={styles.TextMedium}>Choose Date</Text> */}
                         <DatePicker
                             mode="date"
                             date={date}
@@ -92,9 +93,14 @@ const VerifySecurityDate = ({ navigation }) => {
                 <Spacer height={20} />
                 <Pressable
                     onPress={() => {
-                        dispatch(userIdForgetPassword('10'))
-                        dispatch(forgetOptionAction('2'))
-                        navigation.goBack()
+                        if (userCode == catchaCode) {
+
+                            dispatch(userIdForgetPassword('10'))
+                            dispatch(forgetOptionAction('2'))
+                            navigation.goBack()
+                        } else {
+                            ToastMessage('Invalid Captcha')
+                        }
                     }}
                     style={styles.button}
                 >

@@ -1,13 +1,18 @@
 import {
     View, Text, SafeAreaView,
-    FlatList
+    FlatList,
+    Pressable,
+    ScrollView
 } from 'react-native'
 import React from 'react'
 import styles from '../../util/Styles'
 import Back from '../Componets/Back'
 import { horizScale, Spacer } from '../../util/Layout'
+import LinearGradient from 'react-native-linear-gradient'
+import { Colors } from '../../util/Colors'
 
-const TermsAndCondition = ({ navigation }) => {
+const TermsAndCondition = ({ navigation, route }) => {
+    const { button } = route?.params;
     const data = [
         {
             id: 1,
@@ -33,17 +38,52 @@ const TermsAndCondition = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.headerView}>
-                <Back navigation={navigation} />
-            </View>
-            <Text style={styles.TextH3}>Accepts{'\n'}Terms of Service</Text>
-            <Spacer height={8} />
-            <Text style={styles.TextH5}>Last Update March 2023</Text>
-            <Spacer height={20} />
-            <FlatList
-                data={data}
-                renderItem={renderItem}
-            />
+
+            {button ?
+                <LinearGradient colors={[Colors.white, Colors.mainColor]} style={styles.containerLinearGradient}>
+                    <FlatList
+                        data={data}
+                        renderItem={renderItem}
+                        ListHeaderComponent={() => (
+                            <>
+                                <View style={styles.headerView}>
+                                    <Back navigation={navigation} />
+                                </View>
+                                <Text style={styles.TextH3}>Accepts{'\n'}Terms of Service</Text>
+                                <Spacer height={8} />
+                                <Text style={styles.TextH5}>Last Update March 2023</Text>
+                                <Spacer height={20} />
+                            </>
+                        )}
+                        ListFooterComponent={() => (
+                            <Spacer height={100} />
+                        )}
+                    />
+                    <View style={styles.smallLinearGradient}>
+                        <Pressable
+                            onPress={() => {
+                                navigation.navigate('GenerateWorkmanId')
+                            }}
+                            style={styles.button}
+                        >
+                            <Text style={styles.buttonText}>Continue</Text>
+                        </Pressable>
+                    </View>
+                </LinearGradient>
+                : <>
+                    <View style={styles.headerView}>
+                        <Back navigation={navigation} />
+                    </View>
+                    <Text style={styles.TextH3}>Accepts{'\n'}Terms of Service</Text>
+                    <Spacer height={8} />
+                    <Text style={styles.TextH5}>Last Update March 2023</Text>
+                    <Spacer height={20} />
+                    <FlatList
+                        data={data}
+                        renderItem={renderItem}
+                    />
+                </>
+            }
         </SafeAreaView>
     )
 }

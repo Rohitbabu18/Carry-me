@@ -6,6 +6,11 @@ import TermsAndCondition from '../screens/Auth/TermsAndCondition';
 import RiderList from '../screens/Home/RiderList';
 import Forget from '../screens/Auth/Forget';
 import VerifySecurityDate from '../screens/Auth/VerifySecurityDate';
+import Language from '../screens/Auth/Language';
+import GenerateWorkmanId from '../screens/Auth/GenerateWorkmanId';
+import Signup1 from '../screens/Auth/Signup1';
+import Signup2 from '../screens/Auth/Signup2';
+import Signup3 from '../screens/Auth/Signup3';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +22,12 @@ const AuthStack = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Language" component={Language} />
       <Stack.Screen name="TermsAndCondition" component={TermsAndCondition} />
+      <Stack.Screen name="GenerateWorkmanId" component={GenerateWorkmanId} />
+      <Stack.Screen name="Signup1" component={Signup1} />
+      <Stack.Screen name="Signup2" component={Signup2} />
+      <Stack.Screen name="Signup3" component={Signup3} />
       <Stack.Screen name="Forget" component={Forget} />
       <Stack.Screen name="VerifySecurityDate" component={VerifySecurityDate} />
     </Stack.Navigator>
