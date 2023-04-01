@@ -11,6 +11,7 @@ import GenerateWorkmanId from '../screens/Auth/GenerateWorkmanId';
 import Signup1 from '../screens/Auth/Signup1';
 import Signup2 from '../screens/Auth/Signup2';
 import Signup3 from '../screens/Auth/Signup3';
+import RegisterRide from '../screens/Home/RegisterRide';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,11 +38,12 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="RiderList"
+      initialRouteName="RegisterRide"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen name="RiderList" component={RiderList} />
+      <Stack.Screen name="RegisterRide" component={RegisterRide} />
     </Stack.Navigator>
   );
 };
