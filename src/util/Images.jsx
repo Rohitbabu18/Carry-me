@@ -13,7 +13,6 @@ const CustomImage = {
   codedemo: require('../assets/codedemo.png'),
   user: require('../assets/user.png'),
 
-
   unitedkingdom: require('../assets/unitedkingdom.png'),
   germany: require('../assets/germany.png'),
   china: require('../assets/china.png'),
@@ -25,5 +24,6 @@ const CustomImage = {
   camera: require('../assets/camera.png'),
   plus: require('../assets/plus.png'),
   minus: require('../assets/minus.png'),
+  home: require('../assets/home.png'),
 };
 export default CustomImage;

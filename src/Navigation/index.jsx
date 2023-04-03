@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Auth/Login';
 import TermsAndCondition from '../screens/Auth/TermsAndCondition';
 import RiderList from '../screens/Home/RiderList';
@@ -12,6 +12,7 @@ import Signup1 from '../screens/Auth/Signup1';
 import Signup2 from '../screens/Auth/Signup2';
 import Signup3 from '../screens/Auth/Signup3';
 import RegisterRide from '../screens/Home/RegisterRide';
+import RideOptions from '../screens/Home/RideOptions';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,12 +39,13 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="RegisterRide"
+      initialRouteName="RideOptions"
       screenOptions={{
         headerShown: false,
       }}>
       <Stack.Screen name="RiderList" component={RiderList} />
       <Stack.Screen name="RegisterRide" component={RegisterRide} />
+      <Stack.Screen name="RideOptions" component={RideOptions} />
     </Stack.Navigator>
   );
 };

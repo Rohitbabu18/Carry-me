@@ -27,7 +27,7 @@ const Login = ({navigation}) => {
       <StatusBar backgroundColor={Colors.white} barStyle="dark-content" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <LinearGradient
-          colors={[Colors.white, Colors.mainColor]}
+          colors={[Colors.white, Colors.homeGradient]}
           style={styles.containerLinearGradient}>
           <Spacer height={30} />
           <Text style={styles.titleText}>Carry Me</Text>
