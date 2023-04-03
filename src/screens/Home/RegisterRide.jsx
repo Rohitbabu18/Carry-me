@@ -1,5 +1,4 @@
 import {
-  Dimensions,
   Image,
   Pressable,
   SafeAreaView,
@@ -17,8 +16,9 @@ import {Spacer, horizScale} from '../../util/Layout';
 import CustomImage from '../../util/Images';
 import {Dropdown} from 'react-native-element-dropdown';
 import RadioForm from 'react-native-simple-radio-button';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-crop-picker';
 import fontSize from '../../util/Fonts';
+import styles from '../../util/Styles';
 
 const rideTypeData = [
   {label: 'Bicycle', value: '1'},
@@ -51,7 +51,7 @@ const RegisterRide = ({navigation}) => {
     if (rideType || rideTypeFocus) {
       return (
         <Text
-          style={[styles.label, rideTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, rideTypeFocus && {color: Colors.mainColor}]}>
           Selected Ride Type
         </Text>
       );
@@ -67,7 +67,7 @@ const RegisterRide = ({navigation}) => {
     if (luggageType || luggageTypeFocus) {
       return (
         <Text
-          style={[styles.label, luggageTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, luggageTypeFocus && {color: Colors.mainColor}]}>
           Selected Luggage Type
         </Text>
       );
@@ -84,7 +84,7 @@ const RegisterRide = ({navigation}) => {
       return (
         <Text
           style={[
-            styles.label,
+            rStyle.label,
             destinationTypeFocus && {color: Colors.mainColor},
           ]}>
           Selected Destination Type
@@ -102,7 +102,7 @@ const RegisterRide = ({navigation}) => {
     if (currencyType || currencyFocus) {
       return (
         <Text
-          style={[styles.label, currencyFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, currencyFocus && {color: Colors.mainColor}]}>
           Selected Currency
         </Text>
       );
@@ -131,39 +131,44 @@ const RegisterRide = ({navigation}) => {
   const [description, setDescription] = useState('');
   const [selectedImage, setSelectedImage] = useState([]);
 
-  const launchGallery = async () => {
-    const result = await launchImageLibrary();
-    setSelectedImage(result.assets);
+  const ImgaePick = () => {
+    ImagePicker?.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setSelectedImage(image?.path);
+    });
   };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
       <StatusBar backgroundColor={Colors.background} />
-      <View style={styles.headerView}>
+      <View style={rStyle.headerView}>
         <Back navigation={navigation} />
         <Pressable
           style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
           onPress={() => {
             alert('Coming Soon');
           }}>
-          <Image source={CustomImage.save} style={styles.saveIcon} />
+          <Image source={CustomImage.save} style={rStyle.saveIcon} />
         </Pressable>
       </View>
       <ScrollView>
-        <View style={styles.formStyle}>
+        <View style={rStyle.formStyle}>
           <Spacer height={30} />
           <Image
             source={
               selectedImage?.length > 0
-                ? {uri: selectedImage[0]?.uri}
+                ? {uri: selectedImage}
                 : CustomImage.profile
             }
-            style={styles.profileIcon}
+            style={rStyle.profileIcon}
           />
           <Pressable
             style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
             onPress={() => {
-              launchGallery();
+              ImgaePick();
             }}>
             <View
               style={{
@@ -185,18 +190,18 @@ const RegisterRide = ({navigation}) => {
             </View>
           </Pressable>
           <Spacer height={10} />
-          <Text style={styles.uploadText}>Upload Photo</Text>
+          <Text style={rStyle.uploadText}>Upload Photo</Text>
           <Spacer height={20} />
-          <View style={styles.rideView}>
+          <View style={rStyle.rideView}>
             {renderRideLabel()}
             <Dropdown
               style={[
-                styles.dropdown,
+                rStyle.dropdown,
                 rideTypeFocus && {borderColor: Colors.mainColor},
               ]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              itemTextStyle={styles.itemTextStyle}
+              placeholderStyle={rStyle.placeholderStyle}
+              selectedTextStyle={rStyle.selectedTextStyle}
+              itemTextStyle={rStyle.itemTextStyle}
               data={rideTypeData}
               maxHeight={300}
               labelField="label"
@@ -211,45 +216,45 @@ const RegisterRide = ({navigation}) => {
               }}
             />
           </View>
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Available Seats</Text>
-            <View style={styles.incDec}>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Available Seats</Text>
+            <View style={rStyle.incDec}>
               <Pressable
                 style={({pressed}) =>
                   pressed
-                    ? {...styles.incDecBtn, opacity: 0.7}
-                    : styles.incDecBtn
+                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    : rStyle.incDecBtn
                 }
                 onPress={() => {
                   if (availableSeats > 1) {
                     setAvailableSeats(availableSeats => availableSeats - 1);
                   }
                 }}>
-                <Image style={styles.incDecIcon} source={CustomImage.minus} />
+                <Image style={rStyle.incDecIcon} source={CustomImage.minus} />
               </Pressable>
-              <Text style={styles.availCount}>{availableSeats}</Text>
+              <Text style={rStyle.availCount}>{availableSeats}</Text>
               <Pressable
                 style={({pressed}) =>
                   pressed
-                    ? {...styles.incDecBtn, opacity: 0.7}
-                    : styles.incDecBtn
+                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    : rStyle.incDecBtn
                 }
                 onPress={() => {
                   setAvailableSeats(availableSeats => availableSeats + 1);
                 }}>
-                <Image style={styles.incDecIcon} source={CustomImage.plus} />
+                <Image style={rStyle.incDecIcon} source={CustomImage.plus} />
               </Pressable>
             </View>
           </View>
           <Spacer height={15} />
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Luggage</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Luggage</Text>
             <RadioForm
               formHorizontal={true}
               animation={false}
               buttonColor={Colors.mainColor}
               selectedButtonColor={Colors.mainColor}
-              style={styles.radioBtnStyle}
+              style={rStyle.radioBtnStyle}
               buttonSize={15}
               radio_props={luggage_props}
               initial={luggge}
@@ -260,16 +265,16 @@ const RegisterRide = ({navigation}) => {
           </View>
           <Spacer height={15} />
           {luggge === 0 && (
-            <View style={styles.rideView}>
+            <View style={rStyle.rideView}>
               {renderLuggageLabel()}
               <Dropdown
                 style={[
-                  styles.dropdown,
+                  rStyle.dropdown,
                   luggageTypeFocus && {borderColor: Colors.mainColor},
                 ]}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                itemTextStyle={styles.itemTextStyle}
+                placeholderStyle={rStyle.placeholderStyle}
+                selectedTextStyle={rStyle.selectedTextStyle}
+                itemTextStyle={rStyle.itemTextStyle}
                 data={luggageTypeData}
                 maxHeight={300}
                 labelField="label"
@@ -285,16 +290,16 @@ const RegisterRide = ({navigation}) => {
               />
             </View>
           )}
-          <View style={styles.rideView}>
+          <View style={rStyle.rideView}>
             {renderDestinationLabel()}
             <Dropdown
               style={[
-                styles.dropdown,
+                rStyle.dropdown,
                 destinationTypeFocus && {borderColor: Colors.mainColor},
               ]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              itemTextStyle={styles.itemTextStyle}
+              placeholderStyle={rStyle.placeholderStyle}
+              selectedTextStyle={rStyle.selectedTextStyle}
+              itemTextStyle={rStyle.itemTextStyle}
               data={destinationTypeData}
               maxHeight={300}
               labelField="label"
@@ -311,16 +316,16 @@ const RegisterRide = ({navigation}) => {
               }}
             />
           </View>
-          <View style={styles.rideView}>
+          <View style={rStyle.rideView}>
             {renderCurrencyLabel()}
             <Dropdown
               style={[
-                styles.dropdown,
+                rStyle.dropdown,
                 currencyFocus && {borderColor: Colors.mainColor},
               ]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              itemTextStyle={styles.itemTextStyle}
+              placeholderStyle={rStyle.placeholderStyle}
+              selectedTextStyle={rStyle.selectedTextStyle}
+              itemTextStyle={rStyle.itemTextStyle}
               data={currencyData}
               maxHeight={300}
               labelField="label"
@@ -335,14 +340,14 @@ const RegisterRide = ({navigation}) => {
               }}
             />
           </View>
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Fixed Price</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Fixed Price</Text>
             <RadioForm
               formHorizontal={true}
               animation={false}
               buttonColor={Colors.mainColor}
               selectedButtonColor={Colors.mainColor}
-              style={styles.radioBtnStyle}
+              style={rStyle.radioBtnStyle}
               buttonSize={15}
               radio_props={fixed_price_props}
               initial={fixedPrice}
@@ -352,8 +357,8 @@ const RegisterRide = ({navigation}) => {
             />
           </View>
           <Spacer height={15} />
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Fixed Price Amount</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Fixed Price Amount</Text>
             <TextInput
               placeholder="Please Enter Amount"
               placeholderTextColor={Colors.grey}
@@ -361,34 +366,34 @@ const RegisterRide = ({navigation}) => {
               keyboardType="numeric"
               onChangeText={text => setFixedPriceAmt(text)}
               value={fixedPriceAmt}
-              style={styles.inputStyle}
+              style={rStyle.inputStyle}
             />
           </View>
           <Spacer height={15} />
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Departure Address</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Departure Address</Text>
             <TextInput
               placeholder="Please Enter Departure Address"
               placeholderTextColor={Colors.grey}
               onChangeText={text => setDepartureAddress(text)}
               value={departureAddress}
-              style={styles.inputStyle}
+              style={rStyle.inputStyle}
             />
           </View>
           <Spacer height={15} />
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Destination Address</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Destination Address</Text>
             <TextInput
               placeholder="Please Enter Destination Address"
               placeholderTextColor={Colors.grey}
               onChangeText={text => setDestinationAddress(text)}
               value={destinationAddress}
-              style={styles.inputStyle}
+              style={rStyle.inputStyle}
             />
           </View>
           <Spacer height={15} />
-          <View style={styles.radioView}>
-            <Text style={styles.radioText}>Description</Text>
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Description</Text>
             <TextInput
               placeholder="Please Enter Description..."
               placeholderTextColor={Colors.grey}
@@ -397,9 +402,17 @@ const RegisterRide = ({navigation}) => {
               textAlignVertical="top"
               onChangeText={text => setDescription(text)}
               value={description}
-              style={styles.inputStyle}
+              style={rStyle.inputStyle}
             />
           </View>
+          <Spacer height={30} />
+          <Pressable
+            onPress={() => {
+              navigation.navigate('RiderList');
+            }}
+            style={styles.button}>
+            <Text style={styles.buttonText}>Continue</Text>
+          </Pressable>
           <Spacer height={30} />
         </View>
       </ScrollView>
@@ -409,7 +422,7 @@ const RegisterRide = ({navigation}) => {
 
 export default RegisterRide;
 
-const styles = StyleSheet.create({
+const rStyle = StyleSheet.create({
   inputStyle: {
     borderWidth: 1,
     borderRadius: horizScale(10),
@@ -460,23 +473,25 @@ const styles = StyleSheet.create({
     padding: horizScale(15),
   },
   dropdown: {
-    height: horizScale(65),
+    height: horizScale(55),
     borderColor: Colors.mainColor,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     borderRadius: horizScale(8),
     paddingHorizontal: horizScale(8),
   },
   label: {
     position: 'absolute',
-    left: horizScale(15),
+    left: horizScale(20),
     top: horizScale(7),
     zIndex: 999,
-    paddingHorizontal: horizScale(5),
+    paddingHorizontal: horizScale(3),
     fontSize: fontSize.das,
     color: Colors.grey,
+    backgroundColor: Colors.white,
   },
   placeholderStyle: {
     fontSize: fontSize.regular,
+    color: Colors.grey,
   },
   selectedTextStyle: {
     fontSize: fontSize.regular,
