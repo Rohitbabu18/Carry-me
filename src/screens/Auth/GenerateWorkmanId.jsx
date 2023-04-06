@@ -9,6 +9,8 @@ import GestureRecognizer, { swipeDirections } from "react-native-swipe-detect";
 import { generateUUID } from '../../util/UniqueIdGenerator'
 import Modal from "react-native-modal";
 import { ToastMessage } from '../../util/ToastMessage'
+import ProgressCircle from 'react-native-progress-circle'
+import fontSize from '../../util/Fonts'
 const GenerateWorkmanId = ({ navigation }) => {
     const t0 = "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"
     const t1 = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
@@ -26,14 +28,17 @@ const GenerateWorkmanId = ({ navigation }) => {
     const tD = "D D D D D D D D D D D D D D D"
     const tE = "E E E E E E E E E E E E E E E E"
     const tF = "F F F F F F F F F F F F F F F F"
-    const [count, setCount] = useState(10)
-
+    const [count, setCount] = useState(7)
+    const [persent, setPersent] = useState(0)
     function onSwipe() {
 
         if (count < 17) {
             setCount(count => count + 1)
+            let d = count * 100 / 16
+            setPersent(parseInt(d))
+            setKey(generateUUID(count))
         }
-        setKey(generateUUID(count))
+
     }
     const [Key, setKey] = useState('')
     const [visible, setVisible] = useState(false)
@@ -87,8 +92,25 @@ const GenerateWorkmanId = ({ navigation }) => {
             </View>
 
             <Spacer height={20} />
-            <Text style={styles.TextH5}>Welcome to</Text>
-            <Text style={styles.TextH3}>Workman Select </Text>
+            <View style={styles.rowSpaceEvenly}>
+
+                <View style={{ flex: 0.6 }}>
+                    <Text style={styles.TextH5}>Welcome to</Text>
+                    <Text style={styles.TextH3}>Workman Select </Text>
+                </View>
+                <View style={{ flex: 0.3 }}>
+                    <ProgressCircle
+                        percent={persent}
+                        radius={35}
+                        borderWidth={8}
+                        color={Colors.mainColor}
+                        shadowColor={Colors.black}
+                        bgColor={Colors.white}
+                    >
+                        <Text style={{ fontSize: fontSize.regular, color: Colors.mainColor, fontWeight: '700' }}>{`${persent}%`}</Text>
+                    </ProgressCircle>
+                </View>
+            </View>
             <Spacer height={20} />
             <Text style={styles.unSelectedText}>We need to generate new Workman Id.{'\n'}Move your finger in the character field to generate{'\n'}random data for your key.  </Text>
             <Spacer height={20} />
@@ -118,7 +140,7 @@ const GenerateWorkmanId = ({ navigation }) => {
             {Key == '' ? null :
                 <Text style={styles.smallText}>Your Key - <Text style={styles.headingText}>{Key}</Text></Text>
             }
-            <Spacer height={50} />
+            <Spacer height={20} />
             <Pressable
                 onPress={() => {
                     if (Key == '') {
