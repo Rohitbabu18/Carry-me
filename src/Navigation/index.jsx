@@ -13,6 +13,7 @@ import Signup2 from '../screens/Auth/Signup2';
 import Signup3 from '../screens/Auth/Signup3';
 import RegisterRide from '../screens/Home/RegisterRide';
 import RideOptions from '../screens/Home/RideOptions';
+import Chatting from '../screens/Home/Chatting';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,7 @@ const HomeStack = () => {
       <Stack.Screen name="RiderList" component={RiderList} />
       <Stack.Screen name="RegisterRide" component={RegisterRide} />
       <Stack.Screen name="RideOptions" component={RideOptions} />
+      <Stack.Screen name="Chatting" component={Chatting} />
     </Stack.Navigator>
   );
 };

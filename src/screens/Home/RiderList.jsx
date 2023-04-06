@@ -89,7 +89,7 @@ const RiderList = ({navigation}) => {
         <View style={styles.btnView}>
           <Pressable
             onPress={() => {
-              alert('Coming Soon');
+              navigation.navigate('Chatting');
             }}
             style={({pressed}) =>
               pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
@@ -144,11 +144,8 @@ const RiderList = ({navigation}) => {
     );
   };
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <StatusBar
-        backgroundColor={Colors.background}
-        barStyle={'dark-content'}
-      />
+    <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
+      <StatusBar backgroundColor={Colors.white} barStyle={'dark-content'} />
       <View style={styles.headerView}>
         <Back navigation={navigation} />
       </View>
@@ -256,8 +253,7 @@ const styles = StyleSheet.create({
     padding: horizScale(10),
     borderRadius: horizScale(10),
     backgroundColor: Colors.white,
-    elevation: 30,
-    shadowColor: Colors.background,
+    elevation: 7,
   },
   textInput: {
     fontSize: fontSize.input,
@@ -267,9 +263,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.white,
+    elevation: 7,
     margin: horizScale(10),
-    borderRadius: horizScale(10),
+    borderRadius: horizScale(25),
     paddingHorizontal: horizScale(15),
   },
   searchIcon: {

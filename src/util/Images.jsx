@@ -25,5 +25,6 @@ const CustomImage = {
   plus: require('../assets/plus.png'),
   minus: require('../assets/minus.png'),
   home: require('../assets/home.png'),
+  chaticon: require('../assets/chaticon.png'),
 };
 export default CustomImage;
