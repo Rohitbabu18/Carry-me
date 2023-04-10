@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -8,13 +8,13 @@ import {
   ScrollView,
   Pressable,
 } from 'react-native';
-import styles from '../../util/Styles';
+import styles from '../../../util/Styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {Colors} from '../../util/Colors';
-import CustomImage from '../../util/Images';
-import {horizScale, Spacer} from '../../util/Layout';
+import { Colors } from '../../../util/Colors';
+import CustomImage from '../../../util/Images';
+import { horizScale, Spacer } from '../../../util/Layout';
 
-const RideOptions = ({navigation}) => {
+const RideOptions = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar backgroundColor={Colors.white} barStyle="dark-content" />
@@ -28,8 +28,8 @@ const RideOptions = ({navigation}) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Image source={CustomImage.home} style={styles.homeIcon} />
-            <Text style={styles.homeAppName}>Carry Me</Text>
+            {/* <Image source={CustomImage.home} style={styles.homeIcon} /> */}
+            <Text style={styles.homeAppName}>Carry Me Request's</Text>
           </View>
           <Spacer height={20} />
           <Image source={CustomImage.logo} style={styles.logoImage} />
@@ -55,7 +55,7 @@ const RideOptions = ({navigation}) => {
                 borderWidth: horizScale(2),
                 borderColor: Colors.black,
               }}>
-              <Text style={{...styles.buttonText, color: Colors.mainColor}}>
+              <Text style={{ ...styles.buttonText, color: Colors.mainColor }}>
                 Need
               </Text>
             </Pressable>

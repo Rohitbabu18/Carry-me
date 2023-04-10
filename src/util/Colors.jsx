@@ -13,7 +13,7 @@ export const Colors = {
   mainColor: '#14302e', //main
   mainColorDim: '#cbd1d1',
   background: '#e5e5e5',
-  black: '#252525',
+  // black: '#252525',
   pink: '#7a3588',
   green: '#3CB371',
   homeGradient: '#96d6cb',

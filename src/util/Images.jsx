@@ -12,6 +12,8 @@ const CustomImage = {
   demo: require('../assets/demo.png'),
   codedemo: require('../assets/codedemo.png'),
   user: require('../assets/user.png'),
+  previewImage: require('../assets/previewImage.png'),
+  request: require('../assets/request.png'),
 
   unitedkingdom: require('../assets/unitedkingdom.png'),
   germany: require('../assets/germany.png'),
@@ -26,5 +28,6 @@ const CustomImage = {
   minus: require('../assets/minus.png'),
   home: require('../assets/home.png'),
   chaticon: require('../assets/chaticon.png'),
+  auto: require('../assets/auto.jpg'),
 };
 export default CustomImage;

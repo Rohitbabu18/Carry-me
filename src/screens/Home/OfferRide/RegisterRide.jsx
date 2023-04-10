@@ -9,41 +9,41 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import Back from '../Componets/Back';
-import {Colors} from '../../util/Colors';
-import {Spacer, horizScale} from '../../util/Layout';
-import CustomImage from '../../util/Images';
-import {Dropdown} from 'react-native-element-dropdown';
+import React, { useState } from 'react';
+import Back from '../../Componets/Back';
+import { Colors } from '../../../util/Colors';
+import { Spacer, horizScale } from '../../../util/Layout';
+import CustomImage from '../../../util/Images';
+import { Dropdown } from 'react-native-element-dropdown';
 import RadioForm from 'react-native-simple-radio-button';
 import ImagePicker from 'react-native-image-crop-picker';
-import fontSize from '../../util/Fonts';
-import styles from '../../util/Styles';
+import fontSize from '../../../util/Fonts';
+import styles from '../../../util/Styles';
 
 const rideTypeData = [
-  {label: 'Bicycle', value: '1'},
-  {label: 'Motorbike', value: '2'},
-  {label: 'Car', value: '3'},
-  {label: 'Tricycle', value: '4'},
-  {label: 'Truck', value: '5'},
+  { label: 'Bicycle', value: '1' },
+  { label: 'Motorbike', value: '2' },
+  { label: 'Car', value: '3' },
+  { label: 'Tricycle', value: '4' },
+  { label: 'Truck', value: '5' },
 ];
 const luggageTypeData = [
-  {label: '1x Luggage 30x30x30', value: '1'},
-  {label: '2x Luggage 50x50x50', value: '2'},
-  {label: '3x Luggage 60x60x60', value: '3'},
+  { label: '1x Luggage 30x30x30', value: '1' },
+  { label: '2x Luggage 50x50x50', value: '2' },
+  { label: '3x Luggage 60x60x60', value: '3' },
 ];
 const destinationTypeData = [
-  {label: 'Fixed', value: '1'},
-  {label: 'Not Fixed', value: '2'},
-  {label: 'Nearby', value: '3'},
+  { label: 'Fixed', value: '1' },
+  { label: 'Not Fixed', value: '2' },
+  { label: 'Nearby', value: '3' },
 ];
 const currencyData = [
-  {label: '€ EURO', value: '1'},
-  {label: '$ DOLLAR', value: '2'},
-  {label: '₹ RUPEE', value: '3'},
+  { label: '€ EURO', value: '1' },
+  { label: '$ DOLLAR', value: '2' },
+  { label: '₹ RUPEE', value: '3' },
 ];
 
-const RegisterRide = ({navigation}) => {
+const RegisterRide = ({ navigation }) => {
   //Ride Type Dropdown component start
   const [rideType, setRideType] = useState(null);
   const [rideTypeFocus, setRideTypeFocus] = useState(false);
@@ -51,7 +51,7 @@ const RegisterRide = ({navigation}) => {
     if (rideType || rideTypeFocus) {
       return (
         <Text
-          style={[rStyle.label, rideTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, rideTypeFocus && { color: Colors.mainColor }]}>
           Selected Ride Type
         </Text>
       );
@@ -67,7 +67,7 @@ const RegisterRide = ({navigation}) => {
     if (luggageType || luggageTypeFocus) {
       return (
         <Text
-          style={[rStyle.label, luggageTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, luggageTypeFocus && { color: Colors.mainColor }]}>
           Selected Luggage Type
         </Text>
       );
@@ -85,7 +85,7 @@ const RegisterRide = ({navigation}) => {
         <Text
           style={[
             rStyle.label,
-            destinationTypeFocus && {color: Colors.mainColor},
+            destinationTypeFocus && { color: Colors.mainColor },
           ]}>
           Selected Destination Type
         </Text>
@@ -102,7 +102,7 @@ const RegisterRide = ({navigation}) => {
     if (currencyType || currencyFocus) {
       return (
         <Text
-          style={[rStyle.label, currencyFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, currencyFocus && { color: Colors.mainColor }]}>
           Selected Currency
         </Text>
       );
@@ -114,14 +114,14 @@ const RegisterRide = ({navigation}) => {
   //For Luggage radio button
   const [luggge, setLuggge] = useState(1);
   let luggage_props = [
-    {label: 'Yes', value: 0},
-    {label: 'No', value: 1},
+    { label: 'Yes', value: 0 },
+    { label: 'No', value: 1 },
   ];
   //For Price Radio Button
   const [fixedPrice, setFixedPrice] = useState(1);
   let fixed_price_props = [
-    {label: 'Yes', value: 0},
-    {label: 'No', value: 1},
+    { label: 'Yes', value: 0 },
+    { label: 'No', value: 1 },
   ];
 
   const [availableSeats, setAvailableSeats] = useState(1);
@@ -142,12 +142,12 @@ const RegisterRide = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <StatusBar backgroundColor={Colors.background} />
       <View style={rStyle.headerView}>
         <Back navigation={navigation} />
         <Pressable
-          style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
+          style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
           onPress={() => {
             alert('Coming Soon');
           }}>
@@ -160,13 +160,13 @@ const RegisterRide = ({navigation}) => {
           <Image
             source={
               selectedImage?.length > 0
-                ? {uri: selectedImage}
+                ? { uri: selectedImage }
                 : CustomImage.profile
             }
             style={rStyle.profileIcon}
           />
           <Pressable
-            style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
+            style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
             onPress={() => {
               ImgaePick();
             }}>
@@ -197,7 +197,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                rideTypeFocus && {borderColor: Colors.mainColor},
+                rideTypeFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -220,9 +220,9 @@ const RegisterRide = ({navigation}) => {
             <Text style={rStyle.radioText}>Available Seats</Text>
             <View style={rStyle.incDec}>
               <Pressable
-                style={({pressed}) =>
+                style={({ pressed }) =>
                   pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    ? { ...rStyle.incDecBtn, opacity: 0.7 }
                     : rStyle.incDecBtn
                 }
                 onPress={() => {
@@ -234,9 +234,9 @@ const RegisterRide = ({navigation}) => {
               </Pressable>
               <Text style={rStyle.availCount}>{availableSeats}</Text>
               <Pressable
-                style={({pressed}) =>
+                style={({ pressed }) =>
                   pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    ? { ...rStyle.incDecBtn, opacity: 0.7 }
                     : rStyle.incDecBtn
                 }
                 onPress={() => {
@@ -270,7 +270,7 @@ const RegisterRide = ({navigation}) => {
               <Dropdown
                 style={[
                   rStyle.dropdown,
-                  luggageTypeFocus && {borderColor: Colors.mainColor},
+                  luggageTypeFocus && { borderColor: Colors.mainColor },
                 ]}
                 placeholderStyle={rStyle.placeholderStyle}
                 selectedTextStyle={rStyle.selectedTextStyle}
@@ -295,7 +295,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                destinationTypeFocus && {borderColor: Colors.mainColor},
+                destinationTypeFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -321,7 +321,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                currencyFocus && {borderColor: Colors.mainColor},
+                currencyFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -408,7 +408,7 @@ const RegisterRide = ({navigation}) => {
           <Spacer height={30} />
           <Pressable
             onPress={() => {
-              navigation.navigate('RiderList');
+              navigation.navigate('ImagePick');
             }}
             style={styles.button}>
             <Text style={styles.buttonText}>Continue</Text>

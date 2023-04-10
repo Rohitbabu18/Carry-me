@@ -3,6 +3,7 @@ const fontSize = {
   h2: 34,
   h3: 30,
   h4: 26,
+  h45: 23,
   h5: 20,
   h6: 19,
   input: 18,

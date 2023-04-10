@@ -1,9 +1,9 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Auth/Login';
 import TermsAndCondition from '../screens/Auth/TermsAndCondition';
-import RiderList from '../screens/Home/RiderList';
+import RiderList from '../screens/Home/OfferRide/RiderList';
 import Forget from '../screens/Auth/Forget';
 import VerifySecurityDate from '../screens/Auth/VerifySecurityDate';
 import Language from '../screens/Auth/Language';
@@ -11,9 +11,13 @@ import GenerateWorkmanId from '../screens/Auth/GenerateWorkmanId';
 import Signup1 from '../screens/Auth/Signup1';
 import Signup2 from '../screens/Auth/Signup2';
 import Signup3 from '../screens/Auth/Signup3';
-import RegisterRide from '../screens/Home/RegisterRide';
-import RideOptions from '../screens/Home/RideOptions';
+import RegisterRide from '../screens/Home/OfferRide/RegisterRide';
+import RideOptions from '../screens/Home/OfferRide/RideOptions';
 import Chatting from '../screens/Home/Chatting';
+import ImagePick from '../screens/Home/OfferRide/ImagePick';
+import MyTabs from './BottomTabBar';
+import Profile from '../screens/Home/Profile';
+import Notification from '../screens/Home/Notification';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,14 +44,18 @@ const AuthStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName="RideOptions"
+      initialRouteName="MyTabs"
       screenOptions={{
         headerShown: false,
       }}>
+      <Stack.Screen name="MyTabs" component={MyTabs} />
       <Stack.Screen name="RiderList" component={RiderList} />
       <Stack.Screen name="RegisterRide" component={RegisterRide} />
+      <Stack.Screen name="ImagePick" component={ImagePick} />
       <Stack.Screen name="RideOptions" component={RideOptions} />
       <Stack.Screen name="Chatting" component={Chatting} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Notification" component={Notification} />
     </Stack.Navigator>
   );
 };

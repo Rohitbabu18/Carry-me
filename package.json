@@ -10,8 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@react-spring/native": "^9.5.5",
     "@reduxjs/toolkit": "^1.9.3",
     "react": "18.2.0",
     "react-native": "0.71.4",
@@ -33,6 +35,7 @@
     "react-native-swipe-detect": "^1.0.10",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
+    "react-tinder-card": "^1.6.2",
     "redux": "^4.2.1"
   },
   "devDependencies": {

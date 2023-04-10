@@ -1,8 +1,21 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {Colors} from './Colors';
+import { StyleSheet, Dimensions } from 'react-native';
+import { Colors } from './Colors';
 import fontSize from './Fonts';
-import {horizScale, vertScale} from './Layout';
+import { horizScale, vertScale } from './Layout';
 const styles = StyleSheet.create({
+  tabbarIconActive: {
+    borderRadius: horizScale(20),
+    backgroundColor: Colors.white,
+    padding: horizScale(4.4)
+  },
+  imageBig: {
+    width: 300, height: 400,
+    resizeMode: 'contain',
+    borderRadius: horizScale(12),
+    borderWidth: horizScale(1),
+    borderColor: Colors.mainColor,
+    backgroundColor: Colors.mainColorDim
+  },
   homeIcon: {
     height: horizScale(30),
     width: horizScale(30),
@@ -38,9 +51,11 @@ const styles = StyleSheet.create({
   },
   modalBox1: {
     backgroundColor: Colors.white,
-    width: '80%',
+    width: '90%',
     borderRadius: horizScale(15),
     alignSelf: 'center',
+    flex: 0.85,
+    overflow: 'hidden'
   },
   selected: {
     backgroundColor: Colors.mainColor,
@@ -201,7 +216,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: '700',
     color: Colors.mainColor,
-    textShadowOffset: {width: -3, height: 2},
+    textShadowOffset: { width: -3, height: 2 },
     textShadowColor: Colors.darkgrey,
     textShadowRadius: 1,
   },
@@ -235,6 +250,10 @@ const styles = StyleSheet.create({
     flex: 1,
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width,
+  },
+  containerLinearGradientModal: {
+    flex: 1,
+    height: '100%'
   },
   smallLinearGradient: {
     height: horizScale(100),
