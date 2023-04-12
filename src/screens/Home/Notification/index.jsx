@@ -6,6 +6,7 @@ import {
   Pressable,
   StyleSheet,
   Image,
+  StatusBar,
 } from 'react-native';
 import React from 'react';
 import {horizScale} from '../../../util/Layout';
@@ -87,6 +88,10 @@ const Notification = ({navigation}) => {
   };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.mainLight}}>
+      <StatusBar
+        backgroundColor={Colors.mainColor}
+        barStyle={'light-content'}
+      />
       <View style={styles.notificationView}>
         <Pressable
           onPress={() => {

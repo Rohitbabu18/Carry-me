@@ -21,7 +21,7 @@ export default Back;
 
 const styles = StyleSheet.create({
   backText: {
-    color: Colors.grey,
+    color: Colors.white,
     marginHorizontal: horizScale(5),
   },
   btnContainer: {
@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
     height: horizScale(20),
     width: horizScale(20),
     resizeMode: 'cover',
+    tintColor: Colors.white,
   },
 });
