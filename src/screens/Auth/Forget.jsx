@@ -4,7 +4,7 @@ import {
     Pressable,
     StatusBar
 } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../util/Styles'
 import Back from '../Componets/Back'
 import { horizScale, Spacer, vertScale } from '../../util/Layout'
@@ -15,11 +15,13 @@ import Icon from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Modal from "react-native-modal";
 import { useDispatch, useSelector } from 'react-redux'
-import { forgetOptionAction } from '../../redux/action'
-const Forget = ({ navigation }) => {
+import { forgetOptionAction, usernameSentModalAction } from '../../redux/action'
+const Forget = ({ navigation, route }) => {
+    const isPassword = route?.params?.ispassword
     const dispatch = useDispatch()
     const forgetPasswordId = useSelector(state => state.userData.forgetPasswordId)
     const forgetOption = useSelector(state => state.userData.forgetOption)
+    const visible = useSelector(state => state.userData.usernameSentModal)
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -27,16 +29,24 @@ const Forget = ({ navigation }) => {
 
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
-    const [visible, setVisible] = useState(false)
-
+    useEffect(() => {
+        if (isPassword) {
+            navigation.navigate('VerifySecurityDate', {
+                isUserScreen: false
+            })
+        }
+    }, [])
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.headerView}>
+                <Back navigation={navigation} color={Colors.black} />
+            </View>
             <Modal
                 isVisible={visible}
                 animationType="slide"
-                onBackdropPress={() => setVisible(!visible)}
+                onBackdropPress={() => dispatch(usernameSentModalAction(!visible))}
                 onRequestClose={() => {
-                    setVisible(!visible);
+                    dispatch(usernameSentModalAction(!visible));
                 }}
                 style={{ margin: 0 }}
             >
@@ -54,7 +64,7 @@ const Forget = ({ navigation }) => {
                     </View>
                     <Spacer height={25} />
                     <Pressable style={styles.button} onPress={() => {
-                        setVisible(!visible)
+                        dispatch(usernameSentModalAction(!visible))
                         navigation.goBack()
                     }}>
                         <Text style={styles.buttonText}>Ok</Text>
@@ -81,7 +91,9 @@ const Forget = ({ navigation }) => {
                     style={forgetOption == 2 ? styles.selected : styles.unSelected}
                     onPress={() => {
                         // setForgetOption('2')
-                        navigation.navigate('VerifySecurityDate')
+                        navigation.navigate('VerifySecurityDate', {
+                            isUserScreen: false
+                        })
                     }}>
                     {forgetOption == 2 ? <Feather size={20} color={Colors.white} name={"check-circle"} /> : null}
                     <Text style={forgetOption == 2 ? styles.selectedText : styles.unSelectedText}>Password</Text>
@@ -108,7 +120,9 @@ const Forget = ({ navigation }) => {
                         <Spacer height={90} />
                         <Pressable
                             onPress={() => {
-                                setVisible(!visible)
+                                navigation.navigate('VerifySecurityDate', {
+                                    isUserScreen: true
+                                })
                             }}
                             style={styles.button}
                         >

@@ -1,8 +1,8 @@
-import {Image, Pressable, StyleSheet, Text} from 'react-native';
+import { Image, Pressable, StyleSheet, Text } from 'react-native';
 import React from 'react';
 import CustomImage from '../../util/Images';
-import {horizScale} from '../../util/Layout';
-import {Colors} from '../../util/Colors';
+import { horizScale } from '../../util/Layout';
+import { Colors } from '../../util/Colors';
 
 const Back = props => {
   return (
@@ -11,8 +11,8 @@ const Back = props => {
       onPress={() => {
         props.navigation.goBack();
       }}>
-      <Image source={CustomImage.back} style={styles.backBtnStyle} />
-      <Text style={styles.backText}>Back</Text>
+      <Image source={CustomImage.back} style={{ ...styles.backBtnStyle, tintColor: props?.color ? props.color : Colors.white }} />
+      <Text style={{ ...styles.backText, color: props?.color ? props.color : Colors.white }}>Back</Text>
     </Pressable>
   );
 };

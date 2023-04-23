@@ -23,18 +23,23 @@ function MyTabs() {
                 tabBarActiveTintColor: Colors.white,
                 tabBarInactiveTintColor: Colors.grey,
                 tabBarStyle: {
-                    height: horizScale(50)
+                    height: horizScale(65)
                 },
-                headerShown: false
+                headerShown: false,
+                tabBarHideOnKeyboard: true
+            }}
+            sceneContainerStyle={{
+                paddingBottom: 5
             }}
         >
             <Tab.Screen name="Home" component={Home}
                 options={{
                     title: "Home",
-                    tabBarIcon: ({ focused }) => { return <Ionicons name={focused ? "home" : "home-outline"} size={horizScale(20)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
+                    tabBarItemStyle: { paddingBottom: horizScale(4) },
+                    tabBarIcon: ({ focused }) => { return <Ionicons name={focused ? "home" : "home-outline"} size={horizScale(25)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
 
                 }} />
-            {/* <Tab.Screen name="Requests" component={RideOptions}
+            {/* <Tab.Screen name="Requests" component={RideOptions}25
                 options={{
                     title: "Requests",
                     tabBarIcon: ({ focused }) => {
@@ -59,17 +64,20 @@ function MyTabs() {
                 }} /> */}
             <Tab.Screen name="Matches" component={RiderList} options={{
                 title: "Matches",
-                tabBarIcon: ({ focused }) => { return <AntDesign name={focused ? "heart" : "hearto"} size={horizScale(20)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
+                tabBarItemStyle: { paddingBottom: horizScale(4) },
+                tabBarIcon: ({ focused }) => { return <AntDesign name={focused ? "heart" : "hearto"} size={horizScale(25)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
 
             }} />
             <Tab.Screen name="CreateOffer" component={RegisterRide} options={{
                 title: "Create Offer",
-                tabBarIcon: ({ focused }) => { return <Ionicons name={focused ? "ios-create" : "ios-create-outline"} size={horizScale(20)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
+                tabBarItemStyle: { paddingBottom: horizScale(4) },
+                tabBarIcon: ({ focused }) => { return <Ionicons name={focused ? "ios-create" : "ios-create-outline"} size={horizScale(25)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
 
             }} />
             <Tab.Screen name="MyOffer" component={MyOffer} options={{
                 title: "My Offer",
-                tabBarIcon: ({ focused }) => { return <MaterialCommunityIcons name={focused ? "shield-account" : "shield-account-outline"} size={horizScale(20)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
+                tabBarItemStyle: { paddingBottom: horizScale(4) },
+                tabBarIcon: ({ focused }) => { return <MaterialCommunityIcons name={focused ? "shield-account" : "shield-account-outline"} size={horizScale(25)} color={focused ? Colors.mainColor : Colors.grey} style={focused ? styles.tabbarIconActive : null} /> }
 
             }} />
         </Tab.Navigator>

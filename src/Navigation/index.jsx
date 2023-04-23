@@ -18,6 +18,7 @@ import ImagePick from '../screens/Home/OfferRide/ImagePick';
 import MyTabs from './BottomTabBar';
 import Profile from '../screens/Home/Profile';
 import Notification from '../screens/Home/Notification';
+import UpdateProfile from '../screens/Home/Profile/UpdateProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -55,7 +56,11 @@ const HomeStack = () => {
       <Stack.Screen name="RideOptions" component={RideOptions} />
       <Stack.Screen name="Chatting" component={Chatting} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="Notification" component={Notification} />
+      <Stack.Screen name="Forget" component={Forget} />
+      <Stack.Screen name="VerifySecurityDate" component={VerifySecurityDate} />
+      <Stack.Screen name="Signup2" component={Signup2} />
     </Stack.Navigator>
   );
 };

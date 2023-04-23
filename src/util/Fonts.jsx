@@ -12,6 +12,7 @@ const fontSize = {
   small: 12,
   das: 10,
   tiny: 8.5,
+  pisLarge: 7.75,
   pis: 6,
 };
 

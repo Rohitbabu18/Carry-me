@@ -79,7 +79,7 @@ const GenerateWorkmanId = ({ navigation }) => {
             <View style={styles.rowCenter}>
 
                 <View style={styles.headerView}>
-                    <Back navigation={navigation} />
+                    <Back navigation={navigation} color={Colors.black} />
                 </View>
                 <Pressable
                     onPress={() => {
@@ -104,7 +104,7 @@ const GenerateWorkmanId = ({ navigation }) => {
                         radius={35}
                         borderWidth={8}
                         color={Colors.mainColor}
-                        shadowColor={Colors.black}
+                        shadowColor={Colors.grey}
                         bgColor={Colors.white}
                     >
                         <Text style={{ fontSize: fontSize.regular, color: Colors.mainColor, fontWeight: '700' }}>{`${persent}%`}</Text>

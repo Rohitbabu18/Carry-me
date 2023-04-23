@@ -9,49 +9,54 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Back from '../../Componets/Back';
-import {Colors} from '../../../util/Colors';
-import {Spacer, horizScale} from '../../../util/Layout';
+import { Colors } from '../../../util/Colors';
+import { Spacer, horizScale } from '../../../util/Layout';
 import CustomImage from '../../../util/Images';
-import {Dropdown} from 'react-native-element-dropdown';
+import { Dropdown } from 'react-native-element-dropdown';
 import RadioForm from 'react-native-simple-radio-button';
 import ImagePicker from 'react-native-image-crop-picker';
 import fontSize from '../../../util/Fonts';
 import styles from '../../../util/Styles';
+import Modal from 'react-native-modal';
+import LinearGradient from 'react-native-linear-gradient';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const rideTypeData = [
-  {label: 'Bicycle', value: '1'},
-  {label: 'Motorbike', value: '2'},
-  {label: 'Car', value: '3'},
-  {label: 'Tricycle', value: '4'},
-  {label: 'Truck', value: '5'},
+  { label: 'Bicycle', value: '1' },
+  { label: 'Motorbike', value: '2' },
+  { label: 'Car', value: '3' },
+  { label: 'Tricycle', value: '4' },
+  { label: 'Truck', value: '5' },
 ];
 const luggageTypeData = [
-  {label: '1x Luggage 30x30x30', value: '1'},
-  {label: '2x Luggage 50x50x50', value: '2'},
-  {label: '3x Luggage 60x60x60', value: '3'},
+  { label: '1x Luggage 30x30x30', value: '1' },
+  { label: '2x Luggage 50x50x50', value: '2' },
+  { label: '3x Luggage 60x60x60', value: '3' },
 ];
 const destinationTypeData = [
-  {label: 'Fixed', value: '1'},
-  {label: 'Not Fixed', value: '2'},
-  {label: 'Nearby', value: '3'},
+  { label: 'Fixed', value: '1' },
+  { label: 'Not Fixed', value: '2' },
+  { label: 'Nearby', value: '3' },
 ];
 const currencyData = [
-  {label: '€ EURO', value: '1'},
-  {label: '$ DOLLAR', value: '2'},
-  {label: '₹ RUPEE', value: '3'},
+  { label: '€ EURO', value: '1' },
+  { label: '$ DOLLAR', value: '2' },
+  { label: '₹ RUPEE', value: '3' },
 ];
 
-const RegisterRide = ({navigation}) => {
+const RegisterRide = ({ navigation, route }) => {
   //Ride Type Dropdown component start
+  const popup = route?.params?.popup;
+  const [popupUpdate, setpopupUpdate] = useState(popup ? popup : false)
   const [rideType, setRideType] = useState(null);
   const [rideTypeFocus, setRideTypeFocus] = useState(false);
   const renderRideLabel = () => {
     if (rideType || rideTypeFocus) {
       return (
         <Text
-          style={[rStyle.label, rideTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, rideTypeFocus && { color: Colors.mainColor }]}>
           Selected Ride Type
         </Text>
       );
@@ -67,7 +72,7 @@ const RegisterRide = ({navigation}) => {
     if (luggageType || luggageTypeFocus) {
       return (
         <Text
-          style={[rStyle.label, luggageTypeFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, luggageTypeFocus && { color: Colors.mainColor }]}>
           Selected Luggage Type
         </Text>
       );
@@ -85,7 +90,7 @@ const RegisterRide = ({navigation}) => {
         <Text
           style={[
             rStyle.label,
-            destinationTypeFocus && {color: Colors.mainColor},
+            destinationTypeFocus && { color: Colors.mainColor },
           ]}>
           Selected Destination Type
         </Text>
@@ -102,7 +107,7 @@ const RegisterRide = ({navigation}) => {
     if (currencyType || currencyFocus) {
       return (
         <Text
-          style={[rStyle.label, currencyFocus && {color: Colors.mainColor}]}>
+          style={[rStyle.label, currencyFocus && { color: Colors.mainColor }]}>
           Selected Currency
         </Text>
       );
@@ -114,14 +119,14 @@ const RegisterRide = ({navigation}) => {
   //For Luggage radio button
   const [luggge, setLuggge] = useState(1);
   let luggage_props = [
-    {label: 'Yes', value: 0},
-    {label: 'No', value: 1},
+    { label: 'Yes', value: 0 },
+    { label: 'No', value: 1 },
   ];
   //For Price Radio Button
   const [fixedPrice, setFixedPrice] = useState(1);
   let fixed_price_props = [
-    {label: 'Yes', value: 0},
-    {label: 'No', value: 1},
+    { label: 'Yes', value: 0 },
+    { label: 'No', value: 1 },
   ];
 
   const [availableSeats, setAvailableSeats] = useState(1);
@@ -142,15 +147,82 @@ const RegisterRide = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
       />
+      <Modal
+        isVisible={popupUpdate}
+        animationType="slide"
+        onBackdropPress={() => {
+          setpopupUpdate(!popupUpdate)
+          navigation.goBack()
+        }}
+        onRequestClose={() => {
+          setpopupUpdate(!popupUpdate)
+          navigation.goBack()
+        }}
+        style={{ margin: 0 }}
+      >
+        <StatusBar backgroundColor='rgba(52, 52, 52, 0.8)' />
+        <View style={styles.modalBox1}>
+
+          <LinearGradient
+            colors={[Colors.white, Colors.homeGradient]}
+            style={styles.containerLinearGradientModal}>
+            <Spacer height={10} />
+            <View style={styles.rowCenter}>
+              <View>
+                <Text style={styles.headingText}>To continue</Text>
+                <Text style={styles.TextH3}>Please Subscribe</Text>
+              </View>
+              <Pressable onPress={() => {
+                setpopupUpdate(!popupUpdate)
+                navigation.goBack()
+              }}>
+                <AntDesign name={'closecircle'} size={40} color={Colors.mainColor} style={{ margin: horizScale(20) }} />
+              </Pressable>
+
+            </View>
+            <Spacer height={20} />
+            <Image source={CustomImage.logo} style={styles.logoImage} />
+            <Spacer height={20} />
+            <View>
+              <Text style={styles.homeHeading}>Hi Someone,</Text>
+              <Spacer height={20} />
+              <Text style={styles.homeDec}>
+                Sorry as Basic User you can only chat with 10 Users a Day.
+                If you want to Chat with more you will have to upgrade your Plan.
+              </Text>
+              <Spacer height={20} />
+              <Text style={styles.chooseText}>Or you Wait for 12h and 11 Minutes </Text>
+            </View>
+            <Spacer height={40} />
+            <View style={styles.homeBtnView}>
+
+              <Pressable
+                onPress={() => {
+                  alert('Coming Soon')
+                }}
+                style={{
+                  ...styles.homeBtn,
+                  backgroundColor: Colors.mainColor,
+                  borderWidth: horizScale(2),
+                  borderColor: Colors.mainColor,
+                }}>
+                <Text style={styles.buttonText}>UPGRADE</Text>
+              </Pressable>
+            </View>
+            <Spacer height={20} />
+          </LinearGradient>
+
+        </View>
+      </Modal>
       <View style={rStyle.headerView}>
         <Back navigation={navigation} />
         <Pressable
-          style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
+          style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
           onPress={() => {
             alert('Coming Soon');
           }}>
@@ -163,30 +235,30 @@ const RegisterRide = ({navigation}) => {
           <Image
             source={
               selectedImage?.length > 0
-                ? {uri: selectedImage}
+                ? { uri: selectedImage }
                 : CustomImage.profile
             }
             style={rStyle.profileIcon}
           />
           <Pressable
-            style={({pressed}) => (pressed ? {opacity: 0.7} : null)}
+            style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
             onPress={() => {
               ImgaePick();
             }}>
             <View
               style={{
                 position: 'absolute',
-                padding: 7,
+                padding: 5,
                 borderRadius: 20,
-                right: 150,
+                right: horizScale(150),
                 bottom: 0,
                 backgroundColor: Colors.mainColor,
               }}>
               <Image
                 source={CustomImage.camera}
                 style={{
-                  height: 25,
-                  width: 25,
+                  height: horizScale(20),
+                  width: horizScale(20),
                   tintColor: 'white',
                 }}
               />
@@ -200,7 +272,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                rideTypeFocus && {borderColor: Colors.mainColor},
+                rideTypeFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -223,9 +295,9 @@ const RegisterRide = ({navigation}) => {
             <Text style={rStyle.radioText}>Available Seats</Text>
             <View style={rStyle.incDec}>
               <Pressable
-                style={({pressed}) =>
+                style={({ pressed }) =>
                   pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    ? { ...rStyle.incDecBtn, opacity: 0.7 }
                     : rStyle.incDecBtn
                 }
                 onPress={() => {
@@ -237,9 +309,9 @@ const RegisterRide = ({navigation}) => {
               </Pressable>
               <Text style={rStyle.availCount}>{availableSeats}</Text>
               <Pressable
-                style={({pressed}) =>
+                style={({ pressed }) =>
                   pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
+                    ? { ...rStyle.incDecBtn, opacity: 0.7 }
                     : rStyle.incDecBtn
                 }
                 onPress={() => {
@@ -258,7 +330,7 @@ const RegisterRide = ({navigation}) => {
               buttonColor={Colors.mainColor}
               selectedButtonColor={Colors.mainColor}
               style={rStyle.radioBtnStyle}
-              buttonSize={15}
+              buttonSize={20}
               radio_props={luggage_props}
               initial={luggge}
               onPress={value => {
@@ -273,7 +345,7 @@ const RegisterRide = ({navigation}) => {
               <Dropdown
                 style={[
                   rStyle.dropdown,
-                  luggageTypeFocus && {borderColor: Colors.mainColor},
+                  luggageTypeFocus && { borderColor: Colors.mainColor },
                 ]}
                 placeholderStyle={rStyle.placeholderStyle}
                 selectedTextStyle={rStyle.selectedTextStyle}
@@ -298,7 +370,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                destinationTypeFocus && {borderColor: Colors.mainColor},
+                destinationTypeFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -324,7 +396,7 @@ const RegisterRide = ({navigation}) => {
             <Dropdown
               style={[
                 rStyle.dropdown,
-                currencyFocus && {borderColor: Colors.mainColor},
+                currencyFocus && { borderColor: Colors.mainColor },
               ]}
               placeholderStyle={rStyle.placeholderStyle}
               selectedTextStyle={rStyle.selectedTextStyle}
@@ -351,7 +423,7 @@ const RegisterRide = ({navigation}) => {
               buttonColor={Colors.mainColor}
               selectedButtonColor={Colors.mainColor}
               style={rStyle.radioBtnStyle}
-              buttonSize={15}
+              buttonSize={20}
               radio_props={fixed_price_props}
               initial={fixedPrice}
               onPress={value => {
@@ -465,7 +537,8 @@ const rStyle = StyleSheet.create({
     marginVertical: horizScale(15),
   },
   radioBtnStyle: {
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
+    marginLeft: horizScale(35)
   },
   //Dropdown Style Start
   itemTextStyle: {

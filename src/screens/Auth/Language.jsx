@@ -10,6 +10,7 @@ import styles from '../../util/Styles'
 import Back from '../Componets/Back'
 import CustomImage from '../../util/Images'
 import { Spacer } from '../../util/Layout'
+import { Colors } from '../../util/Colors'
 
 const Language = ({ navigation }) => {
     const language = [
@@ -57,7 +58,7 @@ const Language = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.headerView}>
-                <Back navigation={navigation} />
+                <Back navigation={navigation} color={Colors.black} />
             </View>
             <Spacer height={20} />
             <Text style={styles.headingText}>Choose Language</Text>

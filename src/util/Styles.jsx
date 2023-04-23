@@ -3,6 +3,18 @@ import { Colors } from './Colors';
 import fontSize from './Fonts';
 import { horizScale, vertScale } from './Layout';
 const styles = StyleSheet.create({
+  smallCircle: {
+    borderRadius: horizScale(7),
+    borderWidth: horizScale(.5),
+    marginHorizontal: horizScale(8),
+    paddingHorizontal: horizScale(3),
+    marginVertical: horizScale(7)
+  },
+  smallIconVehical: {
+    height: horizScale(50),
+    width: horizScale(55),
+    resizeMode: 'center',
+  },
   tabbarIconActive: {
     borderRadius: horizScale(20),
     backgroundColor: Colors.white,
@@ -59,25 +71,27 @@ const styles = StyleSheet.create({
   },
   selected: {
     backgroundColor: Colors.mainColor,
-    borderRadius: horizScale(20),
+    borderRadius: horizScale(30),
     elevation: 3,
     padding: horizScale(8),
-    width: '35%',
+    width: '37%',
     // width: horizScale(120),
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    paddingVertical: horizScale(16)
   },
   unSelected: {
     borderWidth: horizScale(1),
     borderColor: Colors.mainColor,
-    borderRadius: horizScale(20),
+    borderRadius: horizScale(30),
     padding: horizScale(8),
     // width: horizScale(120),
-    width: '35%',
+    width: '37%',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    paddingVertical: horizScale(16)
   },
   selectedText: {
     color: Colors.white,
@@ -181,6 +195,13 @@ const styles = StyleSheet.create({
     width: horizScale(260),
     alignSelf: 'center',
     resizeMode: 'contain',
+  },
+  bigImage: {
+    marginVertical: horizScale(30),
+    height: horizScale(210),
+    width: horizScale(260),
+    alignSelf: 'center',
+    resizeMode: 'cover',
   },
   codeGeneretorImage: {
     height: horizScale(280),
@@ -342,6 +363,7 @@ const styles = StyleSheet.create({
     width: horizScale(20),
     resizeMode: 'contain',
   },
+
   smallCircleImage: {
     height: horizScale(80),
     width: horizScale(80),

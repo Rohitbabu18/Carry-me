@@ -14,7 +14,7 @@ const Signup2 = ({ navigation }) => {
         <SafeAreaView style={styles.container}>
 
             <View style={styles.headerView}>
-                <Back navigation={navigation} />
+                <Back navigation={navigation} color={Colors.black} />
             </View>
             <ScrollView>
                 <Spacer height={20} />

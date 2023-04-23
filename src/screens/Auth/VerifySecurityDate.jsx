@@ -15,10 +15,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import fontSize from '../../util/Fonts'
 import DatePicker from 'react-native-date-picker';
 import { useDispatch } from 'react-redux'
-import { forgetOptionAction, userIdForgetPassword } from '../../redux/action'
+import { forgetOptionAction, userIdForgetPassword, usernameSentModalAction } from '../../redux/action'
 import { ToastMessage } from '../../util/ToastMessage'
-const VerifySecurityDate = ({ navigation }) => {
+const VerifySecurityDate = ({ navigation, route }) => {
     const dispatch = useDispatch()
+    const { isUserScreen } = route.params;
     const [date, setDate] = useState(new Date())
     const [visible, setVisible] = useState(false)
     const [catchaCode, setCatchaCode] = useState('876532')
@@ -33,12 +34,10 @@ const VerifySecurityDate = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <View style={styles.headerView}>
+                <Back navigation={navigation} color={Colors.black} />
+            </View>
             <ScrollView>
-
-
-                <View style={styles.headerView}>
-                    <Back navigation={navigation} />
-                </View>
                 <Spacer height={8} />
                 <Text style={styles.TextH5}>Please Verify Yourself with{'\n'}<Text style={{ fontSize: fontSize.h4, fontWeight: 'bold' }}>Security Date</Text></Text>
 
@@ -94,9 +93,12 @@ const VerifySecurityDate = ({ navigation }) => {
                 <Pressable
                     onPress={() => {
                         if (userCode == catchaCode) {
-
-                            dispatch(userIdForgetPassword('10'))
-                            dispatch(forgetOptionAction('2'))
+                            if (isUserScreen) {
+                                dispatch(usernameSentModalAction(true))
+                            } else {
+                                dispatch(userIdForgetPassword('10'))
+                                dispatch(forgetOptionAction('2'))
+                            }
                             navigation.goBack()
                         } else {
                             ToastMessage('Invalid Captcha')

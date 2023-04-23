@@ -9,12 +9,12 @@ import {
 import React from 'react';
 import styles from '../../util/Styles';
 import Back from '../Componets/Back';
-import {horizScale, Spacer} from '../../util/Layout';
+import { horizScale, Spacer } from '../../util/Layout';
 import LinearGradient from 'react-native-linear-gradient';
-import {Colors} from '../../util/Colors';
+import { Colors } from '../../util/Colors';
 
-const TermsAndCondition = ({navigation, route}) => {
-  const {button} = route?.params;
+const TermsAndCondition = ({ navigation, route }) => {
+  const { button } = route?.params;
   const data = [
     {
       id: 1,
@@ -33,9 +33,9 @@ const TermsAndCondition = ({navigation, route}) => {
       text: 'Certain of our Services, including signing up for updates regarding our programs or participating in certain functions provided by the Site, require Users to provide personal data, as detailed in our Privacy Policy. If you wish to obtain information regarding the Services, we may direct you away from the Site to a third-party site.',
     },
   ];
-  const renderItem = ({item, index}) => {
+  const renderItem = ({ item, index }) => {
     return (
-      <View style={{paddingHorizontal: horizScale(15)}}>
+      <View style={{ paddingHorizontal: horizScale(15) }}>
         <Text style={styles.TextMedium}>
           {item.id}. {item.text}
           {'\n'}
@@ -55,7 +55,7 @@ const TermsAndCondition = ({navigation, route}) => {
             ListHeaderComponent={() => (
               <>
                 <View style={styles.headerView}>
-                  <Back navigation={navigation} />
+                  <Back navigation={navigation} color={Colors.black} />
                 </View>
                 <Text style={styles.TextH3}>Accepts{'\n'}Terms of Service</Text>
                 <Spacer height={8} />
@@ -78,7 +78,7 @@ const TermsAndCondition = ({navigation, route}) => {
       ) : (
         <>
           <View style={styles.headerView}>
-            <Back navigation={navigation} />
+            <Back navigation={navigation} color={Colors.black} />
           </View>
           <Text style={styles.TextH3}>Accepts{'\n'}Terms of Service</Text>
           <Spacer height={8} />

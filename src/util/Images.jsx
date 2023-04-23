@@ -8,6 +8,8 @@ const CustomImage = {
   call: require('../assets/call.png'),
   location: require('../assets/location.png'),
   logo: require('../assets/logo.png'),
+  vip: require('../assets/vip.png'),
+  edit: require('../assets/edit.png'),
   message: require('../assets/message.png'),
   demo: require('../assets/demo.png'),
   codedemo: require('../assets/codedemo.png'),

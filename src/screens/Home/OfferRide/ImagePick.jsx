@@ -26,7 +26,7 @@ const ImagePick = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.headerView}>
-                <Back navigation={navigation} />
+                <Back navigation={navigation} color={Colors.black} />
             </View>
             <ScrollView>
                 <Spacer height={8} />
@@ -63,11 +63,19 @@ const ImagePick = ({ navigation }) => {
                 />
                 <Spacer height={40} />
                 <View style={styles.rowSpaceEvenly}>
-                    <Pressable style={{ ...styles.unSelected, paddingVertical: horizScale(12) }}>
+                    <Pressable
+                        onPress={() => {
+                            navigation.goBack()
+                        }}
+                        style={{ ...styles.unSelected, paddingVertical: horizScale(12) }}>
 
-                        <Text style={styles.unSelectedText}>Cancel</Text>
+                        <Text style={styles.unSelectedText}>Change</Text>
                     </Pressable>
-                    <Pressable style={{ ...styles.selected, paddingVertical: horizScale(12) }}>
+                    <Pressable
+                        onPress={() => {
+                            alert('coming soon')
+                        }}
+                        style={{ ...styles.selected, paddingVertical: horizScale(12) }}>
 
                         <Text style={styles.selectedText}>Continue</Text>
                     </Pressable>
