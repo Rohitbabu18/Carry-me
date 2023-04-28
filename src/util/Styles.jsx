@@ -1,14 +1,20 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { Colors } from './Colors';
+import {StyleSheet, Dimensions} from 'react-native';
+import {Colors} from './Colors';
 import fontSize from './Fonts';
-import { horizScale, vertScale } from './Layout';
+import {horizScale, vertScale} from './Layout';
 const styles = StyleSheet.create({
+  backText: {
+    color: Colors.white,
+    marginHorizontal: horizScale(5),
+    fontSize: fontSize.input,
+    fontWeight: '700',
+  },
   smallCircle: {
     borderRadius: horizScale(7),
-    borderWidth: horizScale(.5),
+    borderWidth: horizScale(0.5),
     marginHorizontal: horizScale(8),
     paddingHorizontal: horizScale(3),
-    marginVertical: horizScale(7)
+    marginVertical: horizScale(7),
   },
   smallIconVehical: {
     height: horizScale(50),
@@ -18,15 +24,16 @@ const styles = StyleSheet.create({
   tabbarIconActive: {
     borderRadius: horizScale(20),
     backgroundColor: Colors.white,
-    padding: horizScale(4.4)
+    padding: horizScale(4.4),
   },
   imageBig: {
-    width: 300, height: 400,
+    width: 300,
+    height: 400,
     resizeMode: 'contain',
     borderRadius: horizScale(12),
     borderWidth: horizScale(1),
     borderColor: Colors.mainColor,
-    backgroundColor: Colors.mainColorDim
+    backgroundColor: Colors.mainColorDim,
   },
   homeIcon: {
     height: horizScale(30),
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
     borderRadius: horizScale(15),
     alignSelf: 'center',
     flex: 0.85,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   selected: {
     backgroundColor: Colors.mainColor,
@@ -79,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingVertical: horizScale(16)
+    paddingVertical: horizScale(16),
   },
   unSelected: {
     borderWidth: horizScale(1),
@@ -91,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingVertical: horizScale(16)
+    paddingVertical: horizScale(16),
   },
   selectedText: {
     color: Colors.white,
@@ -237,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: '700',
     color: Colors.mainColor,
-    textShadowOffset: { width: -3, height: 2 },
+    textShadowOffset: {width: -3, height: 2},
     textShadowColor: Colors.darkgrey,
     textShadowRadius: 1,
   },
@@ -274,7 +281,7 @@ const styles = StyleSheet.create({
   },
   containerLinearGradientModal: {
     flex: 1,
-    height: '100%'
+    height: '100%',
   },
   smallLinearGradient: {
     height: horizScale(100),

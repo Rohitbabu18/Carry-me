@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Auth/Login';
 import TermsAndCondition from '../screens/Auth/TermsAndCondition';
 import RiderList from '../screens/Home/OfferRide/RiderList';
@@ -19,6 +19,7 @@ import MyTabs from './BottomTabBar';
 import Profile from '../screens/Home/Profile';
 import Notification from '../screens/Home/Notification';
 import UpdateProfile from '../screens/Home/Profile/UpdateProfile';
+import ChangePassword from '../screens/Auth/ChangePassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ const AuthStack = () => {
       <Stack.Screen name="Signup2" component={Signup2} />
       <Stack.Screen name="Signup3" component={Signup3} />
       <Stack.Screen name="Forget" component={Forget} />
+      <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="VerifySecurityDate" component={VerifySecurityDate} />
     </Stack.Navigator>
   );

@@ -81,7 +81,7 @@ const data = [
   },
 ];
 
-const MyOffer = ({navigation}) => {
+const RequestRide = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
   const renderItem = ({item}) => {
     return (
@@ -89,12 +89,12 @@ const MyOffer = ({navigation}) => {
         <View style={styles.btnView}>
           <Pressable
             onPress={() => {
-              navigation.navigate('RegisterRide');
+              navigation.navigate('Chatting');
             }}
             style={({pressed}) =>
               pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
             }>
-            <Image source={CustomImage.edit} style={styles.iconStyle} />
+            <Image source={CustomImage.message} style={styles.iconStyle} />
           </Pressable>
           <Pressable
             onPress={() => {
@@ -150,7 +150,7 @@ const MyOffer = ({navigation}) => {
         barStyle={'light-content'}
       />
       <View style={styles.headerView}>
-        <Text style={{...styles.backText, color: Colors.white}}>My Offers</Text>
+        <Text style={{...styles.backText, color: Colors.white}}>Requests</Text>
       </View>
       <View style={styles.searchView}>
         <TextInput
@@ -163,19 +163,11 @@ const MyOffer = ({navigation}) => {
         <Image source={CustomImage.search} style={styles.searchIcon} />
       </View>
       <FlatList data={data} renderItem={renderItem} />
-      <Pressable
-        style={styles.addButton}
-        onPress={() => {
-          navigation.navigate('RegisterRide', {popup: true});
-        }}>
-        <Image source={CustomImage.plus} style={styles.addButtonImage} />
-        <Text style={styles.buttonText}>Add New{'\n'}Offer</Text>
-      </Pressable>
     </SafeAreaView>
   );
 };
 
-export default MyOffer;
+export default RequestRide;
 
 const styles = StyleSheet.create({
   backText: {
@@ -183,27 +175,6 @@ const styles = StyleSheet.create({
     marginHorizontal: horizScale(5),
     fontSize: fontSize.input,
     fontWeight: '700',
-  },
-  buttonText: {
-    color: Colors.white,
-    fontSize: fontSize.pisLarge,
-    textAlign: 'center',
-    marginTop: horizScale(4),
-  },
-  addButton: {
-    backgroundColor: Colors.mainColor,
-    borderRadius: horizScale(40),
-    position: 'absolute',
-    bottom: horizScale(30),
-    right: horizScale(20),
-    padding: horizScale(15),
-    alignItems: 'center',
-  },
-  addButtonImage: {
-    height: horizScale(25),
-    width: horizScale(25),
-    resizeMode: 'cover',
-    tintColor: Colors.white,
   },
   btnView: {
     alignSelf: 'flex-end',

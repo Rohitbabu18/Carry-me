@@ -9,14 +9,14 @@ import {
   View,
   Pressable,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Back from '../../Componets/Back';
-import { Colors } from '../../../util/Colors';
+import {Colors} from '../../../util/Colors';
 import CustomImage from '../../../util/Images';
-import { horizScale } from '../../../util/Layout';
+import {horizScale} from '../../../util/Layout';
 import fontSize from '../../../util/Fonts';
-import { Spacer } from '../../../util/Layout';
-import { Rating } from 'react-native-ratings';
+import {Spacer} from '../../../util/Layout';
+import {Rating} from 'react-native-ratings';
 
 const data = [
   {
@@ -81,9 +81,9 @@ const data = [
   },
 ];
 
-const RiderList = ({ navigation }) => {
+const RiderList = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View style={styles.flatView}>
         <View style={styles.btnView}>
@@ -91,8 +91,8 @@ const RiderList = ({ navigation }) => {
             onPress={() => {
               navigation.navigate('Chatting');
             }}
-            style={({ pressed }) =>
-              pressed ? { ...styles.imgView, opacity: 0.8 } : styles.imgView
+            style={({pressed}) =>
+              pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
             }>
             <Image source={CustomImage.message} style={styles.iconStyle} />
           </Pressable>
@@ -100,10 +100,10 @@ const RiderList = ({ navigation }) => {
             onPress={() => {
               alert('Coming Soon');
             }}
-            style={({ pressed }) =>
+            style={({pressed}) =>
               pressed
-                ? { ...styles.imgView, backgroundColor: Colors.red, opacity: 0.6 }
-                : { ...styles.imgView, backgroundColor: Colors.red }
+                ? {...styles.imgView, backgroundColor: Colors.red, opacity: 0.6}
+                : {...styles.imgView, backgroundColor: Colors.red}
             }>
             <Image source={CustomImage.delete} style={styles.iconStyle} />
           </Pressable>
@@ -124,18 +124,18 @@ const RiderList = ({ navigation }) => {
             <Text style={styles.numRating}>({item.numOfReviews})</Text>
           </View>
           <Text style={styles.priceText}>
-            Price :<Text style={{ fontSize: fontSize.medium }}>{item.price}</Text>{' '}
+            Price :<Text style={{fontSize: fontSize.medium}}>{item.price}</Text>{' '}
             /-
           </Text>
         </View>
         <Spacer height={10} />
         <View style={styles.subViewBtm}>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>From :</Text>
             <Text style={styles.boldText}>{item.from}</Text>
           </View>
           <View style={styles.vertiLine}></View>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>To :</Text>
             <Text style={styles.boldText}>{item.to}</Text>
           </View>
@@ -144,13 +144,13 @@ const RiderList = ({ navigation }) => {
     );
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
       />
       <View style={styles.headerView}>
-        <Back navigation={navigation} />
+        <Text style={{...styles.backText, color: Colors.white}}>Matches</Text>
       </View>
       <View style={styles.searchView}>
         <TextInput
@@ -170,6 +170,12 @@ const RiderList = ({ navigation }) => {
 export default RiderList;
 
 const styles = StyleSheet.create({
+  backText: {
+    color: Colors.white,
+    marginHorizontal: horizScale(5),
+    fontSize: fontSize.input,
+    fontWeight: '700',
+  },
   btnView: {
     alignSelf: 'flex-end',
     flexDirection: 'row',

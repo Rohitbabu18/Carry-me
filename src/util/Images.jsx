@@ -16,6 +16,8 @@ const CustomImage = {
   user: require('../assets/user.png'),
   previewImage: require('../assets/previewImage.png'),
   request: require('../assets/request.png'),
+  requestride: require('../assets/requestride.png'),
+  requestrideactive: require('../assets/requestrideactive.png'),
 
   unitedkingdom: require('../assets/unitedkingdom.png'),
   germany: require('../assets/germany.png'),
@@ -31,5 +33,8 @@ const CustomImage = {
   home: require('../assets/home.png'),
   chaticon: require('../assets/chaticon.png'),
   auto: require('../assets/auto.jpg'),
+
+  rightSwipe: require('../assets/swipeRight.png'),
+  leftSwipe: require('../assets/swipeLeft.png'),
 };
 export default CustomImage;

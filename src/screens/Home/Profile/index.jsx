@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,9 @@ import {
   StatusBar,
 } from 'react-native';
 import CustomImage from '../../../util/Images';
-import { Colors } from '../../../util/Colors';
+import {Colors} from '../../../util/Colors';
 import fontSize from '../../../util/Fonts';
-import { Spacer, horizScale, vertScale } from '../../../util/Layout';
+import {Spacer, horizScale, vertScale} from '../../../util/Layout';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -19,9 +19,9 @@ import DatePicker from 'react-native-date-picker';
 import Modal from 'react-native-modal';
 import styles from '../../../util/Styles';
 import LinearGradient from 'react-native-linear-gradient';
-const Profile = ({ navigation }) => {
+const Profile = ({navigation}) => {
   const [selectedImage, setSelectedImage] = useState([]);
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState(new Date());
   const ImgaePick = () => {
     ImagePicker?.openPicker({
       width: 300,
@@ -32,9 +32,9 @@ const Profile = ({ navigation }) => {
     });
   };
 
-  const [popupUpdate, setpopupUpdate] = useState(false)
+  const [popupUpdate, setpopupUpdate] = useState(false);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.mainLight }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: Colors.mainLight}}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
@@ -43,16 +43,14 @@ const Profile = ({ navigation }) => {
         isVisible={popupUpdate}
         animationType="slide"
         onBackdropPress={() => {
-          setpopupUpdate(!popupUpdate)
+          setpopupUpdate(!popupUpdate);
         }}
         onRequestClose={() => {
-          setpopupUpdate(!popupUpdate)
+          setpopupUpdate(!popupUpdate);
         }}
-        style={{ margin: 0 }}
-      >
-        <StatusBar backgroundColor='rgba(52, 52, 52, 0.8)' />
+        style={{margin: 0}}>
+        <StatusBar backgroundColor="rgba(52, 52, 52, 0.8)" />
         <View style={styles.modalBox1}>
-
           <LinearGradient
             colors={[Colors.white, Colors.homeGradient]}
             style={styles.containerLinearGradientModal}>
@@ -62,30 +60,42 @@ const Profile = ({ navigation }) => {
                 <Text style={styles.headingText}>For VIP Account</Text>
                 <Text style={styles.TextH3}>Please Subscribe</Text>
               </View>
-              <Pressable onPress={() => {
-                setpopupUpdate(!popupUpdate)
-              }}>
-                <AntDesign name={'closecircle'} size={40} color={Colors.mainColor} style={{ margin: horizScale(20) }} />
+              <Pressable
+                onPress={() => {
+                  setpopupUpdate(!popupUpdate);
+                }}>
+                <AntDesign
+                  name={'closecircle'}
+                  size={40}
+                  color={Colors.mainColor}
+                  style={{margin: horizScale(20)}}
+                />
               </Pressable>
-
             </View>
             <Spacer height={15} />
-            <Image source={CustomImage.vip} style={{ ...styles.logoImage, height: horizScale(130), }} />
-            <Text style={{ ...styles.homeHeading, textAlign: 'center', }}>VIP Account</Text>
+            <Image
+              source={CustomImage.vip}
+              style={{...styles.logoImage, height: horizScale(130)}}
+            />
+            <Text style={{...styles.homeHeading, textAlign: 'center'}}>
+              VIP Account
+            </Text>
             <Spacer height={15} />
             <View>
-              <Text style={{ ...styles.homeDec, fontSize: fontSize.regular, }}>
-                Your VIP plan just starts from 7000 $ for one month. VIP Subscription Ending :
-                <Text style={{ color: Colors.red, fontWeight: '700' }}>2023.12.12</Text></Text>
+              <Text style={{...styles.homeDec, fontSize: fontSize.regular}}>
+                Your VIP plan just starts from 7000 $ for one month. VIP
+                Subscription Ending :
+                <Text style={{color: Colors.red, fontWeight: '700'}}>
+                  2023.12.12
+                </Text>
+              </Text>
               <Spacer height={20} />
-
             </View>
             <Spacer height={40} />
             <View style={styles.homeBtnView}>
-
               <Pressable
                 onPress={() => {
-                  alert('Coming Soon')
+                  alert('Coming Soon');
                 }}
                 style={{
                   ...styles.homeBtn,
@@ -98,12 +108,10 @@ const Profile = ({ navigation }) => {
             </View>
             <Spacer height={20} />
           </LinearGradient>
-
         </View>
       </Modal>
       <View style={stylesCustom.notificationView}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Pressable
             onPress={() => {
               navigation.goBack();
@@ -112,25 +120,28 @@ const Profile = ({ navigation }) => {
           </Pressable>
           <Text style={stylesCustom.notificationText}>Profile</Text>
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={stylesCustom.notificationText}>Logout</Text>
           <Pressable
             onPress={() => {
               navigation.replace('AuthStack');
             }}>
-            <AntDesign name={'logout'} size={25} color={Colors.white} style={{ marginHorizontal: horizScale(20) }} />
+            <AntDesign
+              name={'logout'}
+              size={25}
+              color={Colors.white}
+              style={{marginHorizontal: horizScale(20)}}
+            />
           </Pressable>
         </View>
       </View>
       <Spacer height={30} />
       <Image
         source={
-          selectedImage?.length > 0
-            ? { uri: selectedImage }
-            : CustomImage.profile
+          selectedImage?.length > 0 ? {uri: selectedImage} : CustomImage.profile
         }
-        style={stylesCustom.profileImage} />
+        style={stylesCustom.profileImage}
+      />
       {/* <Pressable
         style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
         onPress={() => {
@@ -156,30 +167,65 @@ const Profile = ({ navigation }) => {
         </View>
       </Pressable> */}
       <Spacer height={15} />
-      <View style={{ ...stylesCustom.detailsContainer, backgroundColor: Colors.homeGradient, }}>
+      <View
+        style={{
+          ...stylesCustom.detailsContainer,
+          backgroundColor: Colors.homeGradient,
+        }}>
+        <Text style={{...stylesCustom.username, color: Colors.black}}>
+          John Doe
+        </Text>
 
-        <Text style={{ ...stylesCustom.username, color: Colors.black }}>John Doe</Text>
-
-        <Text style={{ ...stylesCustom.bio, color: Colors.black, fontWeight: '700' }}>John.roader525@gmail.com</Text>
-        <Text style={stylesCustom.bio}>WM ID : <Text style={{ color: Colors.black, fontWeight: '700' }}>A572C86BEAC864BD543</Text></Text>
-        <Text style={stylesCustom.location}>Location : <Text style={{ color: Colors.black, fontWeight: '700' }}>Lagos Ikorodu</Text></Text>
+        <Text
+          style={{...stylesCustom.bio, color: Colors.black, fontWeight: '700'}}>
+          John.roader525@gmail.com
+        </Text>
+        <Text style={stylesCustom.bio}>
+          WM ID :{' '}
+          <Text style={{color: Colors.black, fontWeight: '700'}}>
+            A572C86BEAC864BD543
+          </Text>
+        </Text>
+        <Text style={stylesCustom.location}>
+          Location :{' '}
+          <Text style={{color: Colors.black, fontWeight: '700'}}>
+            Lagos Ikorodu
+          </Text>
+        </Text>
       </View>
       <Spacer height={15} />
       <View style={stylesCustom.detailsContainer}>
-        <Text style={stylesCustom.location}>Registered Since : <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>02.2022</Text></Text>
+        <Text style={stylesCustom.location}>
+          Registered Since :{' '}
+          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>
+            02.2022
+          </Text>
+        </Text>
 
-
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Text style={stylesCustom.location}>Sec Date:</Text>
-          <Text style={{ ...stylesCustom.bio, color: Colors.mainColor, fontWeight: '700' }}>10-12-2000</Text>
-
+          <Text
+            style={{
+              ...stylesCustom.bio,
+              color: Colors.mainColor,
+              fontWeight: '700',
+            }}>
+            10-12-2000
+          </Text>
         </View>
-        <Text style={stylesCustom.location}>Hint : <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>Baby Billy</Text></Text>
-        <Text style={{ ...stylesCustom.location, marginBottom: horizScale(0), }}>Usertype : <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>Free</Text></Text>
+        <Text style={stylesCustom.location}>
+          Hint :{' '}
+          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>
+            Baby Billy
+          </Text>
+        </Text>
+        <Text style={{...stylesCustom.location, marginBottom: horizScale(0)}}>
+          Usertype :{' '}
+          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>Free</Text>
+        </Text>
         <Pressable
           onPress={() => {
-            setpopupUpdate(!popupUpdate)
+            setpopupUpdate(!popupUpdate);
           }}
           style={{
             position: 'absolute',
@@ -190,12 +236,16 @@ const Profile = ({ navigation }) => {
             paddingHorizontal: horizScale(15),
             paddingVertical: horizScale(5),
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
           }}>
-          <Text style={{
-            color: Colors.mainColor,
-            fontWeight: '700', fontSize: fontSize.regular,
-          }}>UPGRADE PLAN</Text>
+          <Text
+            style={{
+              color: Colors.mainColor,
+              fontWeight: '700',
+              fontSize: fontSize.regular,
+            }}>
+            UPGRADE PLAN
+          </Text>
         </Pressable>
       </View>
       <Spacer height={30} />
@@ -203,21 +253,21 @@ const Profile = ({ navigation }) => {
         <Pressable
           onPress={() => {
             navigation.navigate('Forget', {
-              ispassword: true
-            })
+              ispassword: true,
+            });
           }}
           style={{
             ...stylesCustom.homeBtn,
             borderWidth: horizScale(2),
             borderColor: Colors.black,
           }}>
-          <Text style={{ ...stylesCustom.buttonText, color: Colors.mainColor }}>
-            Change Password
+          <Text style={{...stylesCustom.buttonText, color: Colors.mainColor}}>
+            I Forgot
           </Text>
         </Pressable>
         <Pressable
           onPress={() => {
-            navigation.navigate('UpdateProfile')
+            navigation.navigate('UpdateProfile');
           }}
           style={{
             ...stylesCustom.homeBtn,
@@ -228,20 +278,33 @@ const Profile = ({ navigation }) => {
           <Text style={stylesCustom.buttonText}>Update Profile</Text>
         </Pressable>
       </View>
-
       <Spacer height={30} />
-      <Pressable
-        onPress={() => {
-          alert('Coming Soon')
-        }}
-        style={{
-          ...stylesCustom.homeBtn,
-          backgroundColor: Colors.red,
-          borderWidth: horizScale(2),
-          borderColor: Colors.yellow,
-        }}>
-        <Text style={stylesCustom.buttonText}>DELETE ACCOUNT</Text>
-      </Pressable>
+      <View style={stylesCustom.homeBtnView}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('ChangePassword');
+          }}
+          style={{
+            ...stylesCustom.homeBtn,
+            backgroundColor: Colors.mainColor,
+            borderWidth: horizScale(2),
+            borderColor: Colors.mainColor,
+          }}>
+          <Text style={stylesCustom.buttonText}>Change Password</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            alert('Coming Soon');
+          }}
+          style={{
+            ...stylesCustom.homeBtn,
+            backgroundColor: Colors.red,
+            borderWidth: horizScale(2),
+            borderColor: Colors.yellow,
+          }}>
+          <Text style={stylesCustom.buttonText}>DELETE ACCOUNT</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
@@ -270,7 +333,7 @@ const stylesCustom = StyleSheet.create({
     fontSize: fontSize.regular,
     color: Colors.darkgrey,
     marginBottom: horizScale(10),
-    marginLeft: horizScale(15)
+    marginLeft: horizScale(15),
   },
   notificationText: {
     color: Colors.white,
@@ -299,7 +362,6 @@ const stylesCustom = StyleSheet.create({
     backgroundColor: '#f9f9f9',
   },
   profileImage: {
-
     height: horizScale(100),
     width: horizScale(100),
     borderRadius: horizScale(50),
@@ -311,13 +373,13 @@ const stylesCustom = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: horizScale(8),
     color: Colors.black,
-    marginLeft: horizScale(15)
+    marginLeft: horizScale(15),
   },
   bio: {
     fontSize: 18,
     marginBottom: horizScale(10),
     color: Colors.darkgrey,
-    marginLeft: horizScale(15)
+    marginLeft: horizScale(15),
   },
   detailsContainer: {
     backgroundColor: '#fff',
