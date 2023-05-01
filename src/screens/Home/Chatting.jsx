@@ -63,6 +63,7 @@ const Chatting = ({navigation}) => {
         messagesContainerStyle={{
           backgroundColor: Colors.mainColorDim,
         }}
+        textInputStyle={{color: Colors.black}}
       />
     </SafeAreaView>
   );

@@ -539,6 +539,7 @@ const rStyle = StyleSheet.create({
     borderRadius: horizScale(10),
     paddingHorizontal: horizScale(10),
     fontSize: fontSize.regular,
+    color: Colors.black,
   },
   availCount: {
     color: Colors.black,
