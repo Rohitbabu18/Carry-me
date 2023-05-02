@@ -1,7 +1,7 @@
-import {StyleSheet, Dimensions} from 'react-native';
-import {Colors} from './Colors';
+import { StyleSheet, Dimensions } from 'react-native';
+import { Colors } from './Colors';
 import fontSize from './Fonts';
-import {horizScale, vertScale} from './Layout';
+import { horizScale, vertScale } from './Layout';
 const styles = StyleSheet.create({
   backText: {
     color: Colors.white,
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.h3,
     fontWeight: '700',
     color: Colors.mainColor,
-    textShadowOffset: {width: -3, height: 2},
+    textShadowOffset: { width: -3, height: 2 },
     textShadowColor: Colors.darkgrey,
     textShadowRadius: 1,
   },
@@ -273,6 +273,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
+    width: Dimensions.get('window').width
   },
   containerLinearGradient: {
     flex: 1,
@@ -330,7 +331,7 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     paddingRight: horizScale(20),
     fontSize: fontSize.medium,
-    fontWeight: '600',
+    fontWeight: '700',
     textDecorationLine: 'underline',
   },
   listContainer: {

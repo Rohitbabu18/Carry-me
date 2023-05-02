@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,12 @@ import {
   Image,
   Pressable,
   StatusBar,
+  ScrollView
 } from 'react-native';
 import CustomImage from '../../../util/Images';
-import {Colors} from '../../../util/Colors';
+import { Colors } from '../../../util/Colors';
 import fontSize from '../../../util/Fonts';
-import {Spacer, horizScale, vertScale} from '../../../util/Layout';
+import { Spacer, horizScale, vertScale } from '../../../util/Layout';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -19,7 +20,7 @@ import DatePicker from 'react-native-date-picker';
 import Modal from 'react-native-modal';
 import styles from '../../../util/Styles';
 import LinearGradient from 'react-native-linear-gradient';
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState([]);
   const [date, setDate] = useState(new Date());
   const ImgaePick = () => {
@@ -34,7 +35,7 @@ const Profile = ({navigation}) => {
 
   const [popupUpdate, setpopupUpdate] = useState(false);
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Colors.mainLight}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.mainLight }}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
@@ -48,7 +49,7 @@ const Profile = ({navigation}) => {
         onRequestClose={() => {
           setpopupUpdate(!popupUpdate);
         }}
-        style={{margin: 0}}>
+        style={{ margin: 0 }}>
         <StatusBar backgroundColor="rgba(52, 52, 52, 0.8)" />
         <View style={styles.modalBox1}>
           <LinearGradient
@@ -68,24 +69,24 @@ const Profile = ({navigation}) => {
                   name={'closecircle'}
                   size={40}
                   color={Colors.mainColor}
-                  style={{margin: horizScale(20)}}
+                  style={{ margin: horizScale(20) }}
                 />
               </Pressable>
             </View>
             <Spacer height={15} />
             <Image
               source={CustomImage.vip}
-              style={{...styles.logoImage, height: horizScale(130)}}
+              style={{ ...styles.logoImage, height: horizScale(130) }}
             />
-            <Text style={{...styles.homeHeading, textAlign: 'center'}}>
+            <Text style={{ ...styles.homeHeading, textAlign: 'center' }}>
               VIP Account
             </Text>
             <Spacer height={15} />
             <View>
-              <Text style={{...styles.homeDec, fontSize: fontSize.regular}}>
+              <Text style={{ ...styles.homeDec, fontSize: fontSize.regular }}>
                 Your VIP plan just starts from 7000 $ for one month. VIP
                 Subscription Ending :
-                <Text style={{color: Colors.red, fontWeight: '700'}}>
+                <Text style={{ color: Colors.red, fontWeight: '700' }}>
                   2023.12.12
                 </Text>
               </Text>
@@ -110,39 +111,45 @@ const Profile = ({navigation}) => {
           </LinearGradient>
         </View>
       </Modal>
-      <View style={stylesCustom.notificationView}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Pressable
-            onPress={() => {
-              navigation.goBack();
-            }}>
-            <Image source={CustomImage.back} style={stylesCustom.backBtn} />
-          </Pressable>
-          <Text style={stylesCustom.notificationText}>Profile</Text>
+      <ScrollView>
+
+        <View style={stylesCustom.notificationView}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Pressable
+              onPress={() => {
+                navigation.goBack();
+              }}>
+              <Image source={CustomImage.back} style={stylesCustom.backBtn} />
+            </Pressable>
+            <Text style={stylesCustom.notificationText}>Profile</Text>
+          </View>
+          <View >
+
+            <Image source={CustomImage.logo} style={stylesCustom.Image} />
+          </View>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={stylesCustom.notificationText}>Logout</Text>
+            <Pressable
+              onPress={() => {
+                navigation.replace('AuthStack');
+              }}>
+              <AntDesign
+                name={'logout'}
+                size={25}
+                color={Colors.white}
+                style={{ marginHorizontal: horizScale(20) }}
+              />
+            </Pressable>
+          </View>
         </View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={stylesCustom.notificationText}>Logout</Text>
-          <Pressable
-            onPress={() => {
-              navigation.replace('AuthStack');
-            }}>
-            <AntDesign
-              name={'logout'}
-              size={25}
-              color={Colors.white}
-              style={{marginHorizontal: horizScale(20)}}
-            />
-          </Pressable>
-        </View>
-      </View>
-      <Spacer height={30} />
-      <Image
-        source={
-          selectedImage?.length > 0 ? {uri: selectedImage} : CustomImage.profile
-        }
-        style={stylesCustom.profileImage}
-      />
-      {/* <Pressable
+        <Spacer height={30} />
+        <Image
+          source={
+            selectedImage?.length > 0 ? { uri: selectedImage } : CustomImage.profile
+          }
+          style={stylesCustom.profileImage}
+        />
+        {/* <Pressable
         style={({ pressed }) => (pressed ? { opacity: 0.7 } : null)}
         onPress={() => {
           ImgaePick();
@@ -166,150 +173,215 @@ const Profile = ({navigation}) => {
           />
         </View>
       </Pressable> */}
-      <Spacer height={15} />
-      <View
-        style={{
-          ...stylesCustom.detailsContainer,
-          backgroundColor: Colors.homeGradient,
-        }}>
-        <Text style={{...stylesCustom.username, color: Colors.black}}>
-          John Doe
-        </Text>
-
-        <Text
-          style={{...stylesCustom.bio, color: Colors.black, fontWeight: '700'}}>
-          John.roader525@gmail.com
-        </Text>
-        <Text style={stylesCustom.bio}>
-          WM ID :{' '}
-          <Text style={{color: Colors.black, fontWeight: '700'}}>
-            A572C86BEAC864BD543
-          </Text>
-        </Text>
-        <Text style={stylesCustom.location}>
-          Location :{' '}
-          <Text style={{color: Colors.black, fontWeight: '700'}}>
-            Lagos Ikorodu
-          </Text>
-        </Text>
-      </View>
-      <Spacer height={15} />
-      <View style={stylesCustom.detailsContainer}>
-        <Text style={stylesCustom.location}>
-          Registered Since :{' '}
-          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>
-            02.2022
-          </Text>
-        </Text>
-
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text style={stylesCustom.location}>Sec Date:</Text>
-          <Text
-            style={{
-              ...stylesCustom.bio,
-              color: Colors.mainColor,
-              fontWeight: '700',
-            }}>
-            10-12-2000
-          </Text>
-        </View>
-        <Text style={stylesCustom.location}>
-          Hint :{' '}
-          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>
-            Baby Billy
-          </Text>
-        </Text>
-        <Text style={{...stylesCustom.location, marginBottom: horizScale(0)}}>
-          Usertype :{' '}
-          <Text style={{color: Colors.mainColor, fontWeight: '700'}}>Free</Text>
-        </Text>
-        <Pressable
-          onPress={() => {
-            setpopupUpdate(!popupUpdate);
-          }}
+        <Spacer height={15} />
+        <View
           style={{
-            position: 'absolute',
-            bottom: 15,
-            right: 15,
-            borderWidth: 1,
-            borderRadius: horizScale(25),
-            paddingHorizontal: horizScale(15),
-            paddingVertical: horizScale(5),
+            ...stylesCustom.detailsContainer,
+            backgroundColor: Colors.homeGradient,
+          }}>
+          <Text style={{ ...stylesCustom.username, color: Colors.black }}>
+            John Doe
+          </Text>
+
+          <Text
+            style={{ ...stylesCustom.bio, color: Colors.black, fontWeight: '700' }}>
+            John.roader525@gmail.com
+          </Text>
+          <Text style={stylesCustom.bio}>
+            WM ID :{' '}
+            <Text style={{ color: Colors.black, fontWeight: '700' }}>
+              A572C86BEAC864BD543
+            </Text>
+          </Text>
+          <Text style={stylesCustom.location}>
+            Location :{' '}
+            <Text style={{ color: Colors.black, fontWeight: '700' }}>
+              Lagos Ikorodu
+            </Text>
+          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={stylesCustom.location}>Sec Date:</Text>
+            <Text
+              style={{
+                ...stylesCustom.bio,
+                color: Colors.mainColor,
+                fontWeight: '700',
+              }}>
+              10-12-2000
+            </Text>
+          </View>
+          <View style={{
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
           }}>
-          <Text
+
+            <Text style={stylesCustom.location}>
+              Hint :{' '}
+              <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+                Baby Billy
+              </Text>
+            </Text>
+
+            <Pressable
+              onPress={() => {
+                navigation.navigate('UpdateProfile');
+              }}
+              style={{
+                borderRadius: horizScale(40),
+                borderWidth: horizScale(0.9),
+                padding: horizScale(15)
+              }}>
+              <Image source={CustomImage.edit} style={styles.smallIcon} />
+            </Pressable>
+          </View>
+        </View>
+        <Spacer height={15} />
+        <View style={stylesCustom.detailsContainer}>
+          <Text style={stylesCustom.location}>
+            Registered Since :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+              02.2022
+            </Text>
+          </Text>
+
+
+          <Text style={{ ...stylesCustom.location, marginBottom: horizScale(0) }}>
+            Usertype :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>Free</Text>
+          </Text>
+          <Pressable
+            onPress={() => {
+              setpopupUpdate(!popupUpdate);
+            }}
             style={{
-              color: Colors.mainColor,
-              fontWeight: '700',
-              fontSize: fontSize.regular,
+              position: 'absolute',
+              bottom: 15,
+              right: 15,
+              borderWidth: 1,
+              borderRadius: horizScale(25),
+              paddingHorizontal: horizScale(15),
+              paddingVertical: horizScale(5),
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
-            UPGRADE PLAN
+            <Text
+              style={{
+                color: Colors.mainColor,
+                fontWeight: '700',
+                fontSize: fontSize.regular,
+              }}>
+              UPGRADE PLAN
+            </Text>
+          </Pressable>
+        </View>
+        <Spacer height={15} />
+        <View style={stylesCustom.detailsContainer}>
+          <Text style={{ ...stylesCustom.username, color: Colors.black, fontSize: fontSize.h5, }}>
+            Travelers Manifest Data
           </Text>
-        </Pressable>
-      </View>
-      <Spacer height={30} />
+          <Text style={stylesCustom.location}>
+            Passenger Legal Name :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+              tim devid
+            </Text>
+          </Text>
+          <Text style={stylesCustom.location}>
+            Passenger Phone Number :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+              0989867899
+            </Text>
+          </Text>
+          <Text style={stylesCustom.location}>
+            Name of next kind :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+              Lisa Devid
+            </Text>
+          </Text>
+          <Text style={stylesCustom.location}>
+            Next of kind Phone{'\n'}number :{' '}
+            <Text style={{ color: Colors.mainColor, fontWeight: '700' }}>
+              0989387899
+            </Text>
+          </Text>
+
+          <Pressable
+            onPress={() => {
+              setpopupUpdate(!popupUpdate);
+            }}
+            style={{
+              position: 'absolute',
+              bottom: 15,
+              right: 15,
+              borderWidth: 1,
+              borderRadius: horizScale(25),
+              paddingHorizontal: horizScale(15),
+              paddingVertical: horizScale(5),
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                color: Colors.mainColor,
+                fontWeight: '700',
+                fontSize: fontSize.regular,
+              }}>
+              Edit Data
+            </Text>
+          </Pressable>
+        </View>
+        {/* <Spacer height={30} />
       <View style={stylesCustom.homeBtnView}>
         <Pressable
           onPress={() => {
-            navigation.navigate('Forget', {
-              ispassword: true,
-            });
+            navigation.navigate('Forget');
           }}
-          style={{
-            ...stylesCustom.homeBtn,
-            borderWidth: horizScale(2),
-            borderColor: Colors.black,
-          }}>
-          <Text style={{...stylesCustom.buttonText, color: Colors.mainColor}}>
-            I Forgot
-          </Text>
+          style={{ alignSelf: 'flex-end' }}>
+          <Text style={styles.forgetPassword}>I forget my ID/Password?</Text>
         </Pressable>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('UpdateProfile');
-          }}
-          style={{
-            ...stylesCustom.homeBtn,
-            backgroundColor: Colors.mainColor,
-            borderWidth: horizScale(2),
-            borderColor: Colors.mainColor,
-          }}>
-          <Text style={stylesCustom.buttonText}>Update Profile</Text>
-        </Pressable>
-      </View>
-      <Spacer height={30} />
-      <View style={stylesCustom.homeBtnView}>
-        <Pressable
-          onPress={() => {
-            navigation.navigate('ChangePassword');
-          }}
-          style={{
-            ...stylesCustom.homeBtn,
-            backgroundColor: Colors.mainColor,
-            borderWidth: horizScale(2),
-            borderColor: Colors.mainColor,
-          }}>
-          <Text style={stylesCustom.buttonText}>Change Password</Text>
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            alert('Coming Soon');
-          }}
-          style={{
-            ...stylesCustom.homeBtn,
-            backgroundColor: Colors.red,
-            borderWidth: horizScale(2),
-            borderColor: Colors.yellow,
-          }}>
-          <Text style={stylesCustom.buttonText}>DELETE ACCOUNT</Text>
-        </Pressable>
-      </View>
+
+      </View> */}
+        <Spacer height={30} />
+        <View style={stylesCustom.homeBtnView}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('ChangePassword');
+            }}
+            style={{
+              ...stylesCustom.homeBtn,
+              backgroundColor: Colors.mainColor,
+              borderWidth: horizScale(2),
+              borderColor: Colors.mainColor,
+            }}>
+            <Text style={stylesCustom.buttonText}>Change Password</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              alert('Coming Soon');
+            }}
+            style={{
+              ...stylesCustom.homeBtn,
+              backgroundColor: Colors.red,
+              borderWidth: horizScale(2),
+              borderColor: Colors.yellow,
+            }}>
+            <Text style={stylesCustom.buttonText}>DELETE ACCOUNT</Text>
+          </Pressable>
+        </View>
+
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const stylesCustom = StyleSheet.create({
+
+  Image: {
+    height: horizScale(50),
+    width: horizScale(180),
+    resizeMode: 'contain',
+    alignSelf: 'flex-end',
+  },
   homeBtn: {
     paddingVertical: vertScale(15),
     width: '45%',

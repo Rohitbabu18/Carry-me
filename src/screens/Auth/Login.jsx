@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   SafeAreaView,
@@ -11,13 +11,13 @@ import {
 } from 'react-native';
 import styles from '../../util/Styles';
 import LinearGradient from 'react-native-linear-gradient';
-import {FloatingLabelInput} from 'react-native-floating-label-input';
-import {Colors} from '../../util/Colors';
+import { FloatingLabelInput } from 'react-native-floating-label-input';
+import { Colors } from '../../util/Colors';
 import CustomImage from '../../util/Images';
-import {horizScale, Spacer} from '../../util/Layout';
+import { horizScale, Spacer } from '../../util/Layout';
 import Icon from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
@@ -64,7 +64,7 @@ const Login = ({navigation}) => {
                 <Icon
                   size={20}
                   color={Colors.mainColor}
-                  style={{marginRight: horizScale(15)}}
+                  style={{ marginRight: horizScale(15) }}
                   name="eye-with-line"
                 />
               }
@@ -72,7 +72,7 @@ const Login = ({navigation}) => {
                 <Icon
                   size={20}
                   color={Colors.mainColor}
-                  style={{marginRight: horizScale(15)}}
+                  style={{ marginRight: horizScale(15) }}
                   name="eye"
                 />
               }
@@ -101,17 +101,17 @@ const Login = ({navigation}) => {
               <Ionicons
                 size={20}
                 color={Colors.mainColor}
-                style={{marginRight: horizScale(15)}}
+                style={{ marginRight: horizScale(15) }}
                 name={accepts ? 'ios-checkbox' : 'ios-square-outline'}
               />
             </Pressable>
             <Text style={styles.normalText}>I accept the </Text>
             <Pressable
               onPress={() => {
-                navigation.navigate('TermsAndCondition', {button: false});
+                navigation.navigate('TermsAndCondition', { button: false });
               }}>
               <Text
-                style={{...styles.forgetPassword, paddingLeft: horizScale(5)}}>
+                style={{ ...styles.forgetPassword, paddingLeft: horizScale(5) }}>
                 Terms & Condition.
               </Text>
             </Pressable>
@@ -121,8 +121,8 @@ const Login = ({navigation}) => {
             onPress={() => {
               navigation.navigate('Forget');
             }}
-            style={{alignSelf: 'flex-end'}}>
-            <Text style={styles.forgetPassword}>Forget Password?</Text>
+            style={{ alignSelf: 'flex-end' }}>
+            <Text style={styles.forgetPassword}>I forget my ID/Password?</Text>
           </Pressable>
           <Spacer height={50} />
           <Pressable
@@ -140,7 +140,7 @@ const Login = ({navigation}) => {
                 navigation.navigate('Language');
               }}>
               <Text
-                style={{...styles.forgetPassword, paddingLeft: horizScale(5)}}>
+                style={{ ...styles.forgetPassword, paddingLeft: horizScale(5) }}>
                 Register?
               </Text>
             </Pressable>

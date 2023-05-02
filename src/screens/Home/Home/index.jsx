@@ -16,17 +16,18 @@ import {
 import React from 'react';
 import styles from '../../../util/Styles';
 import Modal from 'react-native-modal';
-import {Spacer, horizScale, vertScale} from '../../../util/Layout';
+import { Spacer, horizScale, vertScale } from '../../../util/Layout';
 import CustomImage from '../../../util/Images';
-import {Colors} from '../../../util/Colors';
+import { Colors } from '../../../util/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Header from '../../Componets/Header';
-import {FloatingLabelInput} from 'react-native-floating-label-input';
+import { FloatingLabelInput } from 'react-native-floating-label-input';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import fontSize from '../../../util/Fonts';
+import { useDispatch, useSelector } from 'react-redux';
 
 const db = [
   {
@@ -62,48 +63,49 @@ export default class Home extends React.Component {
     super();
     this.position = new Animated.ValueXY();
     this.state = {
+      offset: 0,
       currentIndex: 0,
       selectedVehical: null,
       viewVehicalDetails: {},
       vehicals: [
         {
           id: 1,
-          name: 'Richard Hendricks',
+          name: 'Scooter',
           img: 'https://www.freepnglogos.com/uploads/scooter-png/scooter-png-images-available-for-download-12.png',
         },
         {
           id: 2,
-          name: 'Erlich Bachman',
+          name: 'Bike',
           img: 'https://images.carandbike.com/bike-images/colors/honda/cb-unicorn-160/honda-cb-unicorn-160-imperial-red-metallic.png?v=1589473715',
         },
         {
           id: 3,
-          name: 'Monica Hall',
+          name: 'Auto',
           img: 'https://cdn.bajajauto.com/-/media/assets/bajajauto/360degreeimages/3-wheelers-and-qute/re/diesel/eco-green/00.png',
         },
         {
           id: 4,
-          name: 'Jared Dunn',
+          name: 'E-ricsa',
           img: 'https://kineticgreenvehicles.com/images/category/super-dx-thumb-new.png',
         },
         {
           id: 5,
-          name: 'Dinesh Chugtai',
+          name: 'Car',
           img: 'https://file.kelleybluebookimages.com/kbb/base/evox/CP/43648/2023-Honda-Civic-front_43648_032_1860x760_RE_cropped.png',
         },
         {
           id: 6,
-          name: 'Dinesh Chugtai',
+          name: 'Bus',
           img: 'https://pngimg.com/d/bus_PNG101203.png',
         },
         {
           id: 7,
-          name: 'Dinesh Chugtai',
+          name: 'Pickup',
           img: 'https://pngimg.com/d/pickup_truck_PNG16325.png',
         },
         {
           id: 8,
-          name: 'Dinesh Chugtai',
+          name: 'Truck',
           img: 'https://static.wixstatic.com/media/175e3f_b5c41bc8e2ae4eca8a0a2c0a5d73bfe8~mv2.png/v1/fill/w_560,h_362,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Lorry3%20(1).png',
         },
       ],
@@ -112,26 +114,36 @@ export default class Home extends React.Component {
           id: 1,
           name: 'Richard Hendricks',
           uri: CustomImage.auto,
+          price: 200,
+          distance: 17
         },
         {
           id: 2,
           name: 'Erlich Bachman',
           uri: CustomImage.auto,
+          price: 200,
+          distance: 17
         },
         {
           id: 3,
           name: 'Monica Hall',
           uri: CustomImage.auto,
+          price: 200,
+          distance: 17
         },
         {
           id: 4,
           name: 'Jared Dunn',
           uri: CustomImage.auto,
+          price: 200,
+          distance: 17
         },
         {
           id: 5,
           name: 'Dinesh Chugtai',
           uri: CustomImage.auto,
+          price: 200,
+          distance: 17
         },
       ],
       count: 0,
@@ -141,6 +153,7 @@ export default class Home extends React.Component {
       departure: '',
       destination: '',
       pinedDestination: '',
+
     };
 
     this.rotate = this.position.x.interpolate({
@@ -184,30 +197,30 @@ export default class Home extends React.Component {
     this.PanResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onPanResponderMove: (evt, gestureState) => {
-        this.position.setValue({x: gestureState.dx, y: 0});
+        this.position.setValue({ x: gestureState.dx, y: 0 });
       },
       onPanResponderRelease: (evt, gestureState) => {
         if (gestureState.dx > 120) {
           Animated.spring(this.position, {
-            toValue: {x: SCREEN_WIDTH + 100, y: 0},
+            toValue: { x: SCREEN_WIDTH + 100, y: 0 },
             useNativeDriver: true,
           }).start(() => {
-            this.setState({currentIndex: this.state.currentIndex + 1}, () => {
-              this.position.setValue({x: 0, y: 0});
+            this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
+              this.position.setValue({ x: 0, y: 0 });
             });
           });
         } else if (gestureState.dx < -120) {
           Animated.spring(this.position, {
-            toValue: {x: -SCREEN_WIDTH - 100, y: 0},
+            toValue: { x: -SCREEN_WIDTH - 100, y: 0 },
             useNativeDriver: true,
           }).start(() => {
-            this.setState({currentIndex: this.state.currentIndex + 1}, () => {
-              this.position.setValue({x: 0, y: 0});
+            this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
+              this.position.setValue({ x: 0, y: 0 });
             });
           });
         } else {
           Animated.spring(this.position, {
-            toValue: {x: 0, y: 0},
+            toValue: { x: 0, y: 0 },
             friction: 4,
             useNativeDriver: true,
           }).start();
@@ -233,7 +246,7 @@ export default class Home extends React.Component {
               style={[
                 this.rotateAndTranslate,
                 {
-                  height: vertScale(410),
+                  height: vertScale(395),
                   //   height: SCREEN_HEIGHT - 120,
                   width: SCREEN_WIDTH,
                   padding: 10,
@@ -243,7 +256,7 @@ export default class Home extends React.Component {
               <Animated.View
                 style={{
                   opacity: this.likeOpacity,
-                  transform: [{rotate: '-30deg'}],
+                  transform: [{ rotate: '-30deg' }],
                   position: 'absolute',
                   top: 50,
                   left: 40,
@@ -265,7 +278,7 @@ export default class Home extends React.Component {
               <Animated.View
                 style={{
                   opacity: this.dislikeOpacity,
-                  transform: [{rotate: '30deg'}],
+                  transform: [{ rotate: '30deg' }],
                   position: 'absolute',
                   top: 50,
                   right: 40,
@@ -295,6 +308,16 @@ export default class Home extends React.Component {
                 source={item.uri}
               />
               <Text style={styless.cardTitle}>{item.name}</Text>
+              <View style={styless.cartRating}>
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.starEmpty} style={styless.starImage} />
+                <Image source={CustomImage.starEmpty} style={styless.starImage} />
+              </View>
+              <Text style={styless.cartPrice}>$ {item.price}/-</Text>
+              <Text style={styless.cardDistance}>In {item.distance} Km</Text>
+
               <View style={styless.buttons}>
                 <Pressable
                   style={styless.smallCircle}
@@ -342,7 +365,7 @@ export default class Home extends React.Component {
               style={[
                 {
                   opacity: this.nextCardOpacity,
-                  transform: [{scale: this.nextCardScale}],
+                  transform: [{ scale: this.nextCardScale }],
                   height: vertScale(410),
                   //   height: SCREEN_HEIGHT - 120,
                   width: SCREEN_WIDTH,
@@ -353,7 +376,7 @@ export default class Home extends React.Component {
               <Animated.View
                 style={{
                   opacity: 0,
-                  transform: [{rotate: '-30deg'}],
+                  transform: [{ rotate: '-30deg' }],
                   position: 'absolute',
                   top: 50,
                   left: 40,
@@ -375,7 +398,7 @@ export default class Home extends React.Component {
               <Animated.View
                 style={{
                   opacity: 0,
-                  transform: [{rotate: '30deg'}],
+                  transform: [{ rotate: '30deg' }],
                   position: 'absolute',
                   top: 50,
                   right: 40,
@@ -405,6 +428,16 @@ export default class Home extends React.Component {
                 source={item.uri}
               />
               <Text style={styless.cardTitle}>{item.name}</Text>
+              <View style={styless.cartRating}>
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.star} style={styless.starImage} />
+                <Image source={CustomImage.starEmpty} style={styless.starImage} />
+                <Image source={CustomImage.starEmpty} style={styless.starImage} />
+              </View>
+              <Text style={styless.cartPrice}>$ {item.price}/-</Text>
+              <Text style={styless.cardDistance}>In {item.distance} Km</Text>
+
               <View style={styless.buttons}>
                 <Pressable
                   style={styless.smallCircle}
@@ -448,34 +481,39 @@ export default class Home extends React.Component {
       })
       .reverse();
   };
-  renderVehicals = ({item, index}) => {
+  renderVehicals = ({ item, index }) => {
     return (
       <Pressable
         onPress={() => {
-          this.setState({selectedVehical: item.id});
+          this.setState({ selectedVehical: item.id });
+
         }}
         style={{
           ...styles.smallCircle,
           backgroundColor:
             this.state.selectedVehical == item.id ? Colors.mainColor : null,
+          marginHorizontal: horizScale(9),
         }}>
-        <Image source={{uri: item.img}} style={styles.smallIconVehical} />
+        <Image source={{ uri: item.img }} style={styles.smallIconVehical} />
+        <Text style={{ ...styless.vahicalText, borderRadius: horizScale(7), alignSelf: 'center' }}>{item.name}</Text>
       </Pressable>
     );
   };
   render() {
+    // const active = useSelector(state => state.userData.vehiaclSelected)
+    // const dispatch = useDispatch()
     return (
       <SafeAreaView style={styles.container}>
         <Modal
           isVisible={this.state.showOption}
           animationType="slide"
           onBackdropPress={() =>
-            this.setState({showOption: !this.state.showOption})
+            this.setState({ showOption: !this.state.showOption })
           }
           onRequestClose={() => {
-            this.setState({showOption: !this.state.showOption});
+            this.setState({ showOption: !this.state.showOption });
           }}
-          style={{margin: 0}}>
+          style={{ margin: 0 }}>
           <StatusBar backgroundColor="rgba(52, 52, 52, 0.8)" />
           <View style={styles.modalBox1}>
             <LinearGradient
@@ -489,13 +527,13 @@ export default class Home extends React.Component {
                 </View>
                 <Pressable
                   onPress={() => {
-                    this.setState({showOption: !this.state.showOption});
+                    this.setState({ showOption: !this.state.showOption });
                   }}>
                   <AntDesign
                     name={'closecircle'}
                     size={40}
                     color={Colors.mainColor}
-                    style={{margin: horizScale(20)}}
+                    style={{ margin: horizScale(20) }}
                   />
                 </Pressable>
               </View>
@@ -516,7 +554,7 @@ export default class Home extends React.Component {
               <View style={styles.homeBtnView}>
                 <Pressable
                   onPress={() => {
-                    this.setState({showOption: !this.state.showOption});
+                    this.setState({ showOption: !this.state.showOption });
                     this.props.navigation.navigate('RiderList');
                   }}
                   style={{
@@ -524,13 +562,13 @@ export default class Home extends React.Component {
                     borderWidth: horizScale(2),
                     borderColor: Colors.black,
                   }}>
-                  <Text style={{...styles.buttonText, color: Colors.mainColor}}>
+                  <Text style={{ ...styles.buttonText, color: Colors.mainColor }}>
                     Need
                   </Text>
                 </Pressable>
                 <Pressable
                   onPress={() => {
-                    this.setState({showOption: !this.state.showOption});
+                    this.setState({ showOption: !this.state.showOption });
                     this.props.navigation.navigate('RegisterRide');
                   }}
                   style={{
@@ -546,161 +584,16 @@ export default class Home extends React.Component {
             </LinearGradient>
           </View>
         </Modal>
-        <Header navigation={this.props.navigation} />
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginHorizontal: horizScale(3),
-          }}>
-          <View>
-            <Image
-              style={{height: horizScale(15), width: horizScale(15)}}
-              source={CustomImage.leftSwipe}
-            />
-          </View>
-          <FlatList
-            data={this.state.vehicals}
-            horizontal
-            style={{marginHorizontal: horizScale(10)}}
-            renderItem={this.renderVehicals}
-            keyExtractor={(item, index) => item.id + index}
-            showsHorizontalScrollIndicator={false}
-          />
-          <View>
-            <Image
-              style={{height: horizScale(15), width: horizScale(15)}}
-              source={CustomImage.rightSwipe}
-            />
-          </View>
-        </View>
-        <Spacer height={5} />
-        <View
-          style={{
-            ...styles.rowSpaceEvenly,
-            borderBottomColor:
-              this.state.departure !== '' ? Colors.mainColor : Colors.darkgrey,
-            // borderBottomWidth: vertScale(2),
-            marginHorizontal: horizScale(15),
-            height: horizScale(60),
-          }}>
-          <View style={{flex: 0.8}}>
-            <FloatingLabelInput
-              staticLabel
-              label={'Departure Address'}
-              hint="Type here"
-              hintTextColor={Colors.grey}
-              value={this.state.departure}
-              multiline
-              onChangeText={value => this.setState({departure: value})}
-              customLabelStyles={styles.floatinglabelstyle}
-              labelStyles={styles.labelstyle}
-              inputStyles={styles.floatinginputstyle}
-              containerStyles={{
-                ...styles.floatingcontainerstyle,
-                marginHorizontal: 0,
-                // borderBottomWidth: 0,
-                paddingHorizontal: 15,
-                marginTop: 0,
-                borderRadius: 20,
-                borderWidth: 0.8,
-                borderBottomWidth: 0.8,
-              }}
-            />
-          </View>
-          <View style={stylesCustom.bottonContainer}>
-            <Pressable
-              onPress={() => {
-                alert('Coming Soon');
-              }}>
-              <Ionicons
-                name={'ios-search'}
-                size={20}
-                color={Colors.mainColor}
-              />
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                alert('Coming Soon');
-              }}>
-              <Octicons name={'pin'} size={20} color={Colors.mainColor} />
-            </Pressable>
-          </View>
-        </View>
-        <Spacer height={5} />
-        <View
-          style={{
-            ...styles.rowSpaceEvenly,
-            borderBottomColor:
-              this.state.destination !== ''
-                ? Colors.mainColor
-                : Colors.darkgrey,
-            // borderBottomWidth: vertScale(2),
-            marginHorizontal: horizScale(15),
-            height: horizScale(60),
-          }}>
-          <View style={{flex: 0.8}}>
-            <FloatingLabelInput
-              staticLabel
-              hint="Type here"
-              hintTextColor={Colors.grey}
-              label={'Destination Address'}
-              value={this.state.destination}
-              multiline
-              onChangeText={value => this.setState({destination: value})}
-              customLabelStyles={styles.floatinglabelstyle}
-              labelStyles={styles.labelstyle}
-              inputStyles={styles.floatinginputstyle}
-              containerStyles={{
-                ...styles.floatingcontainerstyle,
-                marginHorizontal: 0,
-                borderBottomWidth: 0,
-                marginTop: horizScale(1),
-                paddingHorizontal: 15,
-                borderRadius: 20,
-                borderWidth: 0.8,
-                borderBottomWidth: 0.8,
-              }}
-            />
-          </View>
-          <View style={stylesCustom.bottonContainer}>
-            <Pressable
-              onPress={() => {
-                alert('Coming Soon');
-              }}>
-              <Ionicons
-                name={'ios-search'}
-                size={20}
-                color={Colors.mainColor}
-              />
-            </Pressable>
-            <Pressable
-              onPress={() => {
-                alert('Coming Soon');
-              }}>
-              <Octicons name={'pin'} size={20} color={Colors.mainColor} />
-            </Pressable>
-          </View>
-        </View>
-        <Spacer height={5} />
-        <View
-          style={{
-            height: horizScale(590),
-            overflow: 'hidden',
-          }}>
-          {this.renderUsers()}
-        </View>
         <Modal
           isVisible={this.state.detailsModal}
           animationType="slide"
           onBackdropPress={() =>
-            this.setState({detailsModal: !this.state.detailsModal})
+            this.setState({ detailsModal: !this.state.detailsModal })
           }
           onRequestClose={() => {
-            this.setState({detailsModal: !this.state.detailsModal});
+            this.setState({ detailsModal: !this.state.detailsModal });
           }}
-          style={{margin: 0}}>
+          style={{ margin: 0 }}>
           <StatusBar backgroundColor="rgba(52, 52, 52, 0.8)" />
           <View style={styles.modalBox1}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -715,13 +608,13 @@ export default class Home extends React.Component {
                   </View>
                   <Pressable
                     onPress={() => {
-                      this.setState({detailsModal: !this.state.detailsModal});
+                      this.setState({ detailsModal: !this.state.detailsModal });
                     }}>
                     <AntDesign
                       name={'closecircle'}
                       size={40}
                       color={Colors.mainColor}
-                      style={{margin: horizScale(20)}}
+                      style={{ margin: horizScale(20) }}
                     />
                   </Pressable>
                 </View>
@@ -767,6 +660,13 @@ export default class Home extends React.Component {
                   <Text style={stylesCustom.text}>Description</Text>
                   <Text style={stylesCustom.text1}>
                     The Sucked burned. I have already got a new one of the same
+                    model. So it is just Required to change them. The Sucked burned. I have already got a new one of the same
+                    model. So it is just Required to change them.
+                    The Sucked burned. I have already got a new one of the same
+                    model. So it is just Required to change them.
+                    The Sucked burned. I have already got a new one of the same
+                    model. So it is just Required to change them.
+                    The Sucked burned. I have already got a new one of the same
                     model. So it is just Required to change them.
                   </Text>
                 </View>
@@ -775,6 +675,181 @@ export default class Home extends React.Component {
             </ScrollView>
           </View>
         </Modal>
+        <Header navigation={this.props.navigation} />
+
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginHorizontal: horizScale(3),
+          }}>
+
+          <FlatList
+            // data={this.state.vehicals}
+            data={this.state.vehicals.slice(0, 4)}
+            horizontal
+            style={{ paddingHorizontal: horizScale(12) }}
+            renderItem={this.renderVehicals}
+            keyExtractor={(item, index) => item.id + index}
+            showsHorizontalScrollIndicator={false}
+
+            ListFooterComponent={() => {
+              return (
+                <Pressable
+                  onPress={() => {
+                    this.props.navigation.navigate('Vehicals')
+                  }}
+                  style={{
+                    borderRadius: horizScale(7),
+                    borderWidth: horizScale(0.5),
+                    marginHorizontal: horizScale(8),
+                    marginVertical: horizScale(7),
+                    height: horizScale(50),
+                    width: horizScale(55),
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                  <Image source={CustomImage.rightSwipe} style={{ ...styles.smallIcon, bottom: 5 }} />
+                  <Text style={{ ...styless.vahicalText, borderRadius: horizScale(7) }}>More</Text>
+                </Pressable>
+              )
+            }}
+          />
+          {/* <View>
+            <Image
+              style={{ height: horizScale(15), width: horizScale(15) }}
+              source={CustomImage.rightSwipe}
+            />
+          </View> */}
+        </View>
+        <Spacer height={5} />
+        <View
+          style={{
+            ...styles.rowSpaceEvenly,
+            borderBottomColor:
+              this.state.departure !== '' ? Colors.mainColor : Colors.darkgrey,
+            // borderBottomWidth: vertScale(2),
+            marginHorizontal: horizScale(15),
+            height: horizScale(60),
+          }}>
+          <View style={{ flex: 0.82 }}>
+            <FloatingLabelInput
+              staticLabel
+              label={'Departure Address'}
+              hint="Type here"
+              hintTextColor={Colors.grey}
+              value={this.state.departure}
+              multiline
+              onChangeText={value => this.setState({ departure: value })}
+              customLabelStyles={styles.floatinglabelstyle}
+              labelStyles={styles.labelstyle}
+              inputStyles={styles.floatinginputstyle}
+              containerStyles={{
+                ...styles.floatingcontainerstyle,
+                marginHorizontal: 0,
+                // borderBottomWidth: 0,
+                paddingHorizontal: 15,
+                marginTop: 0,
+                borderRadius: horizScale(15),
+                borderWidth: 0.8,
+                borderBottomWidth: 0.8,
+              }}
+            />
+          </View>
+          <View style={stylesCustom.bottonContainer}>
+            <Pressable
+              onPress={() => {
+                alert('Coming Soon');
+              }}
+              style={{
+                borderRadius: horizScale(40),
+                borderWidth: horizScale(0.8),
+                width: horizScale(50),
+                height: horizScale(50),
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Octicons name={'pin'} size={20} color={Colors.mainColor} />
+            </Pressable>
+
+          </View>
+        </View>
+        <Spacer height={5} />
+        <View
+          style={{
+            ...styles.rowSpaceEvenly,
+            borderBottomColor:
+              this.state.destination !== ''
+                ? Colors.mainColor
+                : Colors.darkgrey,
+            // borderBottomWidth: vertScale(2),
+            marginHorizontal: horizScale(15),
+            height: horizScale(60),
+          }}>
+          <View style={{ flex: 0.82 }}>
+            <FloatingLabelInput
+              staticLabel
+              hint="Type here"
+              hintTextColor={Colors.grey}
+              label={'Destination Address'}
+              value={this.state.destination}
+              multiline
+              onChangeText={value => this.setState({ destination: value })}
+              customLabelStyles={styles.floatinglabelstyle}
+              labelStyles={styles.labelstyle}
+              inputStyles={styles.floatinginputstyle}
+              containerStyles={{
+                ...styles.floatingcontainerstyle,
+                marginHorizontal: 0,
+                borderBottomWidth: 0,
+                marginTop: horizScale(1),
+                paddingHorizontal: 15,
+                borderRadius: horizScale(15),
+                borderWidth: 0.8,
+                borderBottomWidth: 0.8,
+              }}
+            />
+          </View>
+          <View style={stylesCustom.bottonContainer}>
+            <Pressable
+              onPress={() => {
+                alert('Coming Soon');
+              }}
+              style={{
+                width: horizScale(50),
+                height: horizScale(50),
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: horizScale(40),
+                borderWidth: horizScale(0.8),
+              }}>
+              <Octicons name={'pin'} size={20} color={Colors.mainColor} />
+            </Pressable>
+
+          </View>
+        </View>
+        <Spacer height={5} />
+        <View style={styles.rowSpaceEvenly}>
+          <View style={styles.rowSpaceEvenly}>
+            <Text style={styles.TextH3}>23</Text>
+            <Text style={styles.unSelectedText}>Calls{'\n'}Today</Text>
+          </View>
+          <Pressable style={styles.selected}>
+            <Text style={styles.selectedText}>
+              Search
+            </Text>
+          </Pressable>
+        </View>
+        <View
+          style={{
+            height: horizScale(440),
+            overflow: 'hidden',
+          }}>
+          {this.renderUsers()}
+        </View>
+
+
       </SafeAreaView>
     );
   }
@@ -782,10 +857,12 @@ export default class Home extends React.Component {
 const stylesCustom = StyleSheet.create({
   bottonContainer: {
     minHeight: horizScale(80),
+
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    flex: 0.15,
+    flex: 0.12,
+    marginLeft: horizScale(5)
   },
   textContainer: {
     alignItems: 'center',
@@ -812,6 +889,15 @@ const stylesCustom = StyleSheet.create({
   },
 });
 const styless = StyleSheet.create({
+  vahicalText: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    fontSize: fontSize.tiny,
+    color: Colors.white,
+    backgroundColor: 'rgba(52,52,52,0.6)',
+    textAlign: 'center'
+  },
   smallCircle: {
     backgroundColor: Colors.white,
     borderRadius: horizScale(35),
@@ -820,6 +906,10 @@ const styless = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 10,
+  },
+  starImage: {
+    width: horizScale(20),
+    height: horizScale(20),
   },
   container: {
     display: 'flex',
@@ -858,12 +948,50 @@ const styless = StyleSheet.create({
   },
   cardTitle: {
     position: 'absolute',
-    top: 15,
+    top: horizScale(15),
     left: 20,
     fontWeight: 'bold',
     fontSize: fontSize.h5,
     margin: 10,
     color: Colors.mainColor,
+    zIndex: 2,
+  },
+
+  cartRating: {
+    position: 'absolute',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: horizScale(50),
+    left: 20,
+    fontWeight: 'bold',
+    fontSize: fontSize.h5,
+    margin: 10,
+    color: Colors.mainColor,
+    zIndex: 2,
+  },
+  cartPrice: {
+    position: 'absolute',
+    top: horizScale(75),
+    left: 20,
+    fontWeight: 'bold',
+    fontSize: fontSize.medium,
+    margin: 10,
+    color: Colors.white,
+    backgroundColor: 'rgba(52,52,52,0.6)',
+    paddingHorizontal: horizScale(5),
+    zIndex: 2,
+  },
+  cardDistance: {
+    position: 'absolute',
+    top: horizScale(95),
+    left: 20,
+    fontWeight: 'bold',
+    fontSize: fontSize.medium,
+    margin: 10,
+    color: Colors.white,
+    backgroundColor: 'rgba(52,52,52,0.6)',
+    paddingHorizontal: horizScale(5),
     zIndex: 2,
   },
   buttons: {

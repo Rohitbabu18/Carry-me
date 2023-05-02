@@ -17,7 +17,10 @@ const Header = props => {
                 }}>
                 <Image source={CustomImage.profile} style={styles.backBtnStyle} />
             </Pressable>
-            <Text style={styles.TextH3}>Carry Me</Text>
+            <View style={{ flex: 0.7 }}>
+
+                <Image source={CustomImage.logo} style={styles.Image} />
+            </View>
             <Pressable
                 style={styles.notificationView}
                 onPress={() => {
@@ -36,6 +39,12 @@ const Header = props => {
 export default Header;
 
 const styles = StyleSheet.create({
+    Image: {
+        height: horizScale(50),
+        width: horizScale(250),
+        resizeMode: 'contain',
+        alignSelf: 'flex-start'
+    },
     TextH3: {
         color: Colors.white,
         textAlignVertical: 'center',

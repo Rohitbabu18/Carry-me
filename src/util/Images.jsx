@@ -33,6 +33,8 @@ const CustomImage = {
   home: require('../assets/home.png'),
   chaticon: require('../assets/chaticon.png'),
   auto: require('../assets/auto.jpg'),
+  star: require('../assets/star.png'),
+  starEmpty: require('../assets/starEmpty.png'),
 
   rightSwipe: require('../assets/swipeRight.png'),
   leftSwipe: require('../assets/swipeLeft.png'),

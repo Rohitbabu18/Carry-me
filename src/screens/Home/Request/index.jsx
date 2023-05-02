@@ -8,15 +8,16 @@ import {
   TextInput,
   View,
   Pressable,
+  Dimensions
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Back from '../../Componets/Back';
-import {Colors} from '../../../util/Colors';
+import { Colors } from '../../../util/Colors';
 import CustomImage from '../../../util/Images';
-import {horizScale} from '../../../util/Layout';
+import { horizScale } from '../../../util/Layout';
 import fontSize from '../../../util/Fonts';
-import {Spacer} from '../../../util/Layout';
-import {Rating} from 'react-native-ratings';
+import { Spacer } from '../../../util/Layout';
+import { Rating } from 'react-native-ratings';
 
 const data = [
   {
@@ -81,29 +82,21 @@ const data = [
   },
 ];
 
-const RequestRide = ({navigation}) => {
+const RequestRide = ({ navigation }) => {
   const [searchText, setSearchText] = useState('');
-  const renderItem = ({item}) => {
+  const renderItem = ({ item }) => {
     return (
       <View style={styles.flatView}>
         <View style={styles.btnView}>
-          <Pressable
-            onPress={() => {
-              navigation.navigate('Chatting');
-            }}
-            style={({pressed}) =>
-              pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
-            }>
-            <Image source={CustomImage.message} style={styles.iconStyle} />
-          </Pressable>
+
           <Pressable
             onPress={() => {
               alert('Coming Soon');
             }}
-            style={({pressed}) =>
+            style={({ pressed }) =>
               pressed
-                ? {...styles.imgView, backgroundColor: Colors.red, opacity: 0.6}
-                : {...styles.imgView, backgroundColor: Colors.red}
+                ? { ...styles.imgView, backgroundColor: Colors.red, opacity: 0.6 }
+                : { ...styles.imgView, backgroundColor: Colors.red }
             }>
             <Image source={CustomImage.delete} style={styles.iconStyle} />
           </Pressable>
@@ -122,20 +115,21 @@ const RequestRide = ({navigation}) => {
               imageSize={18}
             />
             <Text style={styles.numRating}>({item.numOfReviews})</Text>
+            <Text style={styles.numRating}>12 Km from here</Text>
           </View>
           <Text style={styles.priceText}>
-            Price :<Text style={{fontSize: fontSize.medium}}>{item.price}</Text>{' '}
+            Price :<Text style={{ fontSize: fontSize.medium }}>{item.price}</Text>{' '}
             /-
           </Text>
         </View>
         <Spacer height={10} />
         <View style={styles.subViewBtm}>
-          <View style={{flex: 0.5, alignItems: 'center'}}>
+          <View style={{ flex: 0.5, alignItems: 'center' }}>
             <Text style={styles.fromToText}>From :</Text>
             <Text style={styles.boldText}>{item.from}</Text>
           </View>
           <View style={styles.vertiLine}></View>
-          <View style={{flex: 0.5, alignItems: 'center'}}>
+          <View style={{ flex: 0.5, alignItems: 'center' }}>
             <Text style={styles.fromToText}>To :</Text>
             <Text style={styles.boldText}>{item.to}</Text>
           </View>
@@ -144,13 +138,17 @@ const RequestRide = ({navigation}) => {
     );
   };
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: Colors.white}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white, width: Dimensions.get('window').width }}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
       />
       <View style={styles.headerView}>
-        <Text style={{...styles.backText, color: Colors.white}}>Requests</Text>
+        <Text style={{ ...styles.backText, color: Colors.white }}>Requests</Text>
+        <View >
+
+          <Image source={CustomImage.logo} style={styles.Image} />
+        </View>
       </View>
       <View style={styles.searchView}>
         <TextInput
@@ -287,5 +285,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: horizScale(10),
     paddingVertical: horizScale(15),
     backgroundColor: Colors.mainColor,
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  Image: {
+    height: horizScale(50),
+    width: horizScale(180),
+    resizeMode: 'contain',
+    alignSelf: 'flex-end',
   },
 });
