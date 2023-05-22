@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  ScrollView,
   Text,
   View,
 } from 'react-native';
@@ -94,97 +95,100 @@ const GenerateWorkmanId = ({navigation}) => {
           <Spacer height={40} />
         </View>
       </Modal>
-      <View style={styles.rowCenter}>
-        <View style={styles.headerView}>
-          <Back navigation={navigation} color={Colors.black} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.rowCenter}>
+          <View style={styles.headerView}>
+            <Back navigation={navigation} color={Colors.black} />
+          </View>
+          <Pressable
+            onPress={() => {
+              setVisible(true);
+            }}
+            style={{...styles.selected, marginRight: horizScale(20)}}>
+            <Image
+              source={CustomImage.demo}
+              style={{
+                ...styles.smallIcon,
+                backgroundColor: Colors.white,
+                borderRadius: horizScale(7),
+              }}
+            />
+            <Text style={styles.selectedText}>Demo</Text>
+          </Pressable>
         </View>
+
+        <Spacer height={20} />
+        <View style={styles.rowSpaceEvenly}>
+          <View style={{flex: 0.6}}>
+            <Text style={styles.TextH5}>Welcome to</Text>
+            <Text style={styles.TextH3}>Workman Select </Text>
+          </View>
+          <View style={{flex: 0.3}}>
+            <ProgressCircle
+              percent={persent}
+              radius={35}
+              borderWidth={8}
+              color={Colors.mainColor}
+              shadowColor={Colors.grey}
+              bgColor={Colors.white}>
+              <Text
+                style={{
+                  fontSize: fontSize.regular,
+                  color: Colors.mainColor,
+                  fontWeight: '700',
+                }}>{`${persent}%`}</Text>
+            </ProgressCircle>
+          </View>
+        </View>
+        <Spacer height={20} />
+        <Text style={styles.unSelectedText}>
+          “Welcome to Carry me”{'\n'}You need to generate a new User ID.{'\n'}
+          Move your finger in the character field to generate a random User ID.{' '}
+        </Text>
+        <Spacer height={20} />
+        <GestureRecognizer
+          onSwipe={direction => onSwipe(direction)}
+          style={styles.codeGeneretorContainer}>
+          <Text style={styles.codeGeneretorText}>{t0}</Text>
+          <Text style={styles.codeGeneretorText}>{t1}</Text>
+          <Text style={styles.codeGeneretorText}>{t2}</Text>
+          <Text style={styles.codeGeneretorText}>{t3}</Text>
+          <Text style={styles.codeGeneretorText}>{t4}</Text>
+          <Text style={styles.codeGeneretorText}>{t5}</Text>
+          <Text style={styles.codeGeneretorText}>{t6}</Text>
+          <Text style={styles.codeGeneretorText}>{t7}</Text>
+          <Text style={styles.codeGeneretorText}>{t8}</Text>
+          <Text style={styles.codeGeneretorText}>{t9}</Text>
+          <Text style={styles.codeGeneretorText}>{tA}</Text>
+          <Text style={styles.codeGeneretorText}>{tB}</Text>
+          <Text style={styles.codeGeneretorText}>{tC}</Text>
+          <Text style={styles.codeGeneretorText}>{tD}</Text>
+          <Text style={styles.codeGeneretorText}>{tE}</Text>
+          <Text style={styles.codeGeneretorText}>{tF}</Text>
+        </GestureRecognizer>
+
+        <Spacer height={15} />
+        {Key == '' ? null : (
+          <Text style={styles.smallText}>
+            We have created your User ID{' '}
+            <Text style={styles.headingText}>{Key}</Text>
+          </Text>
+        )}
+        <Spacer height={20} />
         <Pressable
           onPress={() => {
-            setVisible(true);
+            if (Key == '') {
+              ToastMessage(
+                'Drag your finger on hexa number box. To create workman ID',
+              );
+            } else {
+              navigation.navigate('Signup1', {workmanId: Key});
+            }
           }}
-          style={{...styles.selected, marginRight: horizScale(20)}}>
-          <Image
-            source={CustomImage.demo}
-            style={{
-              ...styles.smallIcon,
-              backgroundColor: Colors.white,
-              borderRadius: horizScale(7),
-            }}
-          />
-          <Text style={styles.selectedText}>Demo</Text>
+          style={styles.button}>
+          <Text style={styles.buttonText}>Continue</Text>
         </Pressable>
-      </View>
-
-      <Spacer height={20} />
-      <View style={styles.rowSpaceEvenly}>
-        <View style={{flex: 0.6}}>
-          <Text style={styles.TextH5}>Welcome to</Text>
-          <Text style={styles.TextH3}>Workman Select </Text>
-        </View>
-        <View style={{flex: 0.3}}>
-          <ProgressCircle
-            percent={persent}
-            radius={35}
-            borderWidth={8}
-            color={Colors.mainColor}
-            shadowColor={Colors.grey}
-            bgColor={Colors.white}>
-            <Text
-              style={{
-                fontSize: fontSize.regular,
-                color: Colors.mainColor,
-                fontWeight: '700',
-              }}>{`${persent}%`}</Text>
-          </ProgressCircle>
-        </View>
-      </View>
-      <Spacer height={20} />
-      <Text style={styles.unSelectedText}>
-        We need to generate new Workman Id.{'\n'}Move your finger in the
-        character field to generate{'\n'}random data for your key.{' '}
-      </Text>
-      <Spacer height={20} />
-      <GestureRecognizer
-        onSwipe={direction => onSwipe(direction)}
-        style={styles.codeGeneretorContainer}>
-        <Text style={styles.codeGeneretorText}>{t0}</Text>
-        <Text style={styles.codeGeneretorText}>{t1}</Text>
-        <Text style={styles.codeGeneretorText}>{t2}</Text>
-        <Text style={styles.codeGeneretorText}>{t3}</Text>
-        <Text style={styles.codeGeneretorText}>{t4}</Text>
-        <Text style={styles.codeGeneretorText}>{t5}</Text>
-        <Text style={styles.codeGeneretorText}>{t6}</Text>
-        <Text style={styles.codeGeneretorText}>{t7}</Text>
-        <Text style={styles.codeGeneretorText}>{t8}</Text>
-        <Text style={styles.codeGeneretorText}>{t9}</Text>
-        <Text style={styles.codeGeneretorText}>{tA}</Text>
-        <Text style={styles.codeGeneretorText}>{tB}</Text>
-        <Text style={styles.codeGeneretorText}>{tC}</Text>
-        <Text style={styles.codeGeneretorText}>{tD}</Text>
-        <Text style={styles.codeGeneretorText}>{tE}</Text>
-        <Text style={styles.codeGeneretorText}>{tF}</Text>
-      </GestureRecognizer>
-
-      <Spacer height={15} />
-      {Key == '' ? null : (
-        <Text style={styles.smallText}>
-          Your Key - <Text style={styles.headingText}>{Key}</Text>
-        </Text>
-      )}
-      <Spacer height={20} />
-      <Pressable
-        onPress={() => {
-          if (Key == '') {
-            ToastMessage(
-              'Drag your finger on hexa number box. To create workman ID',
-            );
-          } else {
-            navigation.navigate('Signup1', {workmanId: Key});
-          }
-        }}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </Pressable>
+      </ScrollView>
     </SafeAreaView>
   );
 };

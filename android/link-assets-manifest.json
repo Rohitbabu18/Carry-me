@@ -1,0 +1,145 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/americankestral1_2.ttf",
+      "sha1": "d84ffe43a0031b6b1ae0690a655a66fc4038988f"
+    },
+    {
+      "path": "assets/fonts/americankestral3d1_2.ttf",
+      "sha1": "032adfe093b37062de63784db13f9965c8dc06ae"
+    },
+    {
+      "path": "assets/fonts/americankestralcond1_2.ttf",
+      "sha1": "820d1d46bbc10fa59dcc7fd22639b0f6ac28ee34"
+    },
+    {
+      "path": "assets/fonts/americankestralexpand1_2.ttf",
+      "sha1": "761893e3670c85371215a212f340453510b61b4a"
+    },
+    {
+      "path": "assets/fonts/americankestralgrad1_2.ttf",
+      "sha1": "c76f31dfc6b48820f9e5cafe54f16a69b265048e"
+    },
+    {
+      "path": "assets/fonts/americankestralhalf1_2.ttf",
+      "sha1": "572f2e660bda0ad10c7aa2fd787502e04b4ee61e"
+    },
+    {
+      "path": "assets/fonts/americankestralital1_2.ttf",
+      "sha1": "9bf1751f097c4a14b655c06075054e55bf3c673f"
+    },
+    {
+      "path": "assets/fonts/americankestrallaser1_2.ttf",
+      "sha1": "5fa243fe9c7878f26802ac76472b393db151ad24"
+    },
+    {
+      "path": "assets/fonts/americankestralleft1_2.ttf",
+      "sha1": "3fd5594719570ff43ec3b5b5bed0a7bd6a9c613e"
+    },
+    {
+      "path": "assets/fonts/americankestralsemistraight1_2.ttf",
+      "sha1": "c5248e9ba13f4d7d96303dc1ad26f85319d1507c"
+    },
+    {
+      "path": "assets/fonts/americankestralstraight1_2.ttf",
+      "sha1": "5600ab7f1bb636b1b0540d32feb286a2f5debc9a"
+    },
+    {
+      "path": "assets/fonts/americankestralstraight3d1_2.ttf",
+      "sha1": "e6fe43a5ab10ab07dee1419dff2a46f3136ba9d9"
+    },
+    {
+      "path": "assets/fonts/americankestralstraightcond1_2.ttf",
+      "sha1": "6238ea18973b5f72a73311da547e925729f068b6"
+    },
+    {
+      "path": "assets/fonts/americankestralstraightexpand1_2.ttf",
+      "sha1": "8a249854259a8b18c59a8bc9ebb8ab22cf235c92"
+    },
+    {
+      "path": "assets/fonts/americankestralstraightgrad1_2.ttf",
+      "sha1": "0395d7efb7d0678af17bdc90131d4119077588a0"
+    },
+    {
+      "path": "assets/fonts/americankestralstraighthalf1_2.ttf",
+      "sha1": "ec61fe9adb65f0e89f7e07486dfb3744125f0722"
+    },
+    {
+      "path": "assets/fonts/americankestralstraightlaser1_2.ttf",
+      "sha1": "bd37591467e7e1a1f19738abe364d9b853bc3ef1"
+    },
+    {
+      "path": "assets/fonts/americankestrel.otf",
+      "sha1": "8f1330f601ad44968bda9d26ce691b755c1be4cb"
+    },
+    {
+      "path": "assets/fonts/americankestrel.txt",
+      "sha1": "1e21d4c47c33b6653bc4d926a9a824da126649bc"
+    },
+    {
+      "path": "assets/fonts/americankestrel3d.otf",
+      "sha1": "42a49e0c7a8d5885c917314e7cb6a25f245adce9"
+    },
+    {
+      "path": "assets/fonts/americankestrelcondensed.otf",
+      "sha1": "bd892969eaf9586ab4f832de6e97088522988d54"
+    },
+    {
+      "path": "assets/fonts/americankestrelexpanded.otf",
+      "sha1": "fbb98c08dda70cb4fb8fb9639cc803ebbe3d3c85"
+    },
+    {
+      "path": "assets/fonts/americankestrelgradient.otf",
+      "sha1": "ae2c34aed3e4f817cc498215c6807dac25e8a8ac"
+    },
+    {
+      "path": "assets/fonts/americankestrelhalftone.otf",
+      "sha1": "4bcf6744c2e2f65368c28dc28ce4f462da348db6"
+    },
+    {
+      "path": "assets/fonts/americankestrelitalic.otf",
+      "sha1": "dc47198e72e255abd673c0971ad236030cb7fafb"
+    },
+    {
+      "path": "assets/fonts/americankestrellaser.otf",
+      "sha1": "87b1e2a68946e51c2e3c13da37e1b90d4ed628fd"
+    },
+    {
+      "path": "assets/fonts/americankestrelleftalic.otf",
+      "sha1": "4e4b0e8bcc6bf4f061d95e8ded61be9421276d16"
+    },
+    {
+      "path": "assets/fonts/americankestrelsemistraight.otf",
+      "sha1": "240f98632902db0febfa5307c6eb150ae5cc42ff"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraight.otf",
+      "sha1": "c17b3029c6a9bf817babafc9fe920b65e01f169a"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraight3d.otf",
+      "sha1": "08073ff597a43649fa2bf2e733f8d32028d4b1c7"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraightcond.otf",
+      "sha1": "5a925f8e86548ba7edcdaf54ac636387b3e133d5"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraightexp.otf",
+      "sha1": "4dd2a40c3e0565b62ea1f826bc13a89b2ddbd4a6"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraightgrad.otf",
+      "sha1": "e848501bf2063526bc1dae915df9813c5fc0936c"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraighthalf.otf",
+      "sha1": "f9eb61b1aa85581efa21438df8212c7ac065631d"
+    },
+    {
+      "path": "assets/fonts/americankestrelstraightlaser.otf",
+      "sha1": "0c324ae0a5b78265175098a70c0cc111a418b0f1"
+    }
+  ]
+}

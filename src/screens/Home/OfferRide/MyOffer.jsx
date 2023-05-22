@@ -8,16 +8,15 @@ import {
   TextInput,
   View,
   Pressable,
-  Dimensions
+  Dimensions,
 } from 'react-native';
-import React, { useState } from 'react';
-import Back from '../../Componets/Back';
-import { Colors } from '../../../util/Colors';
+import React, {useState} from 'react';
+import {Colors} from '../../../util/Colors';
 import CustomImage from '../../../util/Images';
-import { horizScale } from '../../../util/Layout';
+import {horizScale} from '../../../util/Layout';
 import fontSize from '../../../util/Fonts';
-import { Spacer } from '../../../util/Layout';
-import { Rating } from 'react-native-ratings';
+import {Spacer} from '../../../util/Layout';
+import {Rating} from 'react-native-ratings';
 
 const data = [
   {
@@ -82,9 +81,9 @@ const data = [
   },
 ];
 
-const MyOffer = ({ navigation }) => {
+const MyOffer = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View style={styles.flatView}>
         <View style={styles.btnView}>
@@ -92,8 +91,8 @@ const MyOffer = ({ navigation }) => {
             onPress={() => {
               navigation.navigate('RegisterRide');
             }}
-            style={({ pressed }) =>
-              pressed ? { ...styles.imgView, opacity: 0.8 } : styles.imgView
+            style={({pressed}) =>
+              pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
             }>
             <Image source={CustomImage.edit} style={styles.iconStyle} />
           </Pressable>
@@ -101,10 +100,10 @@ const MyOffer = ({ navigation }) => {
             onPress={() => {
               alert('Coming Soon');
             }}
-            style={({ pressed }) =>
+            style={({pressed}) =>
               pressed
-                ? { ...styles.imgView, backgroundColor: Colors.red, opacity: 0.6 }
-                : { ...styles.imgView, backgroundColor: Colors.red }
+                ? {...styles.imgView, backgroundColor: Colors.red, opacity: 0.6}
+                : {...styles.imgView, backgroundColor: Colors.red}
             }>
             <Image source={CustomImage.delete} style={styles.iconStyle} />
           </Pressable>
@@ -125,18 +124,18 @@ const MyOffer = ({ navigation }) => {
             <Text style={styles.numRating}>({item.numOfReviews})</Text>
           </View>
           <Text style={styles.priceText}>
-            Price :<Text style={{ fontSize: fontSize.medium }}>{item.price}</Text>{' '}
+            Price :<Text style={{fontSize: fontSize.medium}}>{item.price}</Text>{' '}
             /-
           </Text>
         </View>
         <Spacer height={10} />
         <View style={styles.subViewBtm}>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>From :</Text>
             <Text style={styles.boldText}>{item.from}</Text>
           </View>
           <View style={styles.vertiLine}></View>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>To :</Text>
             <Text style={styles.boldText}>{item.to}</Text>
           </View>
@@ -144,16 +143,37 @@ const MyOffer = ({ navigation }) => {
       </View>
     );
   };
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white, width: Dimensions.get('window').width }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      }}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
       />
       <View style={styles.headerView}>
-        <Text style={{ ...styles.backText, color: Colors.white }}>My Offers</Text>
-        <View >
-
+        <View style={styles.rowView}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
+            <Image source={CustomImage.profile} style={styles.profileIcon} />
+          </Pressable>
+          <Text
+            style={{
+              ...styles.backText,
+              color: Colors.white,
+              marginLeft: horizScale(15),
+            }}>
+            My Offers
+          </Text>
+        </View>
+        <View>
           <Image source={CustomImage.logo} style={styles.Image} />
         </View>
       </View>
@@ -168,10 +188,11 @@ const MyOffer = ({ navigation }) => {
         <Image source={CustomImage.search} style={styles.searchIcon} />
       </View>
       <FlatList data={data} renderItem={renderItem} />
+      <Spacer height={60} />
       <Pressable
         style={styles.addButton}
         onPress={() => {
-          navigation.navigate('RegisterRide', { popup: true });
+          navigation.navigate('RegisterRide', {popup: true});
         }}>
         <Image source={CustomImage.plus} style={styles.addButtonImage} />
         <Text style={styles.buttonText}>Add New{'\n'}Offer</Text>
@@ -183,6 +204,15 @@ const MyOffer = ({ navigation }) => {
 export default MyOffer;
 
 const styles = StyleSheet.create({
+  profileIcon: {
+    height: horizScale(35),
+    width: horizScale(35),
+    resizeMode: 'contain',
+  },
+  rowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   backText: {
     color: Colors.white,
     marginHorizontal: horizScale(5),
@@ -199,7 +229,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.mainColor,
     borderRadius: horizScale(40),
     position: 'absolute',
-    bottom: horizScale(30),
+    bottom: horizScale(80),
     right: horizScale(20),
     padding: horizScale(15),
     alignItems: 'center',
@@ -324,7 +354,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   Image: {
     height: horizScale(50),

@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Auth/Login';
 import TermsAndCondition from '../screens/Auth/TermsAndCondition';
 import RiderList from '../screens/Home/OfferRide/Matches';
@@ -21,6 +21,7 @@ import Notification from '../screens/Home/Notification';
 import UpdateProfile from '../screens/Home/Profile/UpdateProfile';
 import ChangePassword from '../screens/Auth/ChangePassword';
 import Vehicals from '../screens/Home/Home/Vehicals';
+import UpdateTravel from '../screens/Home/Profile/UpdateTravel';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +61,7 @@ const HomeStack = () => {
       <Stack.Screen name="Chatting" component={Chatting} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+      <Stack.Screen name="UpdateTravel" component={UpdateTravel} />
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="Forget" component={Forget} />
       <Stack.Screen name="VerifySecurityDate" component={VerifySecurityDate} />

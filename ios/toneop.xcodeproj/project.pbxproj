@@ -14,6 +14,41 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-toneop-toneopTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-toneop-toneopTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		478077D444F64E0CBDD0D7BD /* americankestrel.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E4488B322EA4FBC93544BDC /* americankestrel.otf */; };
+		30738849F2F7435B98689C95 /* americankestrel3d.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6BF9B2E31FD3424AA28163E8 /* americankestrel3d.otf */; };
+		C51142574063489CA6126A19 /* americankestrelcondensed.otf in Resources */ = {isa = PBXBuildFile; fileRef = 840DAE3C528F451E8B88807D /* americankestrelcondensed.otf */; };
+		63833895CDA84AB9B6A07603 /* americankestrelexpanded.otf in Resources */ = {isa = PBXBuildFile; fileRef = D696355C3C1C45989B2AE1DA /* americankestrelexpanded.otf */; };
+		48553DCED2CE458BBBDE3E77 /* americankestrelgradient.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2F1AE08C7DC44D4BB1B7B950 /* americankestrelgradient.otf */; };
+		A4B75BC54F37431FBFA4B051 /* americankestrelhalftone.otf in Resources */ = {isa = PBXBuildFile; fileRef = 893613C36FAA4983BFEE2A28 /* americankestrelhalftone.otf */; };
+		1B701AD5CBAA41F983B9910D /* americankestrelitalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4536C8BA87E44F73ACA60333 /* americankestrelitalic.otf */; };
+		CB7130ADE81B4361A01CC387 /* americankestrellaser.otf in Resources */ = {isa = PBXBuildFile; fileRef = ED9889C10EF7447B87DDFABA /* americankestrellaser.otf */; };
+		AE9ABF2868E04AA7A55275FD /* americankestrelleftalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9C74F0D6B48346CB937B18FF /* americankestrelleftalic.otf */; };
+		1BFCE0E15E784F749F6865C2 /* americankestrelsemistraight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 41575834D9BE4289A3AD49B1 /* americankestrelsemistraight.otf */; };
+		845F3A42026C459F98DB83CE /* americankestrelstraight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D69D95D89DA4D84B931CBBF /* americankestrelstraight.otf */; };
+		B3D0D8F2597D4CC687336D6D /* americankestrelstraight3d.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4ACFFA118DE4285931A1F84 /* americankestrelstraight3d.otf */; };
+		29DC332898F6401D8D561D5A /* americankestrelstraightcond.otf in Resources */ = {isa = PBXBuildFile; fileRef = B632F071855946D19C5545CE /* americankestrelstraightcond.otf */; };
+		69574FCA1464473C916B1387 /* americankestrelstraightexp.otf in Resources */ = {isa = PBXBuildFile; fileRef = F6711548DFC6417E8274FF76 /* americankestrelstraightexp.otf */; };
+		B35E3A38BE6B4D5DBB7B017A /* americankestrelstraightgrad.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02D5E94548624DAA8101277E /* americankestrelstraightgrad.otf */; };
+		6DF4DC5213EA4630BD5A643A /* americankestrelstraighthalf.otf in Resources */ = {isa = PBXBuildFile; fileRef = 12A1D28D42FE4BFE8CBDD5AB /* americankestrelstraighthalf.otf */; };
+		DCCE21D470CE452AA7F1F4DA /* americankestrelstraightlaser.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4DD2E16A09F84CC59FF0E0BB /* americankestrelstraightlaser.otf */; };
+		350F1DCEE6DE4823B1005440 /* americankestral1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17C0E843E9D74E59AF91B4EB /* americankestral1_2.ttf */; };
+		8D905BED620F4033AC90F7AA /* americankestral3d1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5554A7BF666E4C7CB571EC16 /* americankestral3d1_2.ttf */; };
+		827DB2790C6940629A75FCA8 /* americankestralcond1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD1BE82C06784652AC5DC60E /* americankestralcond1_2.ttf */; };
+		11039B000928457E9C737D59 /* americankestralexpand1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1214D27F0D9847ECAB3C246F /* americankestralexpand1_2.ttf */; };
+		C0AD7CB0D52440AAB4614EA6 /* americankestralgrad1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1DF60A08D3545C880132D2A /* americankestralgrad1_2.ttf */; };
+		D8006C68C3CF4CD5A11749BD /* americankestralhalf1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C6D73A60B714772A8B6DB13 /* americankestralhalf1_2.ttf */; };
+		223F8212BE3D4FC1BF3E45D8 /* americankestralital1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E104407999734CD8A0BC89B5 /* americankestralital1_2.ttf */; };
+		9064CD02D062458881141098 /* americankestrallaser1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADE14C0B0425474DA84E57D1 /* americankestrallaser1_2.ttf */; };
+		7D7756798A9248F0BF849716 /* americankestralleft1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 960EA62E90C2460AB33DCE38 /* americankestralleft1_2.ttf */; };
+		D267B78A82DB46F69B08CAFC /* americankestralsemistraight1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C417CF2D4BF4F77915CD50D /* americankestralsemistraight1_2.ttf */; };
+		857A877F0BD64C3DB7150C0E /* americankestralstraight1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F19C4CD84784677B72F08B6 /* americankestralstraight1_2.ttf */; };
+		80334A5348BA466896499C6C /* americankestralstraight3d1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81DBD0BF75404C2386610979 /* americankestralstraight3d1_2.ttf */; };
+		422730B9C563496698C20C68 /* americankestralstraightcond1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 117FCBCD6F3E48A69067DDAD /* americankestralstraightcond1_2.ttf */; };
+		CC75D51E484247E7AE52EE01 /* americankestralstraightexpand1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C7825567CE343E9AAD95493 /* americankestralstraightexpand1_2.ttf */; };
+		94B5BA1E39EA42ACA21CD910 /* americankestralstraightgrad1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C033D3E17C49B8A330B84F /* americankestralstraightgrad1_2.ttf */; };
+		E113767151AD4963BBB4A4D6 /* americankestralstraighthalf1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C4ACCB62165438595452CE5 /* americankestralstraighthalf1_2.ttf */; };
+		0687A752135D4D5EB5CC62D0 /* americankestralstraightlaser1_2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FDD46AA8A81A4FBBB0730AD0 /* americankestralstraightlaser1_2.ttf */; };
+		617C40EE7FC94468B988E38D /* americankestrel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 150788B7CA864EC2A9865203 /* americankestrel.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +79,41 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = toneop/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-toneop-toneopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-toneop-toneopTests.release.xcconfig"; path = "Target Support Files/Pods-toneop-toneopTests/Pods-toneop-toneopTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		7E4488B322EA4FBC93544BDC /* americankestrel.otf */ = {isa = PBXFileReference; name = "americankestrel.otf"; path = "../assets/fonts/americankestrel.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6BF9B2E31FD3424AA28163E8 /* americankestrel3d.otf */ = {isa = PBXFileReference; name = "americankestrel3d.otf"; path = "../assets/fonts/americankestrel3d.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		840DAE3C528F451E8B88807D /* americankestrelcondensed.otf */ = {isa = PBXFileReference; name = "americankestrelcondensed.otf"; path = "../assets/fonts/americankestrelcondensed.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D696355C3C1C45989B2AE1DA /* americankestrelexpanded.otf */ = {isa = PBXFileReference; name = "americankestrelexpanded.otf"; path = "../assets/fonts/americankestrelexpanded.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F1AE08C7DC44D4BB1B7B950 /* americankestrelgradient.otf */ = {isa = PBXFileReference; name = "americankestrelgradient.otf"; path = "../assets/fonts/americankestrelgradient.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		893613C36FAA4983BFEE2A28 /* americankestrelhalftone.otf */ = {isa = PBXFileReference; name = "americankestrelhalftone.otf"; path = "../assets/fonts/americankestrelhalftone.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4536C8BA87E44F73ACA60333 /* americankestrelitalic.otf */ = {isa = PBXFileReference; name = "americankestrelitalic.otf"; path = "../assets/fonts/americankestrelitalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED9889C10EF7447B87DDFABA /* americankestrellaser.otf */ = {isa = PBXFileReference; name = "americankestrellaser.otf"; path = "../assets/fonts/americankestrellaser.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9C74F0D6B48346CB937B18FF /* americankestrelleftalic.otf */ = {isa = PBXFileReference; name = "americankestrelleftalic.otf"; path = "../assets/fonts/americankestrelleftalic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		41575834D9BE4289A3AD49B1 /* americankestrelsemistraight.otf */ = {isa = PBXFileReference; name = "americankestrelsemistraight.otf"; path = "../assets/fonts/americankestrelsemistraight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6D69D95D89DA4D84B931CBBF /* americankestrelstraight.otf */ = {isa = PBXFileReference; name = "americankestrelstraight.otf"; path = "../assets/fonts/americankestrelstraight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A4ACFFA118DE4285931A1F84 /* americankestrelstraight3d.otf */ = {isa = PBXFileReference; name = "americankestrelstraight3d.otf"; path = "../assets/fonts/americankestrelstraight3d.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B632F071855946D19C5545CE /* americankestrelstraightcond.otf */ = {isa = PBXFileReference; name = "americankestrelstraightcond.otf"; path = "../assets/fonts/americankestrelstraightcond.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F6711548DFC6417E8274FF76 /* americankestrelstraightexp.otf */ = {isa = PBXFileReference; name = "americankestrelstraightexp.otf"; path = "../assets/fonts/americankestrelstraightexp.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		02D5E94548624DAA8101277E /* americankestrelstraightgrad.otf */ = {isa = PBXFileReference; name = "americankestrelstraightgrad.otf"; path = "../assets/fonts/americankestrelstraightgrad.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		12A1D28D42FE4BFE8CBDD5AB /* americankestrelstraighthalf.otf */ = {isa = PBXFileReference; name = "americankestrelstraighthalf.otf"; path = "../assets/fonts/americankestrelstraighthalf.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4DD2E16A09F84CC59FF0E0BB /* americankestrelstraightlaser.otf */ = {isa = PBXFileReference; name = "americankestrelstraightlaser.otf"; path = "../assets/fonts/americankestrelstraightlaser.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		17C0E843E9D74E59AF91B4EB /* americankestral1_2.ttf */ = {isa = PBXFileReference; name = "americankestral1_2.ttf"; path = "../assets/fonts/americankestral1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5554A7BF666E4C7CB571EC16 /* americankestral3d1_2.ttf */ = {isa = PBXFileReference; name = "americankestral3d1_2.ttf"; path = "../assets/fonts/americankestral3d1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD1BE82C06784652AC5DC60E /* americankestralcond1_2.ttf */ = {isa = PBXFileReference; name = "americankestralcond1_2.ttf"; path = "../assets/fonts/americankestralcond1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1214D27F0D9847ECAB3C246F /* americankestralexpand1_2.ttf */ = {isa = PBXFileReference; name = "americankestralexpand1_2.ttf"; path = "../assets/fonts/americankestralexpand1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C1DF60A08D3545C880132D2A /* americankestralgrad1_2.ttf */ = {isa = PBXFileReference; name = "americankestralgrad1_2.ttf"; path = "../assets/fonts/americankestralgrad1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7C6D73A60B714772A8B6DB13 /* americankestralhalf1_2.ttf */ = {isa = PBXFileReference; name = "americankestralhalf1_2.ttf"; path = "../assets/fonts/americankestralhalf1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E104407999734CD8A0BC89B5 /* americankestralital1_2.ttf */ = {isa = PBXFileReference; name = "americankestralital1_2.ttf"; path = "../assets/fonts/americankestralital1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ADE14C0B0425474DA84E57D1 /* americankestrallaser1_2.ttf */ = {isa = PBXFileReference; name = "americankestrallaser1_2.ttf"; path = "../assets/fonts/americankestrallaser1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		960EA62E90C2460AB33DCE38 /* americankestralleft1_2.ttf */ = {isa = PBXFileReference; name = "americankestralleft1_2.ttf"; path = "../assets/fonts/americankestralleft1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7C417CF2D4BF4F77915CD50D /* americankestralsemistraight1_2.ttf */ = {isa = PBXFileReference; name = "americankestralsemistraight1_2.ttf"; path = "../assets/fonts/americankestralsemistraight1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4F19C4CD84784677B72F08B6 /* americankestralstraight1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraight1_2.ttf"; path = "../assets/fonts/americankestralstraight1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		81DBD0BF75404C2386610979 /* americankestralstraight3d1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraight3d1_2.ttf"; path = "../assets/fonts/americankestralstraight3d1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		117FCBCD6F3E48A69067DDAD /* americankestralstraightcond1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraightcond1_2.ttf"; path = "../assets/fonts/americankestralstraightcond1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4C7825567CE343E9AAD95493 /* americankestralstraightexpand1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraightexpand1_2.ttf"; path = "../assets/fonts/americankestralstraightexpand1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		36C033D3E17C49B8A330B84F /* americankestralstraightgrad1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraightgrad1_2.ttf"; path = "../assets/fonts/americankestralstraightgrad1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0C4ACCB62165438595452CE5 /* americankestralstraighthalf1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraighthalf1_2.ttf"; path = "../assets/fonts/americankestralstraighthalf1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FDD46AA8A81A4FBBB0730AD0 /* americankestralstraightlaser1_2.ttf */ = {isa = PBXFileReference; name = "americankestralstraightlaser1_2.ttf"; path = "../assets/fonts/americankestralstraightlaser1_2.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		150788B7CA864EC2A9865203 /* americankestrel.txt */ = {isa = PBXFileReference; name = "americankestrel.txt"; path = "../assets/fonts/americankestrel.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +192,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				0EE8913705F4409F851CA52B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +218,49 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		0EE8913705F4409F851CA52B /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				7E4488B322EA4FBC93544BDC /* americankestrel.otf */,
+				6BF9B2E31FD3424AA28163E8 /* americankestrel3d.otf */,
+				840DAE3C528F451E8B88807D /* americankestrelcondensed.otf */,
+				D696355C3C1C45989B2AE1DA /* americankestrelexpanded.otf */,
+				2F1AE08C7DC44D4BB1B7B950 /* americankestrelgradient.otf */,
+				893613C36FAA4983BFEE2A28 /* americankestrelhalftone.otf */,
+				4536C8BA87E44F73ACA60333 /* americankestrelitalic.otf */,
+				ED9889C10EF7447B87DDFABA /* americankestrellaser.otf */,
+				9C74F0D6B48346CB937B18FF /* americankestrelleftalic.otf */,
+				41575834D9BE4289A3AD49B1 /* americankestrelsemistraight.otf */,
+				6D69D95D89DA4D84B931CBBF /* americankestrelstraight.otf */,
+				A4ACFFA118DE4285931A1F84 /* americankestrelstraight3d.otf */,
+				B632F071855946D19C5545CE /* americankestrelstraightcond.otf */,
+				F6711548DFC6417E8274FF76 /* americankestrelstraightexp.otf */,
+				02D5E94548624DAA8101277E /* americankestrelstraightgrad.otf */,
+				12A1D28D42FE4BFE8CBDD5AB /* americankestrelstraighthalf.otf */,
+				4DD2E16A09F84CC59FF0E0BB /* americankestrelstraightlaser.otf */,
+				17C0E843E9D74E59AF91B4EB /* americankestral1_2.ttf */,
+				5554A7BF666E4C7CB571EC16 /* americankestral3d1_2.ttf */,
+				DD1BE82C06784652AC5DC60E /* americankestralcond1_2.ttf */,
+				1214D27F0D9847ECAB3C246F /* americankestralexpand1_2.ttf */,
+				C1DF60A08D3545C880132D2A /* americankestralgrad1_2.ttf */,
+				7C6D73A60B714772A8B6DB13 /* americankestralhalf1_2.ttf */,
+				E104407999734CD8A0BC89B5 /* americankestralital1_2.ttf */,
+				ADE14C0B0425474DA84E57D1 /* americankestrallaser1_2.ttf */,
+				960EA62E90C2460AB33DCE38 /* americankestralleft1_2.ttf */,
+				7C417CF2D4BF4F77915CD50D /* americankestralsemistraight1_2.ttf */,
+				4F19C4CD84784677B72F08B6 /* americankestralstraight1_2.ttf */,
+				81DBD0BF75404C2386610979 /* americankestralstraight3d1_2.ttf */,
+				117FCBCD6F3E48A69067DDAD /* americankestralstraightcond1_2.ttf */,
+				4C7825567CE343E9AAD95493 /* americankestralstraightexpand1_2.ttf */,
+				36C033D3E17C49B8A330B84F /* americankestralstraightgrad1_2.ttf */,
+				0C4ACCB62165438595452CE5 /* americankestralstraighthalf1_2.ttf */,
+				FDD46AA8A81A4FBBB0730AD0 /* americankestralstraightlaser1_2.ttf */,
+				150788B7CA864EC2A9865203 /* americankestrel.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +358,41 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				478077D444F64E0CBDD0D7BD /* americankestrel.otf in Resources */,
+				30738849F2F7435B98689C95 /* americankestrel3d.otf in Resources */,
+				C51142574063489CA6126A19 /* americankestrelcondensed.otf in Resources */,
+				63833895CDA84AB9B6A07603 /* americankestrelexpanded.otf in Resources */,
+				48553DCED2CE458BBBDE3E77 /* americankestrelgradient.otf in Resources */,
+				A4B75BC54F37431FBFA4B051 /* americankestrelhalftone.otf in Resources */,
+				1B701AD5CBAA41F983B9910D /* americankestrelitalic.otf in Resources */,
+				CB7130ADE81B4361A01CC387 /* americankestrellaser.otf in Resources */,
+				AE9ABF2868E04AA7A55275FD /* americankestrelleftalic.otf in Resources */,
+				1BFCE0E15E784F749F6865C2 /* americankestrelsemistraight.otf in Resources */,
+				845F3A42026C459F98DB83CE /* americankestrelstraight.otf in Resources */,
+				B3D0D8F2597D4CC687336D6D /* americankestrelstraight3d.otf in Resources */,
+				29DC332898F6401D8D561D5A /* americankestrelstraightcond.otf in Resources */,
+				69574FCA1464473C916B1387 /* americankestrelstraightexp.otf in Resources */,
+				B35E3A38BE6B4D5DBB7B017A /* americankestrelstraightgrad.otf in Resources */,
+				6DF4DC5213EA4630BD5A643A /* americankestrelstraighthalf.otf in Resources */,
+				DCCE21D470CE452AA7F1F4DA /* americankestrelstraightlaser.otf in Resources */,
+				350F1DCEE6DE4823B1005440 /* americankestral1_2.ttf in Resources */,
+				8D905BED620F4033AC90F7AA /* americankestral3d1_2.ttf in Resources */,
+				827DB2790C6940629A75FCA8 /* americankestralcond1_2.ttf in Resources */,
+				11039B000928457E9C737D59 /* americankestralexpand1_2.ttf in Resources */,
+				C0AD7CB0D52440AAB4614EA6 /* americankestralgrad1_2.ttf in Resources */,
+				D8006C68C3CF4CD5A11749BD /* americankestralhalf1_2.ttf in Resources */,
+				223F8212BE3D4FC1BF3E45D8 /* americankestralital1_2.ttf in Resources */,
+				9064CD02D062458881141098 /* americankestrallaser1_2.ttf in Resources */,
+				7D7756798A9248F0BF849716 /* americankestralleft1_2.ttf in Resources */,
+				D267B78A82DB46F69B08CAFC /* americankestralsemistraight1_2.ttf in Resources */,
+				857A877F0BD64C3DB7150C0E /* americankestralstraight1_2.ttf in Resources */,
+				80334A5348BA466896499C6C /* americankestralstraight3d1_2.ttf in Resources */,
+				422730B9C563496698C20C68 /* americankestralstraightcond1_2.ttf in Resources */,
+				CC75D51E484247E7AE52EE01 /* americankestralstraightexpand1_2.ttf in Resources */,
+				94B5BA1E39EA42ACA21CD910 /* americankestralstraightgrad1_2.ttf in Resources */,
+				E113767151AD4963BBB4A4D6 /* americankestralstraighthalf1_2.ttf in Resources */,
+				0687A752135D4D5EB5CC62D0 /* americankestralstraightlaser1_2.ttf in Resources */,
+				617C40EE7FC94468B988E38D /* americankestrel.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

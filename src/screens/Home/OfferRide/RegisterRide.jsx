@@ -30,15 +30,15 @@ const rideTypeData = [
   {label: 'Tricycle', value: '4'},
   {label: 'Truck', value: '5'},
 ];
+const cargoTypeData = [
+  {label: 'Cargo Type 1', value: '1'},
+  {label: 'Cargo Type 2', value: '2'},
+  {label: 'Cargo Type 3', value: '3'},
+];
 const luggageTypeData = [
   {label: '1x Luggage 30x30x30', value: '1'},
   {label: '2x Luggage 50x50x50', value: '2'},
   {label: '3x Luggage 60x60x60', value: '3'},
-];
-const destinationTypeData = [
-  {label: 'Fixed', value: '1'},
-  {label: 'Not Fixed', value: '2'},
-  {label: 'Nearby', value: '3'},
 ];
 const currencyData = [
   {label: '€ EURO', value: '1'},
@@ -50,6 +50,7 @@ const RegisterRide = ({navigation, route}) => {
   //Ride Type Dropdown component start
   const popup = route?.params?.popup;
   const [popupUpdate, setpopupUpdate] = useState(popup ? popup : false);
+
   const [rideType, setRideType] = useState(null);
   const [rideTypeFocus, setRideTypeFocus] = useState(false);
   const renderRideLabel = () => {
@@ -57,13 +58,29 @@ const RegisterRide = ({navigation, route}) => {
       return (
         <Text
           style={[rStyle.label, rideTypeFocus && {color: Colors.mainColor}]}>
-          Selected Ride Type
+          Selected Ride Type *
         </Text>
       );
     }
     return null;
   };
   //Ride Type Dropdown component end
+
+  //Cargo Type Dropdown Start
+  const [cargoType, setCargoType] = useState(null);
+  const [cargoTypeFocus, setCargoTypeFocus] = useState(false);
+  const renderCargoLabel = () => {
+    if (cargoType || cargoTypeFocus) {
+      return (
+        <Text
+          style={[rStyle.label, rideTypeFocus && {color: Colors.mainColor}]}>
+          Selected Cargo Type
+        </Text>
+      );
+    }
+    return null;
+  };
+  //Cargo Type Dropdown End
 
   //Luggage Type Dropdown component start
   const [luggageType, setluggageType] = useState(null);
@@ -81,25 +98,6 @@ const RegisterRide = ({navigation, route}) => {
   };
   //Luggage Type Dropdown component end
 
-  //Destination Type Dropdown component start
-  const [destinationType, setDestinationType] = useState(null);
-  const [destinationTypeFocus, setDestinationTypeFocus] = useState(false);
-  const renderDestinationLabel = () => {
-    if (destinationType || destinationTypeFocus) {
-      return (
-        <Text
-          style={[
-            rStyle.label,
-            destinationTypeFocus && {color: Colors.mainColor},
-          ]}>
-          Selected Destination Type
-        </Text>
-      );
-    }
-    return null;
-  };
-  //Destination Type Dropdown component end
-
   //Currency Type Dropdown component start
   const [currencyType, setCurrencyType] = useState(null);
   const [currencyFocus, setCurrencyTypeFocus] = useState(false);
@@ -115,6 +113,20 @@ const RegisterRide = ({navigation, route}) => {
     return null;
   };
   //Currency Type Dropdown component end
+
+  //For type of Transportation
+  const [typeOfTransport, setTypeOfTransport] = useState(0);
+  let transport_props = [
+    {label: 'Passenger', value: 0},
+    {label: 'Cargo', value: 1},
+  ];
+
+  //Destination Type
+  const [destinationType, setDestinationType] = useState(0);
+  let destination_props = [
+    {label: 'Fixed', value: 0},
+    {label: 'Open', value: 1},
+  ];
 
   //For Luggage radio button
   const [luggge, setLuggge] = useState(1);
@@ -303,7 +315,7 @@ const RegisterRide = ({navigation, route}) => {
               maxHeight={300}
               labelField="label"
               valueField="value"
-              placeholder={!rideTypeFocus ? 'Select Ride Type' : '...'}
+              placeholder={!rideTypeFocus ? 'Select Ride Type *' : '...'}
               value={rideType}
               onFocus={() => setRideTypeFocus(true)}
               onBlur={() => setRideTypeFocus(false)}
@@ -314,38 +326,7 @@ const RegisterRide = ({navigation, route}) => {
             />
           </View>
           <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Available Seats</Text>
-            <View style={rStyle.incDec}>
-              <Pressable
-                style={({pressed}) =>
-                  pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
-                    : rStyle.incDecBtn
-                }
-                onPress={() => {
-                  if (availableSeats > 1) {
-                    setAvailableSeats(availableSeats => availableSeats - 1);
-                  }
-                }}>
-                <Image style={rStyle.incDecIcon} source={CustomImage.minus} />
-              </Pressable>
-              <Text style={rStyle.availCount}>{availableSeats}</Text>
-              <Pressable
-                style={({pressed}) =>
-                  pressed
-                    ? {...rStyle.incDecBtn, opacity: 0.7}
-                    : rStyle.incDecBtn
-                }
-                onPress={() => {
-                  setAvailableSeats(availableSeats => availableSeats + 1);
-                }}>
-                <Image style={rStyle.incDecIcon} source={CustomImage.plus} />
-              </Pressable>
-            </View>
-          </View>
-          <Spacer height={15} />
-          <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Luggage</Text>
+            <Text style={rStyle.radioText}>Type of Transport *</Text>
             <RadioForm
               formHorizontal={true}
               animation={false}
@@ -353,14 +334,92 @@ const RegisterRide = ({navigation, route}) => {
               selectedButtonColor={Colors.mainColor}
               style={rStyle.radioBtnStyle}
               buttonSize={20}
-              radio_props={luggage_props}
-              initial={luggge}
+              radio_props={transport_props}
+              initial={typeOfTransport}
               onPress={value => {
-                setLuggge(value);
+                setTypeOfTransport(value);
               }}
             />
           </View>
-          <Spacer height={15} />
+          {typeOfTransport == 1 && <Spacer height={15} />}
+          {typeOfTransport == 1 && (
+            <View style={rStyle.rideView}>
+              {renderCargoLabel()}
+              <Dropdown
+                style={[
+                  rStyle.dropdown,
+                  cargoTypeFocus && {borderColor: Colors.mainColor},
+                ]}
+                placeholderStyle={rStyle.placeholderStyle}
+                selectedTextStyle={rStyle.selectedTextStyle}
+                itemTextStyle={rStyle.itemTextStyle}
+                data={cargoTypeData}
+                maxHeight={300}
+                labelField="label"
+                valueField="value"
+                placeholder={!cargoTypeFocus ? 'Select Cargo Type' : '...'}
+                value={cargoType}
+                onFocus={() => setCargoTypeFocus(true)}
+                onBlur={() => setCargoTypeFocus(false)}
+                onChange={item => {
+                  setCargoType(item.value);
+                  setCargoTypeFocus(false);
+                }}
+              />
+            </View>
+          )}
+          {typeOfTransport == 0 && (
+            <View style={rStyle.radioView}>
+              <Text style={rStyle.radioText}>Available Seats</Text>
+              <View style={rStyle.incDec}>
+                <Pressable
+                  style={({pressed}) =>
+                    pressed
+                      ? {...rStyle.incDecBtn, opacity: 0.7}
+                      : rStyle.incDecBtn
+                  }
+                  onPress={() => {
+                    if (availableSeats > 1) {
+                      setAvailableSeats(availableSeats => availableSeats - 1);
+                    }
+                  }}>
+                  <Image style={rStyle.incDecIcon} source={CustomImage.minus} />
+                </Pressable>
+                <Text style={rStyle.availCount}>{availableSeats}</Text>
+                <Pressable
+                  style={({pressed}) =>
+                    pressed
+                      ? {...rStyle.incDecBtn, opacity: 0.7}
+                      : rStyle.incDecBtn
+                  }
+                  onPress={() => {
+                    setAvailableSeats(availableSeats => availableSeats + 1);
+                  }}>
+                  <Image style={rStyle.incDecIcon} source={CustomImage.plus} />
+                </Pressable>
+              </View>
+            </View>
+          )}
+          {typeOfTransport == 0 && <Spacer height={15} />}
+          {typeOfTransport == 0 && (
+            <View style={rStyle.radioView}>
+              <Text style={rStyle.radioText}>Luggage</Text>
+              <RadioForm
+                formHorizontal={true}
+                animation={false}
+                buttonColor={Colors.mainColor}
+                selectedButtonColor={Colors.mainColor}
+                style={rStyle.radioBtnStyle}
+                buttonSize={20}
+                radio_props={luggage_props}
+                initial={luggge}
+                onPress={value => {
+                  setLuggge(value);
+                }}
+              />
+            </View>
+          )}
+          {typeOfTransport == 0 && <Spacer height={15} />}
           {luggge === 0 && (
             <View style={rStyle.rideView}>
               {renderLuggageLabel()}
@@ -387,32 +446,24 @@ const RegisterRide = ({navigation, route}) => {
               />
             </View>
           )}
-          <View style={rStyle.rideView}>
-            {renderDestinationLabel()}
-            <Dropdown
-              style={[
-                rStyle.dropdown,
-                destinationTypeFocus && {borderColor: Colors.mainColor},
-              ]}
-              placeholderStyle={rStyle.placeholderStyle}
-              selectedTextStyle={rStyle.selectedTextStyle}
-              itemTextStyle={rStyle.itemTextStyle}
-              data={destinationTypeData}
-              maxHeight={300}
-              labelField="label"
-              valueField="value"
-              placeholder={
-                !destinationTypeFocus ? 'Select Destination Type' : '...'
-              }
-              value={destinationType}
-              onFocus={() => setDestinationTypeFocus(true)}
-              onBlur={() => setDestinationTypeFocus(false)}
-              onChange={item => {
-                setDestinationType(item.value);
-                setDestinationTypeFocus(false);
+
+          <View style={rStyle.radioView}>
+            <Text style={rStyle.radioText}>Destination Type *</Text>
+            <RadioForm
+              formHorizontal={true}
+              animation={false}
+              buttonColor={Colors.mainColor}
+              selectedButtonColor={Colors.mainColor}
+              style={rStyle.radioBtnStyle}
+              buttonSize={20}
+              radio_props={destination_props}
+              initial={destinationType}
+              onPress={value => {
+                setDestinationType(value);
               }}
             />
           </View>
+          <Spacer height={15} />
           <View style={rStyle.rideView}>
             {renderCurrencyLabel()}
             <Dropdown
@@ -427,7 +478,7 @@ const RegisterRide = ({navigation, route}) => {
               maxHeight={300}
               labelField="label"
               valueField="value"
-              placeholder={!currencyFocus ? 'Select Currency' : '...'}
+              placeholder={!currencyFocus ? 'Select Currency *' : '...'}
               value={currencyType}
               onFocus={() => setCurrencyTypeFocus(true)}
               onBlur={() => setCurrencyTypeFocus(false)}
@@ -437,8 +488,9 @@ const RegisterRide = ({navigation, route}) => {
               }}
             />
           </View>
+
           <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Fixed Price</Text>
+            <Text style={rStyle.radioText}>Fixed Price *</Text>
             <RadioForm
               formHorizontal={true}
               animation={false}
@@ -453,22 +505,25 @@ const RegisterRide = ({navigation, route}) => {
               }}
             />
           </View>
+
+          {fixedPrice == 0 && <Spacer height={15} />}
+          {fixedPrice == 0 && (
+            <View style={rStyle.radioView}>
+              <Text style={rStyle.radioText}>Fixed Price Amount</Text>
+              <TextInput
+                placeholder="Please Enter Amount"
+                placeholderTextColor={Colors.grey}
+                inputMode="numeric"
+                keyboardType="numeric"
+                onChangeText={text => setFixedPriceAmt(text)}
+                value={fixedPriceAmt}
+                style={rStyle.inputStyle}
+              />
+            </View>
+          )}
           <Spacer height={15} />
           <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Fixed Price Amount</Text>
-            <TextInput
-              placeholder="Please Enter Amount"
-              placeholderTextColor={Colors.grey}
-              inputMode="numeric"
-              keyboardType="numeric"
-              onChangeText={text => setFixedPriceAmt(text)}
-              value={fixedPriceAmt}
-              style={rStyle.inputStyle}
-            />
-          </View>
-          <Spacer height={15} />
-          <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Departure Address</Text>
+            <Text style={rStyle.radioText}>Departure Address / City *</Text>
             <TextInput
               placeholder="Please Enter Departure Address"
               placeholderTextColor={Colors.grey}
@@ -477,17 +532,19 @@ const RegisterRide = ({navigation, route}) => {
               style={rStyle.inputStyle}
             />
           </View>
-          <Spacer height={15} />
-          <View style={rStyle.radioView}>
-            <Text style={rStyle.radioText}>Destination Address</Text>
-            <TextInput
-              placeholder="Please Enter Destination Address"
-              placeholderTextColor={Colors.grey}
-              onChangeText={text => setDestinationAddress(text)}
-              value={destinationAddress}
-              style={rStyle.inputStyle}
-            />
-          </View>
+          {destinationType == 0 && <Spacer height={15} />}
+          {destinationType == 0 && (
+            <View style={rStyle.radioView}>
+              <Text style={rStyle.radioText}>Destination Address</Text>
+              <TextInput
+                placeholder="Please Enter Destination Address"
+                placeholderTextColor={Colors.grey}
+                onChangeText={text => setDestinationAddress(text)}
+                value={destinationAddress}
+                style={rStyle.inputStyle}
+              />
+            </View>
+          )}
           <Spacer height={15} />
           <View style={rStyle.radioView}>
             <Text style={rStyle.radioText}>Description</Text>

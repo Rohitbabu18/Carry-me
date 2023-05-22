@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   Pressable,
   SafeAreaView,
@@ -21,7 +22,7 @@ const Chatting = ({navigation}) => {
     setMessages([
       {
         _id: 1,
-        text: 'Hello developer',
+        text: 'From : Isolo Bustop\nTo : Gadroo Bustop\nFor : 1200$\n\nI am Nickname Please Chat with me here.',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -45,14 +46,25 @@ const Chatting = ({navigation}) => {
         backgroundColor={Colors.mainColor}
       />
       <View style={styles.headerView}>
+        <View style={styles.headerSubView}>
+          <Pressable
+            onPress={() => {
+              navigation.goBack();
+            }}>
+            <Image source={CustomImage.back} style={styles.backBtnStyle} />
+          </Pressable>
+          <Image source={CustomImage.chaticon} style={styles.chatIcon} />
+          <Text style={styles.chatHeading}>Bad Boy</Text>
+        </View>
         <Pressable
           onPress={() => {
-            navigation.goBack();
-          }}>
-          <Image source={CustomImage.back} style={styles.backBtnStyle} />
+            Alert.alert('Coming Soon', 'Send your Travel Manifest Data');
+          }}
+          style={styles.manifestBtn}>
+          <Text style={styles.manifestBtnText}>
+            Send your Travel{'\n'}Manifest Data
+          </Text>
         </Pressable>
-        <Image source={CustomImage.chaticon} style={styles.chatIcon} />
-        <Text style={styles.chatHeading}>Bad Boy</Text>
       </View>
       <GiftedChat
         messages={messages}
@@ -65,6 +77,22 @@ const Chatting = ({navigation}) => {
         }}
         textInputStyle={{color: Colors.black}}
       />
+      <View style={styles.chatBtnView}>
+        <Pressable
+          onPress={() => {
+            alert('Coming Soon');
+          }}
+          style={styles.chatBtns}>
+          <Image source={CustomImage.rate} style={styles.chatBtnsImg} />
+        </Pressable>
+        <Pressable
+          onPress={() => {
+            alert('Coming Soon');
+          }}
+          style={styles.chatBtns}>
+          <Image source={CustomImage.trash} style={styles.chatBtnsImg} />
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
@@ -72,11 +100,39 @@ const Chatting = ({navigation}) => {
 export default Chatting;
 
 const styles = StyleSheet.create({
+  chatBtnView: {
+    position: 'absolute',
+    top: horizScale(100),
+    right: horizScale(10),
+  },
+  chatBtns: {
+    // backgroundColor: Colors.black,
+    marginVertical: horizScale(10),
+  },
+  chatBtnsImg: {
+    height: horizScale(50),
+    width: horizScale(50),
+    resizeMode: 'contain',
+  },
+  manifestBtnText: {
+    color: Colors.black,
+    fontWeight: '500',
+  },
+  manifestBtn: {
+    backgroundColor: Colors.yellow,
+    paddingHorizontal: horizScale(10),
+    paddingVertical: horizScale(3),
+    borderRadius: horizScale(10),
+  },
   chatIcon: {
     height: horizScale(40),
     width: horizScale(40),
     resizeMode: 'contain',
     marginHorizontal: horizScale(5),
+  },
+  headerSubView: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   headerView: {
     paddingHorizontal: horizScale(15),
@@ -84,6 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.mainColor,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   backBtnStyle: {
     height: horizScale(20),

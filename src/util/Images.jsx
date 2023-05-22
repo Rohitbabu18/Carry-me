@@ -38,5 +38,8 @@ const CustomImage = {
 
   rightSwipe: require('../assets/swipeRight.png'),
   leftSwipe: require('../assets/swipeLeft.png'),
+  rate: require('../assets/rate.png'),
+  trash: require('../assets/trash.png'),
+  pin: require('../assets/pin.png'),
 };
 export default CustomImage;

@@ -8,16 +8,16 @@ import {
   TextInput,
   View,
   Pressable,
-  Dimensions
+  Dimensions,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Back from '../../Componets/Back';
-import { Colors } from '../../../util/Colors';
+import {Colors} from '../../../util/Colors';
 import CustomImage from '../../../util/Images';
-import { horizScale } from '../../../util/Layout';
+import {horizScale} from '../../../util/Layout';
 import fontSize from '../../../util/Fonts';
-import { Spacer } from '../../../util/Layout';
-import { Rating } from 'react-native-ratings';
+import {Spacer} from '../../../util/Layout';
+import {Rating} from 'react-native-ratings';
 
 const data = [
   {
@@ -82,9 +82,9 @@ const data = [
   },
 ];
 
-const Matches = ({ navigation }) => {
+const Matches = ({navigation}) => {
   const [searchText, setSearchText] = useState('');
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View style={styles.flatView}>
         <View style={styles.btnView}>
@@ -92,8 +92,8 @@ const Matches = ({ navigation }) => {
             onPress={() => {
               navigation.navigate('Chatting');
             }}
-            style={({ pressed }) =>
-              pressed ? { ...styles.imgView, opacity: 0.8 } : styles.imgView
+            style={({pressed}) =>
+              pressed ? {...styles.imgView, opacity: 0.8} : styles.imgView
             }>
             <Image source={CustomImage.message} style={styles.iconStyle} />
           </Pressable>
@@ -101,10 +101,10 @@ const Matches = ({ navigation }) => {
             onPress={() => {
               alert('Coming Soon');
             }}
-            style={({ pressed }) =>
+            style={({pressed}) =>
               pressed
-                ? { ...styles.imgView, backgroundColor: Colors.red, opacity: 0.6 }
-                : { ...styles.imgView, backgroundColor: Colors.red }
+                ? {...styles.imgView, backgroundColor: Colors.red, opacity: 0.6}
+                : {...styles.imgView, backgroundColor: Colors.red}
             }>
             <Image source={CustomImage.delete} style={styles.iconStyle} />
           </Pressable>
@@ -113,31 +113,33 @@ const Matches = ({ navigation }) => {
           <Image source={item.image} style={styles.flatImage} />
           <View style={styles.nameView}>
             <Text style={styles.nameText}>{item.name}</Text>
-            <Rating
-              style={styles.ratingStyle}
-              type="star"
-              readonly
-              fractions={true}
-              startingValue={item.rating}
-              ratingCount={5}
-              imageSize={18}
-            />
-            <Text style={styles.numRating}>({item.numOfReviews})</Text>
+            <View style={styles.rowView}>
+              <Rating
+                style={styles.ratingStyle}
+                type="star"
+                readonly
+                fractions={true}
+                startingValue={item.rating}
+                ratingCount={5}
+                imageSize={18}
+              />
+              <Text style={styles.numRating}>({item.numOfReviews})</Text>
+            </View>
             <Text style={styles.numRating}>12 Km from here</Text>
           </View>
           <Text style={styles.priceText}>
-            Price :<Text style={{ fontSize: fontSize.medium }}>{item.price}</Text>{' '}
+            Price :<Text style={{fontSize: fontSize.medium}}>{item.price}</Text>{' '}
             /-
           </Text>
         </View>
         <Spacer height={10} />
         <View style={styles.subViewBtm}>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>From :</Text>
             <Text style={styles.boldText}>{item.from}</Text>
           </View>
           <View style={styles.vertiLine}></View>
-          <View style={{ flex: 0.5, alignItems: 'center' }}>
+          <View style={{flex: 0.5, alignItems: 'center'}}>
             <Text style={styles.fromToText}>To :</Text>
             <Text style={styles.boldText}>{item.to}</Text>
           </View>
@@ -146,15 +148,35 @@ const Matches = ({ navigation }) => {
     );
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white, width: Dimensions.get('window').width }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+      }}>
       <StatusBar
         backgroundColor={Colors.mainColor}
         barStyle={'light-content'}
       />
       <View style={styles.headerView}>
-        <Text style={{ ...styles.backText, color: Colors.white }}>Matches</Text>
-        <View >
-
+        <View style={styles.rowView}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('Profile');
+            }}>
+            <Image source={CustomImage.profile} style={styles.profileIcon} />
+          </Pressable>
+          <Text
+            style={{
+              ...styles.backText,
+              color: Colors.white,
+              marginLeft: horizScale(15),
+            }}>
+            Matches
+          </Text>
+        </View>
+        <View>
           <Image source={CustomImage.logo} style={styles.Image} />
         </View>
       </View>
@@ -168,7 +190,9 @@ const Matches = ({ navigation }) => {
         />
         <Image source={CustomImage.search} style={styles.searchIcon} />
       </View>
+
       <FlatList data={data} renderItem={renderItem} />
+      <Spacer height={60} />
     </SafeAreaView>
   );
 };
@@ -176,6 +200,15 @@ const Matches = ({ navigation }) => {
 export default Matches;
 
 const styles = StyleSheet.create({
+  profileIcon: {
+    height: horizScale(35),
+    width: horizScale(35),
+    resizeMode: 'contain',
+  },
+  rowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   Image: {
     height: horizScale(50),
     width: horizScale(180),
@@ -216,6 +249,7 @@ const styles = StyleSheet.create({
   numRating: {
     color: Colors.grey,
     fontSize: fontSize.medium,
+    marginHorizontal: horizScale(2),
   },
   ratingStyle: {
     alignSelf: 'flex-start',
@@ -302,6 +336,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
