@@ -80,7 +80,7 @@ const Chatting = ({navigation}) => {
       <View style={styles.chatBtnView}>
         <Pressable
           onPress={() => {
-            alert('Coming Soon');
+            navigation.navigate('RatingScreen');
           }}
           style={styles.chatBtns}>
           <Image source={CustomImage.rate} style={styles.chatBtnsImg} />

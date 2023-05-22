@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   smallCircle: {
     borderRadius: horizScale(7),
     borderWidth: horizScale(0.5),
-    marginHorizontal: horizScale(8),
+    // marginHorizontal: horizScale(8),
     paddingHorizontal: horizScale(3),
     marginVertical: horizScale(7),
   },

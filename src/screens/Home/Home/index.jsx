@@ -12,6 +12,7 @@ import {
   FlatList,
   Animated,
   PanResponder,
+  TouchableOpacity,
 } from 'react-native';
 import React from 'react';
 import styles from '../../../util/Styles';
@@ -149,7 +150,7 @@ export default class Home extends React.Component {
         },
       ],
       count: 0,
-      selectedVehicles: 'Selected Vehicle',
+      selectedVehicles: 0,
       showOption: false,
       detailsModal: false,
       departure: '',
@@ -708,7 +709,8 @@ export default class Home extends React.Component {
             color: Colors.black,
             fontWeight: '500',
           }}>
-          {this.state.selectedVehicles}
+          {/* {this.state.selectedVehicles} */}
+          {this.state.vehicals[this.state.selectedVehicles].name}
         </Text>
         <View
           style={{
@@ -717,70 +719,88 @@ export default class Home extends React.Component {
             justifyContent: 'space-between',
             marginHorizontal: horizScale(5),
           }}>
-          <Pressable
+          <TouchableOpacity
             onPress={() => {
-              alert('Back');
+              if (this.state.selectedVehicles > 0) {
+                this.setState({
+                  selectedVehicles: this.state.selectedVehicles - 1,
+                });
+              }
             }}>
             <Image
-              style={{height: horizScale(15), width: horizScale(15)}}
+              style={{height: horizScale(20), width: horizScale(20)}}
               source={CustomImage.leftSwipe}
             />
-          </Pressable>
-          <FlatList
-            // data={this.state.vehicals}
-            data={this.state.vehicals}
-            horizontal
-            pagingEnabled={true}
-            style={{paddingHorizontal: horizScale(12)}}
-            renderItem={this.renderVehicals}
-            keyExtractor={(item, index) => item.id + index}
-            showsHorizontalScrollIndicator={false}
-            ref={node => (flatRef = node)}
-
-            // ListFooterComponent={() => {
-            //   return (
-            //     <Pressable
-            //       onPress={() => {
-            //         this.props.navigation.navigate('Vehicals');
-            //       }}
-            //       style={{
-            //         borderRadius: horizScale(7),
-            //         borderWidth: horizScale(0.5),
-            //         marginHorizontal: horizScale(8),
-            //         marginVertical: horizScale(7),
-            //         height: horizScale(50),
-            //         width: horizScale(55),
-            //         justifyContent: 'center',
-            //         alignItems: 'center',
-            //       }}>
-            //       <Image
-            //         source={CustomImage.rightSwipe}
-            //         style={{...styles.smallIcon, bottom: 5}}
-            //       />
-            //       <Text
-            //         style={{
-            //           ...styless.vahicalText,
-            //           borderRadius: horizScale(7),
-            //         }}>
-            //         More
-            //       </Text>
-            //     </Pressable>
-            //   );
-            // }}
-          />
-          <Pressable
+          </TouchableOpacity>
+          {this.state.selectedVehicles - 2 >= 0 ? (
+            <View style={styles.smallCircle}>
+              <Image
+                source={{
+                  uri: this.state.vehicals[this.state.selectedVehicles - 2].img,
+                }}
+                style={styles.smallIconVehical}
+              />
+            </View>
+          ) : null}
+          {this.state.selectedVehicles - 1 >= 0 ? (
+            <View style={styles.smallCircle}>
+              <Image
+                source={{
+                  uri: this.state.vehicals[this.state.selectedVehicles - 1].img,
+                }}
+                style={styles.smallIconVehical}
+              />
+            </View>
+          ) : null}
+          <View
+            style={{...styles.smallCircle, backgroundColor: Colors.mainColor}}>
+            <Image
+              source={{
+                uri: this.state.vehicals[this.state.selectedVehicles].img,
+              }}
+              style={styles.smallIconVehical}
+            />
+          </View>
+          {this.state.vehicals.length - 1 > this.state.selectedVehicles ? (
+            <View style={styles.smallCircle}>
+              <Image
+                source={{
+                  uri: this.state.vehicals[this.state.selectedVehicles + 1].img,
+                }}
+                style={styles.smallIconVehical}
+              />
+            </View>
+          ) : null}
+          {this.state.vehicals.length - 2 > this.state.selectedVehicles ? (
+            <View style={styles.smallCircle}>
+              <Image
+                source={{
+                  uri: this.state.vehicals[this.state.selectedVehicles + 2].img,
+                }}
+                style={styles.smallIconVehical}
+              />
+            </View>
+          ) : null}
+          <TouchableOpacity
             onPress={() => {
-              alert('Clicked');
+              if (
+                this.state.vehicals.length - 1 >
+                this.state.selectedVehicles
+              ) {
+                this.setState({
+                  selectedVehicles: this.state.selectedVehicles + 1,
+                });
+              }
             }}>
             <Image
               style={{
-                height: horizScale(15),
-                width: horizScale(15),
+                height: horizScale(20),
+                width: horizScale(20),
                 paddingHorizontal: 10,
               }}
               source={CustomImage.rightSwipe}
             />
-          </Pressable>
+          </TouchableOpacity>
         </View>
         <Spacer height={5} />
         <View

@@ -22,6 +22,7 @@ import UpdateProfile from '../screens/Home/Profile/UpdateProfile';
 import ChangePassword from '../screens/Auth/ChangePassword';
 import Vehicals from '../screens/Home/Home/Vehicals';
 import UpdateTravel from '../screens/Home/Profile/UpdateTravel';
+import RatingScreen from '../screens/Home/Home/RatingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +61,7 @@ const HomeStack = () => {
       <Stack.Screen name="RideOptions" component={RideOptions} />
       <Stack.Screen name="Chatting" component={Chatting} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="RatingScreen" component={RatingScreen} />
       <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
       <Stack.Screen name="UpdateTravel" component={UpdateTravel} />
       <Stack.Screen name="Notification" component={Notification} />
